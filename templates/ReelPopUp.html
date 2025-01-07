@@ -1,0 +1,132 @@
+{% load static %}
+<div class="reels-detailed popUpClose">
+
+        <div class="video-box">
+
+          <div class="btn-box pointer" onclick="startstop.apply(this);">
+              <img src="{% static "images/play.svg" %}" alt="">
+          </div>
+
+          <div class="video-container">
+            <video id="video" preload="none" poster="" loop="loop">
+
+              <source  src="" type='video/mp4'/>
+
+            </video>
+          </div>
+        </div>
+
+        <div class="info-box">
+
+          <div class="closePopUp pointer" onclick="reelDetailedClose();">
+            <img src="{% static "images/close.svg" %}" alt="">
+          </div>
+
+          <div class="author">
+            <div class="card">
+
+              <h1 class="name">@dashatraveller</h1>
+
+              <div class="metrics">
+
+                <div class="box reels-count">
+                  <h3>Публикаций</h3>
+                  <h4>904</h4>
+                </div>
+
+                <div class="box subs">
+                  <h3>Подписчиков</h3>
+                  <h4>14 400</h4>
+                </div>
+
+                <div class="box sub">
+                  <h3>Подписок</h3>
+                  <h4>193</h4>
+                </div>
+
+              </div>
+
+              <p class="about">
+                Даша | Путешествия | Переезд в Испанию<br>
+                Вдохновляю видеть мир ✨<br>
+                Объехала 40 стран в поисках дома, но<br>
+                пока не нашла и продолжаю исследовать<br>
+                Тут про полезности, локации и маршруты 🌍
+              </p>
+
+            </div>
+
+            <div class="to_author btn pointer">
+              <h3 href="">
+                Перейти в аккаунт
+              </h3>
+            </div>
+
+            <div class="sub_author btn pointer">
+              <h3 href="">
+                Подписаться
+              </h3>
+            </div>
+          </div>
+
+          <div class="reels-info">
+
+            <div class="card">
+
+              <h1 class="titel">О рилзе</h1>
+
+              <p class="about">
+                Что скажите, хотели бы побывать? 🎀🌸💕<br><br>
+                @dashatraveller - подписывайся, в блоге рассказываю про путешествия, интересные локации и лайфхаки<br><br>
+                #кругосветка #кругосветноепутешествие #путешественники #вильнюс #кудапойти #vilnius #travelvilnius #pinksoupfest<br><br>
+              </p>
+
+              <div class="metrics">
+
+                <div class="box">
+                  <img src="{% static "images/play_g.svg" %}" alt="">
+                  <h3>130 238</h3>
+                </div>
+
+                <div class="box">
+                  <img src="{% static "images/like_g.svg" %}" alt="">
+                  <h3>58 323</h3>
+                </div>
+
+                <div class="box">
+                  <img src="{% static "images/comments_g.svg" %}" alt="">
+                  <h3>23 417</h3>
+                </div>
+
+                <div class="box">
+                  <img src="{% static "images/share_g.svg" %}" alt="">
+                  <h3>3 832</h3>
+                </div>
+
+              </div>
+
+            </div>
+
+            <div class="download btn pointer">
+              <h3 href="">
+                Скачать
+              </h3>
+            </div>
+
+            <div class="save btn pointer">
+              <h3 href="">
+                В избранное
+              </h3>
+            </div>
+
+            <div class="instagram btn pointer">
+              <h3 href="">
+                Открыть в Instagram
+              </h3>
+            </div>
+
+          </div>
+
+        </div>
+
+    </div>

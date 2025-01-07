@@ -1,0 +1,74 @@
+.head{
+    background: #fff;
+    height: 48px;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.logo{
+    margin-left: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo a{
+    font-weight: 500;
+    font-style: normal;
+    color: black;
+    font-size: 16px;
+    text-decoration: none;
+    line-height: 24px;
+    text-align: center;
+}
+
+.user-info{
+    margin-right: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.user-info h3{
+    font-weight: 400;
+    font-size: 14px;
+    text-align: right;
+}
+
+.user-info .sub{
+    font-size: 12px;
+    color: #00000073;
+}
+
+.menu{
+    display: flex;
+}
+
+.menu .menu-btn{
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+}
+
+.menu-btn-box{
+    display: flex;
+    margin-left: 10px;
+    margin-right: 10px;
+
+}
+
+.menu .partition{
+    font-weight: 400;
+    font-size: 14px;
+    margin-left: 10px;
+}
+
+.menu-btn:hover {
+    color: #1890FF;
+    border-bottom: solid;
+}
+
+.menu-btn:hover .partition-logo > path{
+    fill: #1890FF;
+}

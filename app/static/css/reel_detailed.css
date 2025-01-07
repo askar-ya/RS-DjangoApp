@@ -1,0 +1,231 @@
+.reels-detailed{
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 100%;
+}
+
+.reels-detailed .video-box{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+
+}
+
+.reels-detailed .video-box .video-container{
+    width: 54%;
+    height: 90%;
+    border-radius: 8px;
+    grid-row: 1 / 1;
+    grid-column: 1 / 1;
+    align-self: center;
+    justify-self: center;
+    overflow: hidden;
+    display: grid;
+}
+
+
+.reels-detailed .video-box .video-container video{
+    border-radius: 8px;
+    height: 100%;
+    overflow: hidden;
+    align-self: center;
+    justify-self: center;
+}
+
+.reels-detailed .video-box .btn-box{
+    width: 54%;
+    height: 90%;
+    z-index: 1110;
+    align-self: center;
+    justify-self: center;
+    grid-row: 1 / 1;
+    grid-column: 1 / 1;
+    display: grid;
+}
+
+
+.reels-detailed .video-box .btn-box img{
+    width: 32px;
+    align-self: center;
+    justify-self: center;
+}
+
+
+.reels-detailed .info-box{
+    background-color: white;
+
+}
+
+.reels-detailed .info-box .author{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 4.28%;
+    column-gap: 2.85%;
+    row-gap: calc(33vw * 0.0428);
+}
+
+.reels-detailed .info-box .author .card{
+    grid-column: 1/3;
+    grid-row: 1/2;
+    display: grid;
+    row-gap: calc(33vw * 0.0214);
+}
+
+.reels-detailed .info-box .author .card .name{
+    font-weight: 400 !important ;
+    font-size: 16px;
+}
+
+.reels-detailed .info-box .author .card .metrics{
+    display: flex;
+    gap: 3.125%;
+}
+
+.reels-detailed .info-box .author .card .metrics h3{
+    color: #8c8c8c;
+    font-size: 14px;
+    font-weight: 400 !important;
+}
+
+.reels-detailed .info-box .author .card .metrics h4{
+    margin-top: 3px;
+    font-size: 14px;
+    font-weight: 500 !important;
+}
+
+.reels-detailed .info-box .author .card .about{
+    font-size: 14px;
+    font-weight: 300 !important;
+    text-align: left;
+}
+
+.reels-detailed .info-box .author .btn{
+    height: calc(33.3vw * 0.075);
+    border-radius: 2px;
+    border: 2px solid #e2e2e2;
+
+    font-size: 14px;
+
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+.reels-detailed .info-box .author .btn h3{
+    font-weight: 300 !important;
+}
+
+.reels-detailed .info-box .closePopUp{
+    position: absolute;
+    right: 0;
+    width: calc(33.3vw * 0.0857);
+    height: calc(33.3vw * 0.0857);
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+.reels-detailed .info-box .closePopUp img{
+    width: calc(33.3vw * 0.02857);
+}
+
+.popUpOpen{
+    visibility: visible;
+    animation: popUpOpen;
+    animation-duration: 0.5s;
+}
+
+.popUpClose{
+    visibility: hidden;
+    animation: popUpClose;
+    animation-duration: 0.5s;
+}
+
+@keyframes popUpOpen {
+    from {
+      opacity: 0.0;
+    }
+    to {
+      opacity: 1.0;
+    }
+}
+
+@keyframes popUpClose {
+    from {
+      opacity: 1.0;
+    }
+    to {
+      opacity: 0.0;
+    }
+}
+
+.reels-detailed .info-box .reels-info{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 4.28%;
+    column-gap: 2.85%;
+    row-gap: calc(33vw * 0.0428);
+
+}
+
+.reels-detailed .info-box .reels-info .card{
+    grid-column: 1/3;
+    grid-row: 1/2;
+    display: grid;
+    row-gap: calc(33vw * 0.0214);
+}
+
+.reels-detailed .info-box .reels-info .card .titel{
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.reels-detailed .info-box .reels-info .card .about{
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.reels-detailed .info-box .reels-info .card .metrics{
+    display: flex;
+    gap: 16px;
+}
+
+.reels-detailed .info-box .reels-info .card .metrics .box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+}
+
+.reels-detailed .info-box .reels-info .card .metrics .box h3{
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.reels-detailed .info-box .reels-info .instagram{
+    grid-column: 1/3;
+}
+
+.reels-detailed .info-box .reels-info .btn{
+    height: calc(33.3vw * 0.075);
+    border-radius: 2px;
+    border: 2px solid #e2e2e2;
+
+    font-size: 14px;
+
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+.reels-detailed .info-box .reels-info .btn h3{
+    font-weight: 300 !important;
+}
+

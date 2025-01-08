@@ -39,7 +39,7 @@ function apply_filters() {
 
     param = param.join('&')
 
-    let url = 'http://reelsscanner.com/app/search/?'
+    let url = 'https://reelsscanner.com/app/search/?'
     console.log(url + param)
     window.location.replace(url + param)
 }

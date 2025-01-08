@@ -92,6 +92,8 @@ USE_I18N = True
 
 USE_TZ = True
 
+CSRF_TRUSTED_ORIGINS=["https://reelsscanner.com"]
+
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [

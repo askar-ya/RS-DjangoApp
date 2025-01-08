@@ -9,7 +9,7 @@ SECRET_KEY = 'django-insecure-jos!x8+#&*ti$#4$asha+e4)zh(e*$b1b7wcs!53^&9xuf5+zk
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['38.180.68.238', 'reelsscanner.com']
+ALLOWED_HOSTS = ['38.180.68.238', '127.0.0.1', 'reelsscanner.com']
 
 
 INSTALLED_APPS = [

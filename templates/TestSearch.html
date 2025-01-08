@@ -93,7 +93,7 @@
         }
 
         function next_page() {
-            console.log(requestURL);
+            console.log('->', requestURL);
             if (requestURL) {
                 xhr.open('GET', requestURL, true)
                 xhr.send()

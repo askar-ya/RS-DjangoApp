@@ -11,6 +11,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['38.180.68.238', '127.0.0.1', 'reelsscanner.com']
 
+USE_X_FORWARDED_HOST=True
 
 INSTALLED_APPS = [
     'django.contrib.admin',

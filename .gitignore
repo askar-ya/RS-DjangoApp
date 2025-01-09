@@ -2,7 +2,6 @@
 /.idea
 staticfiles
 static
-*__pycache__
-bin
+**/__pycache__
 /app/migrations/
 /api/migrations/

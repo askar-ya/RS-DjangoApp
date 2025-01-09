@@ -36,7 +36,7 @@ class Authors(models.Model):
 
 
     add_stamp = models.DateTimeField('Время добавления', default=datetime.now)
-    update_stamp = models.DateTimeField('Время обновления', default=datetime.now)
+    updated_stamp = models.DateTimeField('Время обновления', default=datetime.now)
     last_rell = models.IntegerField('Последний рилс', default=0)
     new = models.BooleanField("Новый", default=True)
 
@@ -58,7 +58,9 @@ class Reels(models.Model):
     views = models.IntegerField('Кол-во просмотров')
     description = models.TextField('Описание рилса')
 
-    update_stamp = models.DateTimeField('Время обновления', default=datetime.now)
+    published_stamp = models.DateTimeField('Дата публикации', default=datetime.now)
+    updated_stamp = models.DateTimeField('Время обновления', default=datetime.now)
+    new = models.BooleanField("новый", default=True)
 
     class Meta:
         db_table = 'reels'

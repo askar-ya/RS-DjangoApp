@@ -2,6 +2,4 @@
 /.idea
 staticfiles
 static
-**/__pycache__/
-config/__pycahce__
-app/__pycache__
+**/__pycache__

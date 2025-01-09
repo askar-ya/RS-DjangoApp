@@ -52,7 +52,7 @@ class Authors(models.Model):
 class Reels(models.Model):
     """Рилсы авторов"""
     author = models.ForeignKey(Authors, on_delete=models.CASCADE)
-    url = models.CharField('url рилса', max_length=44)
+    url = models.CharField('url на видео рилса', max_length=44)
     likes = models.IntegerField('Кол-во лайков')
     comments = models.IntegerField('Кол-во комментариев')
     views = models.IntegerField('Кол-во просмотров')

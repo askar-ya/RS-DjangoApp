@@ -2,5 +2,5 @@
 /.idea
 staticfiles
 static
-__pycahe__
+__pycache__
 bin

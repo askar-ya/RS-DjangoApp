@@ -1,5 +1,4 @@
 /env/
 /.idea
-staticfiles/*
-static/*
+
 **/__pycache__/

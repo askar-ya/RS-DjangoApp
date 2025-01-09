@@ -29,7 +29,7 @@ class Authors(models.Model):
     """Авторы рилсов"""
     nick = models.CharField('Ник инстаграмм', max_length=30)
 
-    description = models.TextField('Описание профиля', default='')
+    description = models.TextField('Описание профиля', default=' ')
     reels_count = models.IntegerField('Кол-во рилсов', default=0)
     subscribers = models.IntegerField('Кол-во подписчиков', default=0)
     subscriptions = models.IntegerField('Кол-во подписок', default=0)

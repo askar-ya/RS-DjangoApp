@@ -2,6 +2,6 @@
 /.idea
 staticfiles
 static
-**/__pycache__
+**__pycache__
 /app/migrations/
 /api/migrations/

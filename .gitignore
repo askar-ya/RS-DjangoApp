@@ -3,5 +3,5 @@
 staticfiles
 static
 **/__pycache__/
-config/__pycahce
+config/__pycahce__
 app/__pycache__

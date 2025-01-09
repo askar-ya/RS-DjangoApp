@@ -4,4 +4,3 @@ staticfiles
 static
 __pycahe__
 bin
-gunicorn_config.py

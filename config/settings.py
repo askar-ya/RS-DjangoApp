@@ -21,6 +21,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app',
+    'subscription',
     'api',
     'rest_framework'
 ]
@@ -65,11 +66,12 @@ DATABASES = {
         'NAME': 'django_db',
         'USER': 'django',
         'PASSWORD': '123qwe',
-        'HOST': 'localhost',
+        'HOST': '38.180.68.238',
         'PORT': ''
     }
 }
 
+LOGIN_REDIRECT_URL = '/'
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -89,7 +91,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'ru-ru'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Moscow'
 
 USE_I18N = True
 

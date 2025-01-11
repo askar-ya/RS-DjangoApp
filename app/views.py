@@ -2,13 +2,10 @@ from django.shortcuts import render, HttpResponse
 from app.logic import add_new_authors
 from app.form import AddAuthorsForm
 
+from app.service import MainPage
 
 def main_page(request):
-    return render(request, 'index.html')
-
-def search_q(request):
-
-    return render(request, 'TestSearch.html')
+    return MainPage(request).render()
 
 
 def add_authors(request):

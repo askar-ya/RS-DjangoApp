@@ -19,12 +19,23 @@
 
 </head>
 <body id="main" style="height: 110vh;">
+    {% if user.is_authenticated %}
+        <form action="{% url 'logout' %}" method="post">
+          {% csrf_token %}
+          <button type="submit">Выйти</button>
+        </form>
+    {% else %}
+        <a href="accounts/login/">Войти</a>
+    {% endif %}
+
+
     {% include "search.html" %}
 
     <div class="reels-main-box" id="reels-main-box">
 
     </div>
 
+    {% if user.is_authenticated %}
     <script>
         const stored = []
         let par = window.location.search
@@ -118,7 +129,7 @@
         // Подписка на событие прокрутки с применением debounce
         window.addEventListener('scroll', onScrollEnd);
     </script>
-
+    {% endif %}
 
 
     <style>

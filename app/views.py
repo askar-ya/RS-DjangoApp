@@ -5,8 +5,8 @@ from app.form import AddAuthorsForm
 from app.service import MainPage
 
 def main_page(request):
-    return '123'
-    #return MainPage(request).render()
+
+    return MainPage(request).render()
 
 
 def add_authors(request):

@@ -35,4 +35,4 @@ class MainPage:
         if auth:
             return render(self.request, 'TestSearch.html')
         else:
-            return '<a>123</a>'
+            return render(self.request, 'NoAuth.html')

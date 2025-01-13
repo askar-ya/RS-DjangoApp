@@ -1,41 +1,67 @@
-{% extends "index.html" %}
+{% extends "Base.html" %}
+
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static "css/login_forms.css" %}"/>
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'js/login_forms.js' %}"></script>
+{% endblock %}
 
 {% block content %}
+<form class="main-box" method="post" action="{% url 'login' %}">
+    <div class="contenet">
+        {% csrf_token %}
 
-{% if form.errors %}
-  <p>Ваше имя пользователя и пароль не совпали. Пожалуйста, попробуйте снова.</p>
-{% endif %}
+        <h1 class="label">Вход в приложение</h1>
 
-{% if next %}
-  {% if user.is_authenticated %}
-    <p>Ваша учетная запись не имеет доступа к этой странице.
-        Чтобы продолжить, пожалуйста, войдите в систему с учетной записью, у которой есть доступ.
-    </p>
-  {% else %}
-    <p>Пожалуйста, войдите в систему, чтобы увидеть эту страницу.</p>
-  {% endif %}
-{% endif %}
+        {% if form.errors %}
+          <p>Ваше имя пользователя и пароль не совпали. Пожалуйста, попробуйте снова.</p>
+        {% endif %}
 
-<form method="post" action="{% url 'login' %}">
-{% csrf_token %}
-<table>
+        {% if next %}
+          {% if user.is_authenticated %}
+            <p>Ваша учетная запись не имеет доступа к этой странице.
+                Чтобы продолжить, пожалуйста, войдите в систему с учетной записью, у которой есть доступ.
+            </p>
+          {% else %}
+            <p>Пожалуйста, войдите в систему, чтобы увидеть эту страницу.</p>
+          {% endif %}
+        {% endif %}
 
-<tr>
-  <td>{{ form.username.label_tag }}</td>
-  <td>{{ form.username }}</td>
-</tr>
+        <div class="sub-box">
 
-<tr>
-  <td>{{ form.password.label_tag }}</td>
-  <td>{{ form.password }}</td>
-</tr>
-</table>
+            <div class="input-box username">
+                {{ form.username }}
+            </div>
 
-<input type="submit" value="login" />
-<input type="hidden" name="next" value="{{ next }}" />
+            <div class="input-box pass">
+                {{ form.password }}
+                <a href="#" class="password-control aye" onclick="return show_hide_password(this);">👁</a>
+            </div>
+
+            <a class="reset" href="{% url 'password_reset' %}">Забыл пароль</a>
+
+        </div>
+
+        <div class="sub-box">
+
+            <div class="btn btn-blue">
+                <input type="submit" value="login">
+            </div>
+
+            <a class="btn btn-white" href="reg">
+                <div class="reg">
+                    Зарегистрироваться
+                </div>
+            </a>
+
+            <input type="hidden" name="next" value="{{ next }}" />
+
+        </div>
+
+    </div>
 </form>
-
-{# Assumes you setup the password_reset view in your URLconf #}
-<p><a href="{% url 'password_reset' %}">Забыли пароль?</a></p>
-
 {% endblock %}

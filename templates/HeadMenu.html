@@ -54,9 +54,13 @@
     </div>
 
     <div class="user-info">
-        <div class="box">
-            <h3 class="name">user@gmail.com</h3>
-            <h3 class="sub">Осталось 12 дн подписки</h3>
-        </div>
+        {% if user.is_authenticated %}
+            <div class="box">
+                <h3 class="name">user@gmail.com</h3>
+                <h3 class="sub">Осталось 12 дн подписки</h3>
+            </div>
+        {% else %}
+            <a href="accounts/login/">Войти</a>
+        {% endif %}
     </div>
 </div>

@@ -1,33 +1,26 @@
-<!DOCTYPE html>
+{% extends "Base.html" %}
+
 {% load static %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="{% static "css/base.css" %}"/>
+
+{% block title %}Rels Scanner{% endblock %}
+
+{% block css %}
     <link rel="stylesheet" href="{% static "css/reels_card.css" %}"/>
     <link rel="stylesheet" href="{% static "css/reel_detailed.css" %}"/>
     <link rel="stylesheet" href="{% static "css/search.css" %}"/>
+{% endblock %}
 
+{% block js %}
     <script src="{% static 'js/Player.js' %}"></script>
     <script src="{% static 'js/ReelPopUp.js' %}"></script>
     <script src="{% static 'js/apply_filter.js' %}"></script>
+{% endblock %}
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 
-</head>
-<body id="main" style="height: 110vh;">
-    {% if user.is_authenticated %}
-        <form action="{% url 'logout' %}" method="post">
-          {% csrf_token %}
-          <button type="submit">Выйти</button>
-        </form>
-    {% else %}
-        <a href="accounts/login/">Войти</a>
-    {% endif %}
 
+{% block content %}
+
+    {% include "HeadMenu.html" %}
 
     {% include "search.html" %}
 
@@ -143,8 +136,6 @@
         }
     </style>
 
-
-
     {% include "ReelPopUp.html" %}
-</body>
-</html>
+
+{% endblock %}

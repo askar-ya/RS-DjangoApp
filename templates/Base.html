@@ -3,8 +3,16 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>main</title>
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.png' %}"/>
     <link rel="stylesheet" href="{% static "css/base.css" %}"/>
+
+    {% block css %}
+    {% endblock %}
+
+    {% block js %}
+    {% endblock %}
+
     <link rel="stylesheet" href="{% static "css/reel_detailed.css" %}"/>
     <link rel="stylesheet" href="{% static "css/reels_card.css" %}"/>
     <link rel="stylesheet" href="{% static "css/head.css" %}"/>

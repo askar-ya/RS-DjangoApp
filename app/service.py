@@ -31,8 +31,4 @@ class MainPage:
 
 
     def render(self):
-        auth = self.check_auth()
-        if auth:
-            return render(self.request, 'TestSearch.html', context={'user': self.user})
-        else:
-            return render(self.request, 'NoAuth.html')
+        return render(self.request, 'Search.html', context={'user': self.user})

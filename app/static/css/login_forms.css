@@ -1,0 +1,126 @@
+.main-box{
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    grid-template-rows: 1fr;
+    align-items: center;
+
+}
+
+.contenet{
+    grid-column: 7 / 11;
+    background-color: #ffffff;
+    border-radius: 8px;
+    display: grid;
+    justify-content: center;
+    padding-left: 13%;
+    padding-right: 13%;
+    grid-template-columns: 74%;
+    row-gap: calc(100vh * 0.0356);
+    padding-top: calc(100vh * 0.0533);
+    padding-bottom: calc(100vh * 0.0533);
+    font-family: "Roboto", sans-serif;
+
+}
+
+.label{
+    text-align: center;
+    font-weight: 500;
+}
+
+.sub-box{
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: calc(100vh * 0.0178);
+}
+
+.sub-box .input-box{
+    width: 100%;
+    height: calc(100vh * 0.0356);
+    border-radius: 3px;
+    border: 2px solid #d9d9d9;
+    display: grid;
+
+
+}
+
+.sub-box .input-box input{
+    background-color: rgba(0, 0, 0, 0.0);
+    border: none;
+    width: 90%;
+    height: 95%;
+    align-self: center;
+    justify-self: center;
+    font-weight: 500;
+    font-size: 110%;
+}
+
+.sub-box .input-box input:focus {
+  outline: none;
+}
+
+.sub-box .input-box .aye{
+    text-decoration: none;
+    color: gray;
+    position: absolute;
+    margin-left: 11vw;
+    font-size: 1.5vw;
+    margin-top: 0.2vw;
+}
+
+.sub-box .reset{
+    text-decoration: none;
+    color: #8c8c8c;
+}
+
+.sub-box .reset:hover{
+    color: #1890ff;
+}
+
+.sub-box .btn{
+    height: calc(100vh * 0.0356);
+    width: 100%;
+    text-decoration: none;
+    color: black;
+    text-align: center;
+}
+
+
+.btn-white{
+    border-radius: 3px;
+    border: 2px solid #d9d9d9;
+    width: 100%;
+    height: 100%;
+    align-content: center;
+}
+
+.btn-white:hover{
+    cursor: pointer;
+}
+
+.btn-blue{
+    border-radius: 3px;
+    border: 2px solid #1890ff;
+    width: 100%;
+    height: 100%;
+    background-color: #1890ff;
+    align-content: center;
+    cursor: pointer !important;
+}
+
+.btn-blue:hover{
+    background-color: #1870ff;
+    border: 2px solid #1870ff;
+}
+
+.btn input{
+    width: 100%;
+    height: 100%;
+    cursor: pointer !important;
+    background-color: rgba(0, 0, 0, 0.0);
+    border: none;
+    font-weight: 500;
+    font-size: 120%;
+    color: white;
+}

@@ -1,0 +1,109 @@
+{% extends "Base.html" %}
+
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static "css/profile.css" %}"/>
+{% endblock %}
+
+{% block title %}Личный Кабинет{% endblock %}
+
+
+{% block content %}
+{% include "HeadMenu.html" %}
+
+<form action="{% url 'logout' %}" method="post" class="label-box">
+    {% csrf_token %}
+    <h1>Профиль</h1>
+
+    <button type="submit">Выйти</button>
+</form>
+
+<div class="main-box">
+    <div class="sub-box">
+        <div class="subscription-box  box">
+            <div class="status">
+                <div class="icon"></div>
+                <h2>Подписка активна</h2>
+            </div>
+
+            <div class="detatil">
+                Закончится 23 дек 2023, через 12 дней
+            </div>
+
+            <a href="">
+                <div class="btn">
+                    Продлить на месяц
+                </div>
+            </a>
+
+        </div>
+
+        <div class="notifications box">
+            <div class="status">
+                <h2>Уведомления</h2>
+            </div>
+
+            <div class="status">
+
+                <div class="checkbox-wraper">
+                    <input type="checkbox" id="switch"/>
+                    <label class="for-switch" for="switch">Toggle</label>
+                </div>
+
+                <div class="text">
+                    <h3 >Получать обновления подписок на почту</h3>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="sub-box">
+        <form method="post" class="pass-reset  box">
+
+            {% csrf_token %}
+
+            <div class="status">
+                <h2>Изменение пароля</h2>
+                {{ user_password_form.errors }}
+            </div>
+
+            <div class="input-box">
+                {{ user_password_form.old_password }}
+            </div>
+
+            <div class="input-box">
+                {{ user_password_form.new_password1 }}
+            </div>
+
+            <div class="input-box">
+                {{ user_password_form.new_password2 }}
+            </div>
+
+            <div class="button-box">
+                <button type="submit" name="user_password_form">Сохранить</button>
+            </div>
+
+        </form>
+
+        <div class="email-reset  box">
+            <div class="status">
+                <h2>Изменение почты</h2>
+            </div>
+
+            <div class="detatil">
+                Пришлем ссылку для подтверждения на текущую почту
+            </div>
+
+            <div class="button-box">
+                <button>Сохранить</button>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "Base.html" %}
+
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static "css/login_forms.css" %}"/>
+{% endblock %}
+
+{% block content %}
+    <h1>Ваша ссылка не корректна, попробуйте войти снова</h1>
+    <a href="{% url 'login' %}">Войти</a>
+{% endblock %}

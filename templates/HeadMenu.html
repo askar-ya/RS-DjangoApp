@@ -1,6 +1,6 @@
 <div class="head">
     <div class="logo">
-        <a href="">Reels Scanner</a>
+        <a href="/">Reels Scanner</a>
     </div>
 
     <div class="menu">
@@ -55,16 +55,13 @@
 
     <div class="user-info">
         {% if user.is_authenticated %}
-            <div class="box">
-                <h3 class="name">user@gmail.com</h3>
-                <h3 class="sub">Осталось 12 дн подписки</h3>
-                <form action="{% url 'logout' %}" method="post">
-                  {% csrf_token %}
-                  <button type="submit">Log Out</button>
-                </form>
+            <div >
+                <a href="{% url 'profile' %}" class="name">{{ user }}</a>
+                <h3 class="sub-time">Осталось 12 дн подписки</h3>
+
             </div>
         {% else %}
-            <a href="accounts/login/">Войти</a>
+            <a href="{% url 'login' %}">Войти</a>
         {% endif %}
     </div>
 </div>

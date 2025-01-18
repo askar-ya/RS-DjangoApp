@@ -1,6 +1,6 @@
 {% extends "Base.html" %}
-
 {% load static %}
+{% block title %}Регистрация{% endblock %}
 
 {% block css %}
     <link rel="stylesheet" href="{% static "css/login_forms.css" %}"/>
@@ -8,17 +8,13 @@
 
 {% block content %}
 
-<form class="main-box" method="post" action="{% url 'login' %}">
-    <div class="contenet">
-        {% csrf_token %}
+  <form class="main-box" method="post">
+  <div class="contenet">
 
-        <h1 class="label">Вход в приложение</h1>
-
-        {% if form.errors %}
-            {% for i in form.get_invalid_login_error  %}
-                {{ i }}
-            {% endfor %}
-
+    {% csrf_token %}
+      <h2>Регистрация</h2>
+      {% if form.errors %}
+          <p>Ваше имя пользователя и пароль не совпали. Пожалуйста, попробуйте снова.</p>
         {% endif %}
 
         {% if next %}
@@ -31,39 +27,43 @@
           {% endif %}
         {% endif %}
 
-        <div class="sub-box">
+      <div class="sub-box">
 
             <div class="input-box username">
                 {{ form.username }}
             </div>
 
-            <div class="input-box pass">
-                {{ form.password }}
-                <a href="#" class="password-control aye" onclick="return show_hide_password(this);">👁</a>
+            <div class="input-box username">
+                {{ form.email }}
             </div>
 
-            <a class="reset" href="{% url 'password_reset' %}">Забыл пароль</a>
+        </div>
+
+      <div class="sub-box">
+
+
+            <div class="input-box pass">
+                {{ form.password1 }}
+            </div>
+
+            <div class="input-box pass">
+                {{ form.password2 }}
+            </div>
 
         </div>
 
         <div class="sub-box">
 
             <div class="btn btn-blue">
-                <input type="submit" value="login">
+                <input type="submit" value="Далее">
             </div>
-
-            <a class="btn btn-white" href="{% url 'Регистрация' %}">
-                <div class="reg">
-                    Зарегистрироваться
-                </div>
-            </a>
 
             <input type="hidden" name="next" value="{{ next }}" />
 
         </div>
 
-    </div>
-</form>
+  </div>
+  </form>
 
     <script src="{% static 'js/login_forms.js' %}"></script>
 {% endblock %}

@@ -1,30 +1,316 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Test</title>
-    <style>
-        body {
-            height: 120vh;
-        }
-    </style>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
 </head>
 <body>
+	<style>
+		*{
+			padding: 0;
+			margin: 0;
+			font-family: "Roboto", sans-serif;
+		}
+		body{
+			background: #f0f0f0;
+		}
+
+		.label-box{
+			display: flex;
+			margin-left: 3vw;
+			gap: 1vw;
+		}
+
+		.label-box h1{
+			font-weight: 500;
+		}
+
+		.label-box button{
+			hight: 100%;
+			cursor: pointer;
+			border: none;
+			background: none;
+			color: #848484;
+		}
+
+		.label-box button:hover{
+			color: #1890ff;
+		}
+
+		.main-box{
+			margin-top: 3vw;
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			grid-template-rows: 1fr;
+			grid-column-gap: 3vw;
+			padding-left: 3vw;
+			padding-right: 3vw;
+			row-gap: 3vw;
+
+		}
+
+		.sub-box{
+			display: grid;
+			grid-template-columns: 1fr;
+			row-gap: 3vw;
+			align-self: start;
+		}
+
+		.box{
+			background: #ffffff;
+			border-radius: 8px;
+			display: grid;
+			padding: 3vw;
+			grid-template-columns: 1fr;
+			row-gap: 1vw;
+		}
+
+		.status{
+			display: flex;
+			column-gap: 1vw;
+		}
+
+		.subscription-box .icon{
+			background: #1ac435;
+			width: 30px;
+			height: 30px;
+			border-radius: 50%;
+		}
+
+		.detatil{
+			color: #8c8c8c;
+			width: 70%;
+		}
+
+		.subscription-box .btn{
+			height: 2vw;
+			width: fit-content;
+			padding-left: 0.5vw;
+			padding-right: 0.5vw;
+			color: white;
+			display: table-cell;
+			vertical-align: middle;
+			border-radius: 2px;
+			text-decoration: none;
+			background: #1890ff;
+		}
+
+		a{
+			text-decoration: none;
+			color: black;
+		}
+
+		#switch{
+		  margin-left: -1vw;
+		  height: 0;
+		  width: 0;
+		  visibility: hidden;
+		}
+
+		label {
+		  cursor: pointer;
+		  text-indent: -9999px;
+		  width: 4vw;
+		  height: 2vw;
+		  background: grey;
+		  display: block;
+		  border-radius: 2vw;
+		  position: relative;
+		}
+
+		label:after {
+		  content: '';
+		  position: absolute;
+		  top: 7.5%;
+		  left: 3.75%;
+		  width: calc(2vw - 7.5%);
+		  height: calc(2vw - 15%);
+		  border-radius: 2vw;
+		  background: #fff;
+		  transition: 0.3s;
+		}
+
+		#switch:checked + label {
+		  background: #1890ff;
+		}
+
+		#switch:checked + label:after {
+		  left: calc(100% - 5%);
+		  transform: translateX(-100%);
+		}
+
+		label:active:after {
+		  width: 3vw;
+		}
+
+
+		.status .text{
+			height: 100%;
+			display: flex;
+			  flex-direction: column;  /* создаст колонку из элементов */
+			  justify-content: center;  /* свойство центрирует элементы вертикально */
+			  text-align: center;  /* выравнивает текст горизонтально */
+			  color: #blue;
+		}
+
+		.status .text h3{
+			font-weight: 400;
+		}
+
+		.checkbox-wraper{
+			height: 100%;
+			display: flex;
+			  flex-direction: column;  /* создаст колонку из элементов */
+			  justify-content: center;  /* свойство центрирует элементы вертикально */
+			  text-align: center;  /* выравнивает текст горизонтально */
+			  color: #blue;
+		}
+
+		.input-box{
+			display: grid;
+			justify-items: center;
+			align-items: center;
+			width: 100%;
+			height: 2vw;
+			background: grey;
+			border-radius: 2px;
+			border: 1px solid #8c8c8c;
+			background: none;
+		}
+
+		.input-box input{
+			font-size: 1.5vw;
+			border: none;
+			width: 95%;
+			height: 85%;
+		}
+
+		.input-box input:focus{
+			outline-width: 0;
+		}
+
+		.input-box input::placeholder{
+			align-items: center;
+			font-size: 1.2vw;
+			color: #8c8c8c;
+		}
+
+		.button-box{
+			display: grid;
+			justify-items: center;
+			height: 2vw;
+			background: #f5f5f5;
+			border-radius: 2px;
+			border: 1px solid #8c8c8c;
+			width: 25%;
+		}
+
+		.button-box button{
+			cursor: pointer;
+			color: #8c8c8c;
+			font-weight: 400;
+			font-size: 1.2vw;
+			width: 100%;
+			height: 100%;
+			border: none;
+			padding: 0;
+			background: none;
+		}
 
 
 
-    <script>
 
-        function onScrollEnd() {
-            if (window.innerHeight + window.scrollY >= document.body.scrollHeight) {
-                console.log('Достигнут конец страницы!');
-                window.removeEventListener('scroll', onScrollEnd);
-            }
+	</style>
 
-        }
+	<form action="/accounts/logout/" method="post" class="label-box">
+		<h1>Профиль</h1>
+        <input type="hidden" name="csrfmiddlewaretoken" value="pDmNuS3VhZPTBcGTsHSBdSejGmlr2MsWrCgo4uTJNgN0y4e7Eoa7yqt8O21iw29q">
+        <button type="submit">Выйти</button>
+    </form>
 
-        // Подписка на событие прокрутки с применением debounce
-        window.addEventListener('scroll', onScrollEnd);
-    </script>
+	<div class="main-box">
+		<div class="sub-box">
+			<div class="subscription-box  box">
+				<div class="status">
+					<div class="icon"></div>
+					<h2>Подписка активна</h2>
+				</div>
+
+				<div class="detatil">
+					Закончится 23 дек 2023, через 12 дней
+				</div>
+
+				<a href="">
+					<div class="btn">
+						Продлить на месяц
+					</div>
+				</a>
+
+			</div>
+
+			<div class="notifications box">
+				<div class="status">
+					<h2>Уведомления</h2>
+				</div>
+
+				<div class="status">
+
+					<div class="checkbox-wraper">
+						<input type="checkbox" id="switch"/>
+						<label for="switch">Toggle</label>
+					</div>
+
+					<div class="text">
+						<h3 >Получать обновления подписок на почту</h3>
+					</div>
+					
+				</div>
+				
+			</div>
+		</div>
+
+		<div class="sub-box">
+			<div class="pass-reset  box">
+				<div class="status">
+					<h2>Изменение пароля</h2>
+				</div>
+
+				<div class="input-box">
+					<input type="password" placeholder="Новый пароль">
+				</div>
+
+				<div class="input-box">
+					<input type="password" placeholder="Повторите пароль">
+				</div>
+				
+				<div class="button-box">
+					<button>Сохранить</button>
+				</div>
+				
+			</div>
+
+			<div class="email-reset  box">
+				<div class="status">
+					<h2>Изменение почты</h2>
+				</div>
+
+				<div class="detatil">
+					Пришлем ссылку для подтверждения на текущую почту
+				</div>
+
+				<div class="button-box">
+					<button>Сохранить</button>
+				</div>
+
+			</div>
+		</div>
+		
+	</div>
+
 </body>
 </html>

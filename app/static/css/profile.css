@@ -1,0 +1,203 @@
+.label-box{
+    margin-top: 1vw;
+    margin-bottom: 1vw;
+    display: flex;
+    margin-left: 3vw;
+    gap: 1vw;
+}
+
+.label-box h1{
+    font-weight: 500;
+}
+
+
+.label-box button{
+    hight: 100%;
+    cursor: pointer;
+    border: none;
+    background: none;
+    color: #848484;
+}
+
+.label-box button:hover{
+    color: #1890ff;
+}
+
+.main-box{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 3vw;
+    padding-left: 3vw;
+    padding-right: 3vw;
+    row-gap: 3vw;
+
+}
+
+.sub-box{
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 3vw;
+    align-self: start;
+}
+
+.box{
+    background: #ffffff;
+    border-radius: 8px;
+    display: grid;
+    padding: 3vw;
+    grid-template-columns: 1fr;
+    row-gap: 1vw;
+}
+
+.status{
+    display: flex;
+    column-gap: 1vw;
+}
+
+.subscription-box .icon{
+    background: #1ac435;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.detatil{
+    color: #8c8c8c;
+    width: 70%;
+}
+
+.subscription-box .btn{
+    height: 2vw;
+    width: fit-content;
+    padding-left: 0.5vw;
+    padding-right: 0.5vw;
+    color: white;
+    display: table-cell;
+    vertical-align: middle;
+    border-radius: 2px;
+    text-decoration: none;
+    background: #1890ff;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+#switch{
+  margin-left: -1vw;
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+
+.for-switch{
+  cursor: pointer;
+  text-indent: -9999px;
+  width: 4vw;
+  height: 2vw;
+  background: grey;
+  display: block;
+  border-radius: 2vw;
+  position: relative;
+}
+
+.for-switch:after {
+  content: '';
+  position: absolute;
+  top: 7.5%;
+  left: 3.75%;
+  width: calc(2vw - 7.5%);
+  height: calc(2vw - 15%);
+  border-radius: 2vw;
+  background: #fff;
+  transition: 0.3s;
+}
+
+#switch:checked + .for-switch{
+  background: #1890ff;
+}
+
+#switch:checked + .for-switch:after {
+  left: calc(100% - 5%);
+  transform: translateX(-100%);
+}
+
+.for-switch:active:after {
+  width: 3vw;
+}
+
+
+.status .text{
+    height: 100%;
+    display: flex;
+      flex-direction: column;  /* создаст колонку из элементов */
+      justify-content: center;  /* свойство центрирует элементы вертикально */
+      text-align: center;  /* выравнивает текст горизонтально */
+      color: #1890ff;
+}
+
+.status .text h3{
+    font-weight: 400;
+}
+
+.checkbox-wraper{
+    height: 100%;
+    display: flex;
+      flex-direction: column;  /* создаст колонку из элементов */
+      justify-content: center;  /* свойство центрирует элементы вертикально */
+      text-align: center;  /* выравнивает текст горизонтально */
+      color: #1890ff;
+}
+
+.input-box{
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    width: 100%;
+    height: 2vw;
+    background: grey;
+    border-radius: 2px;
+    border: 1px solid #8c8c8c;
+    background: none;
+}
+
+.input-box input{
+    font-size: 1.5vw;
+    border: none;
+    width: 95%;
+    height: 85%;
+}
+
+.input-box input:focus{
+    outline-width: 0;
+}
+
+.input-box input::placeholder{
+    align-items: center;
+    font-size: 1.2vw;
+    color: #8c8c8c;
+}
+
+.button-box{
+    display: grid;
+    justify-items: center;
+    height: 2vw;
+    background: #f5f5f5;
+    border-radius: 2px;
+    border: 1px solid #8c8c8c;
+    width: 25%;
+}
+
+.button-box button{
+    cursor: pointer;
+    color: #8c8c8c;
+    font-weight: 400;
+    font-size: 1.2vw;
+    width: 100%;
+    height: 100%;
+    border: none;
+    padding: 0;
+    background: none;
+}

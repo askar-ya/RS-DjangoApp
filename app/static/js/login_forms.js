@@ -1,6 +1,6 @@
 let email = document.querySelector('#id_email');
 if (email) {
-    email.placeholder = 'email'
+    email.placeholder = 'E-mail'
 }
 
 
@@ -8,10 +8,10 @@ let username = document.querySelector('#id_username');
 if (username) {
     let currentUrl = window.location.href;
     if (currentUrl.includes('login')) {
-        username.placeholder = 'email'
+        username.placeholder = 'E-mail'
     }
     else {
-        username.placeholder = 'username'
+        username.placeholder = 'Имя'
     }
 
 }
@@ -32,15 +32,16 @@ if (pass2) {
     pass2.placeholder = 'Подтверждение пароля'
 }
 
-
 function show_hide_password(target){
-    let input = document.querySelector('.input-box.pass input');
-    if (input.getAttribute('type') == 'password') {
+
+    let InputField = target.parentElement.querySelector('input');
+
+    if (InputField.getAttribute('type') === 'password') {
         target.classList.add('view');
-        input.setAttribute('type', 'text');
+        InputField.setAttribute('type', 'text');
     } else {
         target.classList.remove('view');
-        input.setAttribute('type', 'password');
+        InputField.setAttribute('type', 'password');
     }
     return false;
 }

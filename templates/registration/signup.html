@@ -9,61 +9,73 @@
 {% block content %}
 
   <form class="main-box" method="post">
-  <div class="contenet">
+      <div class="content">
+          {% csrf_token %}
 
-    {% csrf_token %}
-      <h2>Регистрация</h2>
-      {% if form.errors %}
-          <p>Ваше имя пользователя и пароль не совпали. Пожалуйста, попробуйте снова.</p>
-        {% endif %}
+          <h1 class="label">Регистрация</h1>
 
-        {% if next %}
-          {% if user.is_authenticated %}
-            <p>Ваша учетная запись не имеет доступа к этой странице.
-                Чтобы продолжить, пожалуйста, войдите в систему с учетной записью, у которой есть доступ.
-            </p>
-          {% else %}
-            <p>Пожалуйста, войдите в систему, чтобы увидеть эту страницу.</p>
-          {% endif %}
-        {% endif %}
+          <div class="sub-box">
+              {% if form.errors %}
+                    {% for i in form.get_invalid_login_error  %}
+                        {{ i }}
+                    {% endfor %}
 
-      <div class="sub-box">
+                    {% for i in form.unique_error_message  %}
+                        {{ i }}
+                    {% endfor %}
+              {% endif %}
+          </div>
 
-            <div class="input-box username">
-                {{ form.username }}
+          <div class="sub-box">
+
+                <div class="FieldWrapper">
+                    <div class="InputField">
+                        {{ form.username }}
+                    </div>
+                </div>
+
+              <div class="FieldWrapper">
+                    <div class="InputField">
+                        {{ form.email }}
+                    </div>
+              </div>
+
             </div>
 
-            <div class="input-box username">
-                {{ form.email }}
+          <div class="sub-box">
+
+                <div class="FieldWrapper">
+                    <div class="InputField PassInput">
+                        {{ form.password1 }}
+                        <img class='ShowHideAye' src="{% static 'images/show-pass.svg' %}" alt="" onclick="show_hide_password(this);">
+                    </div>
+                </div>
+
+              <div class="FieldWrapper">
+                    <div class="InputField PassInput">
+                        {{ form.password2 }}
+                        <img class='ShowHideAye' src="{% static 'images/show-pass.svg' %}" alt="" onclick="show_hide_password(this);">
+                    </div>
+              </div>
+
             </div>
 
-        </div>
+            <div class="sub-box">
 
-      <div class="sub-box">
+                <div class="FieldWrapper">
+                    <div class="BtnSubmit AccentBtn">
+                        <input type="submit" value="Далее">
+                    </div>
+                </div>
 
+                <input type="hidden" name="next" value="{{ next }}" />
 
-            <div class="input-box pass">
-                {{ form.password1 }}
             </div>
 
-            <div class="input-box pass">
-                {{ form.password2 }}
-            </div>
+      </div>
 
-        </div>
-
-        <div class="sub-box">
-
-            <div class="btn btn-blue">
-                <input type="submit" value="Далее">
-            </div>
-
-            <input type="hidden" name="next" value="{{ next }}" />
-
-        </div>
-
-  </div>
   </form>
 
-    <script src="{% static 'js/login_forms.js' %}"></script>
+  <script src="{% static 'js/login_forms.js' %}"></script>
+
 {% endblock %}

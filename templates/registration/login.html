@@ -9,17 +9,18 @@
 {% block content %}
 
 <form class="main-box" method="post" action="{% url 'login' %}">
-    <div class="contenet">
+    <div class="content">
         {% csrf_token %}
 
         <h1 class="label">Вход в приложение</h1>
 
-        {% if form.errors %}
-            {% for i in form.get_invalid_login_error  %}
-                {{ i }}
-            {% endfor %}
-
-        {% endif %}
+        <div class="sub-box">
+            {% if form.errors %}
+                {% for i in form.get_invalid_login_error  %}
+                    {{ i }}
+                {% endfor %}
+            {% endif %}
+        </div>
 
         {% if next %}
           {% if user.is_authenticated %}
@@ -33,30 +34,37 @@
 
         <div class="sub-box">
 
-            <div class="input-box username">
-                {{ form.username }}
+            <div class="FieldWrapper">
+                <div class="InputField">
+                    {{ form.username }}
+                </div>
             </div>
 
-            <div class="input-box pass">
-                {{ form.password }}
-                <a href="#" class="password-control aye" onclick="return show_hide_password(this);">👁</a>
+            <div class="FieldWrapper">
+                <div class="InputField PassInput">
+                    {{ form.password }}
+                    <img class='ShowHideAye' src="{% static 'images/show-pass.svg' %}" alt="" onclick="show_hide_password(this);">
+                </div>
             </div>
 
-            <a class="reset" href="{% url 'password_reset' %}">Забыл пароль</a>
+            <a class="reset" href="{% url 'password_reset' %}">Забыли пароль?</a>
 
         </div>
 
         <div class="sub-box">
 
-            <div class="btn btn-blue">
-                <input type="submit" value="войти">
+            <div class="FieldWrapper">
+                <div class="BtnSubmit AccentBtn">
+                    <input type="submit" value="Войти">
+                </div>
             </div>
 
-            <a class="btn btn-white" href="{% url 'Регистрация' %}">
-                <div class="reg">
-                    Зарегистрироваться
+            <div class="FieldWrapper">
+                <div class="BtnSubmit LightBtn">
+                    <input type="text" value="Зарегистрироваться" onclick="document.location='{% url 'Регистрация' %}'">
                 </div>
-            </a>
+            </div>
+
 
             <input type="hidden" name="next" value="{{ next }}" />
 

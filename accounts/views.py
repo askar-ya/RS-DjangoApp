@@ -80,6 +80,8 @@ class Registration(View):
 
         context = {'form': form}
 
+        print(form)
+
         return render(request, self.template_name, context)
 
 

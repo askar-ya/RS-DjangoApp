@@ -4,17 +4,193 @@
     font-family: "Roboto", sans-serif;
 }
 
+:root {
+  --main-title-font: 24px;
+  --filters-names-font: 14px;
+  --filters-row-h: 2.2vw;
+  --filters-rows-gap: 1vw;
+  --filter-box-column-gap: 1vw;
+
+  --color-Accent: #1890FF;
+  --color-AccentMajor: #1070FF;
+  --color-Contrast: #000;
+  --color-ContrastMinor: #474747;
+  --color-Major: #ffffff;
+  --color-MajorFat: #f2f2f2;
+  --color-Bg: #f0f0f0;
+  --color-Minor: #bfbfbf;
+  --color-MinorIntinsive: #bfbfbf;
+  --color-MinorFat: #f5f5f5;
+
+
+  --hight-input-field: 5vw;
+  --width-InputFieldInside: 90%;
+
+  --border-width: 2px;
+  --border-radius: 3px;
+  --big-border-radius: 8px;
+}
+
 body{
-    background: #f0f0f0;
+    background: var(--color-Bg);
 }
 
 
 a{
     text-decoration: none;
-    color: #000000;
+    color: var(--color-Contrast);
     cursor: pointer;
 }
 
 .pointer:hover{
     cursor: pointer;
+}
+
+.wraper{
+    padding: 10px;
+    width: 700px;
+    height: var(--hight-input-field);
+}
+
+.InputField{
+    width: calc(100% - (var(--border-width)*2));
+    height: calc(100% - (var(--border-width)*2));
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: var(--border-radius);
+    border: var(--border-width) solid var(--color-Minor);
+    background: var(--color-Major);
+}
+
+.InputField > input{
+    display: flex;
+    width: var(--width-InputFieldInside);
+    height: 85%;
+
+    outline: none;
+    border: none;
+
+    font-family: "Roboto", sans-serif;
+    font-size: calc(var(--hight-input-field) * 0.6);
+    color: var(--color-Contrast);
+
+    background: none;
+}
+
+.InputField > input:focus{
+    color: var(--color-Contrast);
+}
+
+.InputField > input::placeholder{
+    color: var(--color-MinorIntinsive);
+}
+
+.FieldWrapper{
+    height: var(--hight-input-field);
+}
+
+
+
+.PassInput{
+    padding: 0 5%;
+    width: calc(90% - (var(--border-width)*2));
+    height: calc(100% - (var(--border-width)*2));
+    gap: 10px;
+}
+
+
+.ShowHideAye{
+    cursor: pointer;
+    height: 70%;
+}
+
+
+
+.BtnSubmit{
+    width: calc(100% - (var(--border-width)*2));
+    height: calc(100% - (var(--border-width)*2));
+    border-radius: var(--border-radius);
+}
+.BtnSubmit button, .BtnSubmit input{
+    width: 100%;
+    height: 100%;
+
+    cursor: pointer;
+
+    background: none;
+    border: none;
+    outline: none;
+    caret-color: transparent;
+
+    font-family:"Roboto", sans-serif;
+    font-size: calc(var(--hight-input-field) * 0.5);
+    font-weight: 400;
+}
+
+.BtnSubmit input{
+    text-align: center;
+}
+
+.DarkBtn{
+    border: var(--color-Minor) solid var(--border-width);
+    background: var(--color-MinorFat);
+}
+.DarkBtn button, .DarkBtn input{
+    color: var(--color-MinorIntinsive);
+}
+.DarkBtn:hover{
+    border-color: var(--color-MajorFat);
+    background: var(--color-Major);
+}
+.DarkBtn button:hover, .DarkBtn input:hover{
+    color: var(--color-MajorFat);
+}
+
+
+.LightBtn{
+    border: var(--color-Minor) solid var(--border-width);
+    background: var(--color-Major);
+}
+.LightBtn button, .LightBtn input{
+    color: var(--color-Contrast);
+}
+.LightBtn:hover{
+    background: var(--color-MajorFat);
+}
+.LightBtn button:hover, .LightBtn input:hover{
+    color: var(--color-ContrastMinor);
+}
+
+
+.AccentBtn{
+    background: var(--color-Accent);
+}
+.AccentBtn button, .AccentBtn input{
+    border-color: var(--color-Major);
+    color: var(--color-Major);
+}
+.AccentBtn:hover{
+    background: var(--color-AccentMajor);
+}
+.AccentBtn button:hover, .AccentBtn input:hover{
+    color: var(--color-Major);
+}
+
+
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    :root{
+        --hight-input-field: 2.5vw;
+    }
+
+}
+
+@media (min-width: 1024px){
+    :root{
+        --border-width: 1px;
+        --hight-input-field: 3vw;
+    }
 }

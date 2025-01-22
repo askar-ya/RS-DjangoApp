@@ -160,6 +160,10 @@ a{
     padding: 0 0;
 }
 
+.stretchBtn button, .stretchBtn input{
+    width: 100%;
+}
+
 .DarkBtn{
     border: var(--color-Minor) solid var(--border-width);
     background: var(--color-MinorFat);

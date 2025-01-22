@@ -57,8 +57,11 @@
             <h3 class="sub-time">Осталось 12 дн подписки</h3>
 
         </div>
+
     {% else %}
-        <a class="enterBtn" href="{% url 'login' %}">Войти</a>
+        <div class="user-info">
+            <a href="{% url 'login' %}" class="name">Войти</a>
+        </div>
     {% endif %}
 
 </div>

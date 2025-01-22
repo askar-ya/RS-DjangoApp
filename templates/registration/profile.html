@@ -32,11 +32,11 @@
                 Закончится 23 дек 2023, через 12 дней
             </div>
 
-            <a href="">
-                <div class="btn">
-                    Продлить на месяц
+            <div class="FieldWrapper">
+                <div class="BtnSubmit AccentBtn">
+                  <button type="submit">Продлить на месяц</button>
                 </div>
-            </a>
+            </div>
 
         </div>
 
@@ -71,40 +71,61 @@
                 {{ user_password_form.errors }}
             </div>
 
-            <div class="input-box">
-                {{ user_password_form.old_password }}
+            <div class="FieldWrapper">
+                <div class="InputField PassInput">
+                    {{ user_password_form.old_password }}
+                    <img class='ShowHideAye' src="{% static 'images/show-pass.svg' %}" alt="" onclick="show_hide_password(this);">
+                </div>
             </div>
 
-            <div class="input-box">
-                {{ user_password_form.new_password1 }}
+            <div class="FieldWrapper">
+                <div class="InputField PassInput">
+                    {{ user_password_form.new_password1 }}
+                    <img class='ShowHideAye' src="{% static 'images/show-pass.svg' %}" alt="" onclick="show_hide_password(this);">
+                </div>
             </div>
 
-            <div class="input-box">
-                {{ user_password_form.new_password2 }}
+            <div class="FieldWrapper">
+                <div class="InputField PassInput">
+                    {{ user_password_form.new_password2 }}
+                    <img class='ShowHideAye' src="{% static 'images/show-pass.svg' %}" alt="" onclick="show_hide_password(this);">
+                </div>
             </div>
 
-            <div class="button-box">
-                <button type="submit" name="user_password_form">Сохранить</button>
+            <div class="FieldWrapper">
+                <div class="BtnSubmit DarkBtn">
+                  <button type="submit">Сохранить</button>
+                </div>
             </div>
 
         </form>
 
         <div class="email-reset  box">
-            <div class="status">
-                <h2>Изменение почты</h2>
-            </div>
+
+            <h2>Изменение почты</h2>
+
 
             <div class="detatil">
                 Пришлем ссылку для подтверждения на текущую почту
             </div>
 
-            <div class="button-box">
-                <button>Сохранить</button>
+            <div class="FieldWrapper">
+                <div class="InputField">
+                    <input type="text" placeholder="Новая почта">
+                </div>
+            </div>
+
+            <div class="FieldWrapper">
+                <div class="BtnSubmit DarkBtn">
+                  <button type="submit">Сохранить</button>
+                </div>
             </div>
 
         </div>
     </div>
 
 </div>
+
+<script src="{% static 'js/login_forms.js' %}"></script>
 
 {% endblock %}

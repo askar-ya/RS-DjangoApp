@@ -31,4 +31,4 @@ class MainPage:
 
 
     def render(self):
-        return render(self.request, 'Search.html', context={'user': self.user})
+        return render(self.request, 'MainPage.html', context={'user': self.user})

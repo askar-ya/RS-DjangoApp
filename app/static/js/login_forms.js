@@ -16,7 +16,6 @@ if (username) {
 
 }
 
-
 let pass = document.querySelector('#id_password');
 if (pass) {
     pass.placeholder = 'Пароль'

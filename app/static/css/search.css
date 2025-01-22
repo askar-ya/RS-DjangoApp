@@ -1,6 +1,6 @@
 .search{
   display: grid;
-  background-color: #f0f0f0;
+  background-color: var(--color-Bg);
   padding: 1vw 1vw;
   row-gap: 1vw;
 }
@@ -37,7 +37,7 @@
 .search .conrols .input {
   display: grid;
   grid-template-rows: 1fr;
-  grid-template-columns: auto 2.8vw;;
+  grid-template-columns: auto 2.8vw;
 }
 
 .search .conrols .input-box{
@@ -46,28 +46,22 @@
 
 }
 
-.search .conrols input {
-  border: none;
-  height: 90%;
-  width: 95%;
-  justify-self: center;
-  align-self: center;
+.SearchInput{
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: auto var(--hight-input-field);
+  gap: 0;
 }
 
-.search .conrols input:focus {
-  border: none;
-  outline-width: 0;
+.SearchInput .InputField{
+  border-radius: var(--border-radius) 0 0 var(--border-radius);
 }
 
-.search .conrols button{
-  grid-row: 1/1;
-  border: none;
-  border-left: 2px solid #d9d9d9;
+.SearchInput .LightBtn{
+  margin-left: 10px;
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
 }
 
-.search .conrols button:hover{
-  cursor: pointer;
-}
 
 .search .conrols .filters{
   display: grid;

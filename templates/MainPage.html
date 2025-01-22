@@ -1,0 +1,142 @@
+{% extends "Base.html" %}
+
+{% load static %}
+
+{% block title %}Rels Scanner{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static "css/head.css" %}"/>
+    <link rel="stylesheet" href="{% static "css/reels_card.css" %}"/>
+    <link rel="stylesheet" href="{% static "css/reel_detailed.css" %}"/>
+    <link rel="stylesheet" href="{% static "css/search.css" %}"/>
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'js/Player.js' %}"></script>
+    <script src="{% static 'js/ReelPopUp.js' %}"></script>
+    <script src="{% static 'js/apply_filter.js' %}"></script>
+{% endblock %}
+
+
+
+{% block content %}
+
+    {% include "HeadMenu.html" %}
+
+    {% include "Search.html" %}
+
+    <div class="reels-main-box" id="reels-main-box">
+
+    </div>
+
+    {% if user.is_authenticated %}
+    <script>
+        const stored = []
+        let par = window.location.search
+
+        let requestURL = 'https://reelsscanner.com/api/reels/' + par
+        const xhr = new XMLHttpRequest()
+
+        urlParams = new URLSearchParams(par)
+
+
+        let q = urlParams.get('q')
+
+        let q_boxs = document.querySelectorAll('.input-box #q')
+        for (let i = 0; i < q_boxs.length; ++i) {
+            q_boxs[i].value = q;
+        }
+
+        let ignore = urlParams.getAll("ignore");
+        ignore = ignore.join(", ")
+        document.querySelector('#ignore').value = ignore
+
+
+        let counts_filters = [
+            'q_where',
+            'subs_start', 'subs_end',
+            'views_start', 'views_end',
+            'like_start', 'like_end',
+            'comment_start', 'comment_end'
+        ]
+
+        for (let i = 0; i < counts_filters.length; ++i) {
+            let par = urlParams.get(counts_filters[i])
+            if (par !== null){
+                document.querySelector('#' + counts_filters[i]).value = par
+            }
+        }
+
+
+
+        function sendRequests() {
+            xhr.open('GET', requestURL, true)
+
+            xhr.responseType = 'json'
+
+            xhr.onload = () => {
+                console.log(xhr.response)
+                requestURL = xhr.response.next
+                let reels = xhr.response.results
+
+                render(reels);
+            }
+
+            xhr.send()
+        }
+
+        sendRequests();
+
+        function render(data) {
+            for (let i = 0; i < data.length; i++){
+
+                let video_src = '/static/video/' + data[i]['id'] + '.mp4'
+                let poster_src = '/static/posters/' + data[i]['id'] + '.jpg'
+                stored.push(data[i])
+                document.getElementById("reels-main-box").innerHTML += `<div id="${stored.length-1}">{% include "ReelCard.html" %}</div>`
+            }
+        }
+
+        function next_page() {
+            console.log('->', requestURL);
+            if (requestURL) {
+                xhr.open('GET', requestURL, true)
+                xhr.send()
+            }
+        }
+
+        const reels_box = document.querySelector('#reels-main-box')
+
+
+        function onScrollEnd() {
+            if (window.innerHeight + window.scrollY >= reels_box.scrollHeight) {
+                console.log('Достигнут конец страницы!');
+
+                next_page();
+
+                if (requestURL === null){
+                    window.removeEventListener('scroll', onScrollEnd);
+                }
+            }
+        }
+
+        // Подписка на событие прокрутки с применением debounce
+        window.addEventListener('scroll', onScrollEnd);
+    </script>
+    {% endif %}
+
+
+    <style>
+        #reels-main-box{
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 5vw;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+
+    {% include "ReelPopUp.html" %}
+
+{% endblock %}

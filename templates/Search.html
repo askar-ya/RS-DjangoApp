@@ -1,142 +1,217 @@
-{% extends "Base.html" %}
-
 {% load static %}
+<div class="search">
 
-{% block title %}Rels Scanner{% endblock %}
+    <div class="titel">
+      <span style="color: #1890ff;">797 reels</span> в подборке «Бизнес»
+    </div>
 
-{% block css %}
-    <link rel="stylesheet" href="{% static "css/head.css" %}"/>
-    <link rel="stylesheet" href="{% static "css/reels_card.css" %}"/>
-    <link rel="stylesheet" href="{% static "css/reel_detailed.css" %}"/>
-    <link rel="stylesheet" href="{% static "css/search.css" %}"/>
-{% endblock %}
+    <div class="conrols">
+        <form action="" method="get" class="SearchInput">
+            <div class="FieldWrapper">
+                <div class="InputField">
+                    <input name="q" id="q" placeholder="Ваш запрос" type="search">
+                </div>
+            </div>
+            <div class="FieldWrapper">
+                <button type="submit" class="BtnSubmit LightBtn stretchBtn">
+                  <img src="{% static "images/scope.svg" %}" alt="">
+                </button>
+            </div>
+        </form>
 
-{% block js %}
-    <script src="{% static 'js/Player.js' %}"></script>
-    <script src="{% static 'js/ReelPopUp.js' %}"></script>
-    <script src="{% static 'js/apply_filter.js' %}"></script>
-{% endblock %}
+
+        <div class="FieldWrapper">
+                <button type="submit" class="BtnSubmit LightBtn stretchBtn" onclick="open_filters();">
+                  <img src="{% static "images/filter.svg" %}" alt="">
+                    Фильтры
+                </button>
+        </div>
+
+        <div class="FieldWrapper">
+                <button type="submit" class="BtnSubmit LightBtn stretchBtn">
+                  <img src="{% static "images/bell.svg" %}" alt="">
+                    Подписаться
+                </button>
+        </div>
+
+        <div class="FieldWrapper">
+                <div class="InputField SelectInput">
+                    <select name="где искать" id="q_where">
+                      <option value="play">По количеству просмотров ↓</option>
+                      <option value="like">Лайки</option>
+                    </select>
+                </div>
+            </div>
 
 
-
-{% block content %}
-
-    {% include "HeadMenu.html" %}
-
-    {% include "search.html" %}
-
-    <div class="reels-main-box" id="reels-main-box">
 
     </div>
 
-    {% if user.is_authenticated %}
-    <script>
-        const stored = []
-        let par = window.location.search
+    <div class="curennt-filters">
+      <div class="box">
+        <h3>Просмотров: от 20 000</h3>
+        <img src="{% static "images/close.svg" %}" alt="">
+      </div>
 
-        let requestURL = 'https://reelsscanner.com/api/reels/' + par
-        const xhr = new XMLHttpRequest()
+      <div class="box">
+        <h3>Подписчиков: от 1000</h3>
+        <img src="{% static "images/close.svg" %}" alt="">
+      </div>
 
-        urlParams = new URLSearchParams(par)
-
-
-        let q = urlParams.get('q')
-
-        let q_boxs = document.querySelectorAll('.input-box #q')
-        for (let i = 0; i < q_boxs.length; ++i) {
-            q_boxs[i].value = q;
-        }
-
-        let ignore = urlParams.getAll("ignore");
-        ignore = ignore.join(", ")
-        document.querySelector('#ignore').value = ignore
+      <div class="box">
+        <h3>Сбросить все</h3>
+        <img src="{% static "images/close.svg" %}" alt="">
+      </div>
+    </div>
+</div>
 
 
-        let counts_filters = [
-            'q_where',
-            'subs_start', 'subs_end',
-            'views_start', 'views_end',
-            'like_start', 'like_end',
-            'comment_start', 'comment_end'
-        ]
+<div class="filters-popUp">
+    <div class="box">
 
-        for (let i = 0; i < counts_filters.length; ++i) {
-            let par = urlParams.get(counts_filters[i])
-            if (par !== null){
-                document.querySelector('#' + counts_filters[i]).value = par
-            }
-        }
+      <div class="main-title-box">
+
+        <div class="main-title">Фильтры</div>
+
+        <div class="close" onclick="close_filters();" >
+          <img src="{% static "images/close.svg" %}" alt="">
+        </div>
+      </div>
 
 
 
-        function sendRequests() {
-            xhr.open('GET', requestURL, true)
+      <div class="q filter-box">
+        <p class="title">Поисковый запрос</p>
+        <div class="input-box">
+          <input name="поисковой запрос" id="q">
+        </div>
+      </div>
 
-            xhr.responseType = 'json'
+      <div class="where filter-box">
+        <p class="title">Где искать</p>
+        <select name="где искать" id="q_where">
+          <option value="dis">В описании рилcа</option>
+          <option value="author_dis">В названии</option>
+        </select>
+      </div>
 
-            xhr.onload = () => {
-                console.log(xhr.response)
-                requestURL = xhr.response.next
-                let reels = xhr.response.results
+      <div class="without filter-box">
+        <p class="title">Исключить аккаунт (@user1, @user2)</p>
+        <div class="input-box">
+          <input name="Исключить аккаунт" id="ignore">
+        </div>
 
-                render(reels);
-            }
+      </div>
 
-            xhr.send()
-        }
+       <div class="subs filter-box">
+        <p class="title">Подписчиков</p>
 
-        sendRequests();
+        <div class="input-box-par start">
+          <p class="">от</p>
+          <input  id="subs_start" type="number">
+        </div>
 
-        function render(data) {
-            for (let i = 0; i < data.length; i++){
+        <div class="input-box-par">
+          <p class="">до</p>
+          <input  id="subs_end" type="number">
+        </div>
 
-                let video_src = '/static/video/' + data[i]['id'] + '.mp4'
-                let poster_src = '/static/posters/' + data[i]['id'] + '.jpg'
-                stored.push(data[i])
-                document.getElementById("reels-main-box").innerHTML += `<div id="${stored.length-1}">{% include "ReelCard.html" %}</div>`
-            }
-        }
+      </div>
 
-        function next_page() {
-            console.log('->', requestURL);
-            if (requestURL) {
-                xhr.open('GET', requestURL, true)
-                xhr.send()
-            }
-        }
+      <div class="views filter-box">
+        <p class="title">Просмотров reels</p>
 
-        const reels_box = document.querySelector('#reels-main-box')
+        <div class="input-box-par start">
+          <p class="">от</p>
+          <input  id="views_start" type="number">
+        </div>
 
+        <div class="input-box-par">
+          <p class="">до</p>
+          <input  id="views_end" type="number">
+        </div>
 
-        function onScrollEnd() {
-            if (window.innerHeight + window.scrollY >= reels_box.scrollHeight) {
-                console.log('Достигнут конец страницы!');
+      </div>
 
-                next_page();
+      <div class="like filter-box">
+        <p class="title">Лайков</p>
 
-                if (requestURL === null){
-                    window.removeEventListener('scroll', onScrollEnd);
-                }
-            }
-        }
+        <div class="input-box-par start">
+          <p class="">от</p>
+          <input  id="like_start" type="number">
+        </div>
 
-        // Подписка на событие прокрутки с применением debounce
-        window.addEventListener('scroll', onScrollEnd);
-    </script>
-    {% endif %}
+        <div class="input-box-par">
+          <p class="">до</p>
+          <input  id="like_end" type="number">
+        </div>
 
+      </div>
 
-    <style>
-        #reels-main-box{
-            width: 100%;
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 5vw;
-            justify-content: center;
-            align-items: center;
-        }
-    </style>
+      <div class="like filter-box">
+        <p class="title">Комментариев</p>
 
-    {% include "ReelPopUp.html" %}
+        <div class="input-box-par start">
+          <p class="">от</p>
+          <input  id="comment_start" type="number">
+        </div>
 
-{% endblock %}
+        <div class="input-box-par">
+          <p class="">до</p>
+          <input  id="comment_end" type="number">
+        </div>
+
+      </div>
+
+      <div class="like filter-box">
+        <p class="title">Репостов</p>
+
+        <div class="input-box-par start">
+          <p class="">от</p>
+          <input  id="start" type="number">
+        </div>
+
+        <div class="input-box-par">
+          <p class="">до</p>
+          <input  id="end" type="number">
+        </div>
+
+      </div>
+
+      <div class="like filter-box">
+        <p class="title">Дата публикации</p>
+
+        <div class="input-box-par start">
+          <p class="">от</p>
+          <input  id="start">
+        </div>
+
+        <div class="input-box-par">
+          <p class="">до</p>
+          <input  id="end">
+        </div>
+
+      </div>
+
+      <div class="btns">
+        <div class="clear">
+          <p>Сбросить все</p>
+
+        </div>
+        <div class="apply" onclick="apply_filters.apply(this)">
+          <p>Применить</p>
+
+        </div>
+      </div>
+    </div>
+</div>
+
+<script>
+    function open_filters() {
+      document.querySelector('.filters-popUp').style.visibility = 'visible';
+    }
+
+    function close_filters() {
+      document.querySelector('.filters-popUp').style.visibility = 'hidden';
+    }
+</script>

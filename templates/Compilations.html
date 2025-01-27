@@ -1,5 +1,4 @@
 {% extends "Base.html" %}
-
 {% load static %}
 
 {% block title %}Rels Scanner{% endblock %}
@@ -10,6 +9,8 @@
     <link rel="stylesheet" href="{% static "css/reel_detailed.css" %}"/>
     <link rel="stylesheet" href="{% static "css/search.css" %}"/>
     <link rel="stylesheet" href="{% static "css/SearchString.css" %}"/>
+    <link rel="stylesheet" href="{% static "css/Categories.css" %}"/>
+
 {% endblock %}
 
 {% block js %}
@@ -22,18 +23,35 @@
 
     {% include "HeadMenu.html" %}
 
-    {% include "Search.html" %}
+    <div class="main-box">
 
-    <div class="reels-main-box" id="reels-main-box">
+        <div class="categories-box">
+            {% for key, value in categories.items %}
+                <h1>{{ key }}</h1>
+                {% for category in value %}
+                    <li>
+                        <a href="{{ category.id }}">{{ category.name }}</a>
+                    </li>
+                {% endfor %}
+            {% endfor %}
+         </div>
+
+        <div class="content-box">
+            {% include "Search.html" %}
+
+            <div class="reels-main-box" id="reels-main-box"></div>
+        </div>
+
 
     </div>
+
 
     {% if user.is_authenticated %}
     <script>
         const stored = []
         let par = window.location.search
 
-        let requestURL = 'https://reelsscanner.com/api/reels/' + par
+        let requestURL = 'https://reelsscanner.com/api/compilations/1' + par
         const xhr = new XMLHttpRequest()
 
         urlParams = new URLSearchParams(par)
@@ -124,17 +142,6 @@
     </script>
     {% endif %}
 
-
-    <style>
-        #reels-main-box{
-            width: 100%;
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 5vw;
-            justify-content: center;
-            align-items: center;
-        }
-    </style>
 
     {% include "ReelPopUp.html" %}
 

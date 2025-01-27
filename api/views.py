@@ -34,8 +34,12 @@ class ReelsList(generics.ListAPIView):
 
 
     def get_queryset(self):
-
         query = {}
+
+        if 'category' in self.kwargs:
+            category_id = self.kwargs['category']
+            print("category:", category_id)
+            query['author__categories__authors'] = category_id
 
         author = self.request.GET.get('author')
         if author:

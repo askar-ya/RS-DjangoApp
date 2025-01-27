@@ -1,4 +1,14 @@
 {% load static %}
+<style>
+    .check .checkbox{
+        background: url("{% static "images/check.png" %}"), #1690ff;
+        background-size: 60%;
+        background-repeat: no-repeat;
+        background-position: center;
+        border-color: #1690ff;
+    }
+</style>
+
 <div class="search">
 
     <div class="titel">
@@ -7,43 +17,74 @@
 
     <div class="conrols">
         <form action="" method="get" class="SearchInput">
-            <div class="FieldWrapper">
-                <div class="InputField">
-                    <input name="q" id="q" placeholder="Ваш запрос" type="search">
+
+            <div class="SearchLine">
+
+                <div class="input">
+                    <input type="text" class='inputbox' placeholder="Поиск">
                 </div>
+
+                <div class="wareper">
+
+                    <div class="ScopeList noselect">
+
+                    </div>
+
+
+                    <select name="scope" id="selector">
+                        <option value="author_name">По названию профиля</option>
+                        <option value="author_description">По описанию профиля</option>
+                        <option value="reels_tags">По хештегам reels</option>
+                        <option value="reels_description">По описанию reels</option>
+                    </select>
+                </div>
+
+                <div class="CurrentScope noselect" onclick="ShowCloseScopeList();" value='1'>
+                    <div class="text">
+
+                    </div>
+                    <div class="arrow">
+                        <svg viewBox="0 0 10 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9.22473 6.09012L5.28946 0.6649C5.1466 0.468471 4.85419 0.468471 4.71245 0.6649L0.776067 6.09012C0.76638 6.10347 0.760577 6.11923 0.759301 6.13567C0.758025 6.15211 0.761326 6.16858 0.768838 6.18326C0.776351 6.19794 0.787781 6.21025 0.801861 6.21883C0.815942 6.22741 0.832123 6.23192 0.848612 6.23186H1.68567C1.74259 6.23186 1.79616 6.20396 1.82964 6.1582L5.0004 1.78767L8.17116 6.1582C8.20464 6.20396 8.25821 6.23186 8.31513 6.23186H9.15218C9.22473 6.23186 9.26714 6.14927 9.22473 6.09012Z" fill="black" fill-opacity="0.85"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="btn">
+                    <button>
+                        <img src="{% static "images/scope.svg" %}" alt="">
+                    </button>
+                </div>
+
             </div>
-            <div class="FieldWrapper">
-                <button type="submit" class="BtnSubmit LightBtn stretchBtn">
-                  <img src="{% static "images/scope.svg" %}" alt="">
-                </button>
-            </div>
+
+
+            <script src="{% static 'js/search-string.js' %}"></script>
         </form>
 
 
         <div class="FieldWrapper">
-                <button type="submit" class="BtnSubmit LightBtn stretchBtn" onclick="open_filters();">
-                  <img src="{% static "images/filter.svg" %}" alt="">
-                    Фильтры
-                </button>
+            <button type="submit" class="BtnSubmit LightBtn stretchBtn" onclick="open_filters();">
+              <img src="{% static "images/filter.svg" %}" alt="">
+                Фильтры
+            </button>
         </div>
 
         <div class="FieldWrapper">
-                <button type="submit" class="BtnSubmit LightBtn stretchBtn">
-                  <img src="{% static "images/bell.svg" %}" alt="">
-                    Подписаться
-                </button>
+            <button type="submit" class="BtnSubmit LightBtn stretchBtn">
+              <img src="{% static "images/bell.svg" %}" alt="">
+                Подписаться
+            </button>
         </div>
 
         <div class="FieldWrapper">
-                <div class="InputField SelectInput">
-                    <select name="где искать" id="q_where">
-                      <option value="play">По количеству просмотров ↓</option>
-                      <option value="like">Лайки</option>
-                    </select>
-                </div>
+            <div class="InputField SelectInput">
+                <select name="где искать" id="q_where">
+                  <option value="play">По количеству просмотров ↓</option>
+                  <option value="like">Лайки</option>
+                </select>
             </div>
-
-
+        </div>
 
     </div>
 
@@ -207,6 +248,7 @@
 </div>
 
 <script>
+
     function open_filters() {
       document.querySelector('.filters-popUp').style.visibility = 'visible';
     }

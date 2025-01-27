@@ -1,56 +1,16 @@
 .search{
+  width: 100%;
   display: grid;
   background-color: var(--color-Bg);
   padding: 1vw 1vw;
   row-gap: 1vw;
 }
 
-.search .titel{
-  font-family: "Roboto", sans-serif;
-  font-size: 24px;
-  font-weight: 500;
-}
 
 .search .conrols{
   display: grid;
-  grid-template-columns: 45% 12% 12.5% 28%;
+  grid-template-columns: 45% 12% auto 28%;
   column-gap: 1vw;
-}
-
-.search .conrols .box{
-  height: 2.8vw;
-  border-radius: 3px;
-  background-color: white;
-  border: 2px solid #d9d9d9;
-}
-
-.search .conrols .box:hover {
-  cursor: pointer;
-}
-
-.search .conrols .btn-box{
-  font-family: "Roboto", sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-}
-
-.search .conrols .input {
-  display: grid;
-  grid-template-rows: 1fr;
-  grid-template-columns: auto 2.8vw;
-}
-
-.search .conrols .input-box{
-  grid-row: 1/2;
-  display: grid;
-
-}
-
-.SearchInput{
-  display: grid;
-  grid-template-rows: 1fr;
-  grid-template-columns: auto var(--hight-input-field);
-  gap: 0;
 }
 
 .SearchInput .InputField{

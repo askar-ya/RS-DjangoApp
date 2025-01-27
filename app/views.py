@@ -2,7 +2,7 @@ from django.shortcuts import render, HttpResponse
 from app.logic import add_new_authors
 from app.form import AddAuthorsForm
 
-from app.service import MainPage
+from app.service import MainPage, Compilations
 
 def main_page(request):
 
@@ -25,3 +25,9 @@ def add_authors_post(request):
 
     return HttpResponse(f"<h2>Добавлено {stat['added_authors']} авторов</h2><h2>Изменено {stat['edit_authors']} авторов</h2>")
 
+
+def compilations(request, category=False):
+
+    print(category)
+
+    return Compilations(request).render()

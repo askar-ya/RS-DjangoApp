@@ -1,0 +1,145 @@
+.SearchLine{
+  height: calc(var(--hight-input-field) - (var(--border-width)*2) );
+
+  border-radius: var(--border-radius);
+  border: var(--border-width) solid var(--color-Minor);
+  background: white;
+
+  width: 100%;
+
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 50% 0 40% 10%;
+}
+
+.SearchInput{
+  width: 100%;
+}
+
+.btn{
+  cursor: pointer;
+  border-left: 1px solid  var(--color-Minor);
+  width: 100%;
+  height: 100%;
+}
+
+.btn:hover{
+  background: var(--color-Minor);
+}
+
+.input{
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}
+
+
+.inputbox{
+  font-size: calc(var(--hight-input-field) * 0.5);
+
+  outline: none;
+  border: none;
+
+  width: 95%;
+  height: 90%;
+
+}
+
+.btn button{
+  cursor: pointer;
+  border: none;
+  background: none;
+  outline: none;
+  width: 100%;
+  height: 100%;
+}
+
+.CurrentScope{
+
+  justify-content: space-between;
+  align-items: center;
+  font-size: calc(var(--hight-input-field) * 0.5);
+  text-wrap: nowrap;
+  cursor: pointer;
+  display: flex;
+
+  height: 100%;
+  width: 100%;
+}
+
+.arrow{
+  align-items: center;
+  align-content: center;
+  display: flex;
+  width: 8%;
+  rotate: 0;
+  transition-duration: 200ms;
+  margin-right: 2%;
+}
+
+.CurrentScope path{
+
+  width: 90%;
+  height: 90%;
+}
+
+.CurrentScopeawd:hover{
+  background: var(--color-Minor);
+}
+
+.ScopeList{
+  margin-top: calc(var(--hight-input-field) * 1.2);
+  background: white;
+  padding: 10px 0;
+  display: none;
+  border-radius: 4px;
+  margin-left: calc(var(--hight-input-field) * -0.2);
+  position: absolute;
+}
+
+.Scope{
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.Scope .text{
+  margin-right: calc(var(--hight-input-field) * 0.2);
+}
+
+.Scope .checkbox{
+  margin-left: calc(var(--hight-input-field) * 0.2);
+  width: 30px;
+  height: 30px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  background: none;
+  border-radius: 3px;
+  border: grey solid 1px;
+}
+
+.Scope:hover{
+  background: #b3e9ff;
+}
+
+.check{
+  background: #e6f8ff;
+}
+
+.check .checkbox{
+  background-size: 60%;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-color: #1690ff;
+}
+
+.check{
+  color: #1690ff;
+}
+
+
+#selector{
+  visibility: hidden;
+}

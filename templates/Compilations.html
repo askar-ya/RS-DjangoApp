@@ -51,7 +51,10 @@
         const stored = []
         let par = window.location.search
 
-        let requestURL = 'https://reelsscanner.com/api/reels/' + par
+        let compilations_id = window.location.href.split('/').slice(-1)[0]
+
+
+        let requestURL = 'https://reelsscanner.com/api/compilations/' + compilations_id + par
         const xhr = new XMLHttpRequest()
 
         urlParams = new URLSearchParams(par)

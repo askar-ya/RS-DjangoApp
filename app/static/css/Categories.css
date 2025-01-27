@@ -1,4 +1,5 @@
 .main-box{
+    height: 110vh;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 }
@@ -6,10 +7,12 @@
 .categories-box{
     background: var(--color-Major);
     grid-column: 1/2;
+    grid-row: 1/2;
 }
 
 .content-box{
     grid-column: 2/6;
+    grid-row: 1/2;
 }
 
 .search{
@@ -17,10 +20,10 @@
 }
 
 #reels-main-box{
-
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 5vw;
     justify-content: center;
     align-items: center;
+
 }

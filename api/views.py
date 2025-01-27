@@ -45,7 +45,6 @@ class ReelsList(generics.ListAPIView):
         if author:
             query['author__nick'] = author
 
-
         q_key = 'description__icontains'
         scope = self.request.GET.get('scope')
         if scope:

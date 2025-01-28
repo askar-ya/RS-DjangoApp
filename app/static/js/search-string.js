@@ -4,7 +4,7 @@ let CurrentScope = document.querySelector('.CurrentScope .text');
 let ScopeList = document.querySelector('.ScopeList');
 let CurrentScopeName = CurrentScope.value
 
-let RealSelector = document.querySelector('#selector');
+let RealSelector = document.querySelector('#scope');
 let RealScopeList = RealSelector.querySelectorAll('option');
 
 let Arrow = document.querySelector('.CurrentScope .arrow');

@@ -4,9 +4,10 @@ from django.contrib.auth.views import LoginView
 from django.core.exceptions import ValidationError
 from django.http import HttpResponseForbidden
 
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 from django.utils.http import urlsafe_base64_decode
 from django.views.generic import TemplateView
+from app.models import BookmarksFolders
 
 from .forms import UserSingUp, MyAuthenticationForm, MySetPasswordForm
 from django.views import View
@@ -39,11 +40,12 @@ class Profile(LoginRequiredMixin, TemplateView):
         return context
 
     def post(self, request, *args, **kwargs):
-        print(123)
+
         if 'user_password_form' in request.POST:
             form = MySetPasswordForm(request.user, request.POST)
             if form.is_valid():
                 form.save()
+
                 print('Пароль успешно изменён.')
                 return self.get(request, *args, **kwargs)
             else:
@@ -74,13 +76,13 @@ class Registration(View):
 
             user = authenticate(email=email, password=raw_password)
 
+            BookmarksFolders(user=user, name='dump').save()
+
             send_email_for_verify(request, user)
 
             return redirect('confirm_email')
 
         context = {'form': form}
-
-        print(form)
 
         return render(request, self.template_name, context)
 
@@ -111,5 +113,5 @@ class VerifyEmail(View):
         ):
 
             user = None
-        print(user)
+
         return user

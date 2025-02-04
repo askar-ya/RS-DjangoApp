@@ -1,5 +1,7 @@
 from django import forms
-from app.models import Categories, MainChapters, Authors
+from app.models import Reels, Categories, MainChapters, Authors, BookmarksFolders
+from accounts.models import User
+
 
 class AddAuthorsForm(forms.Form):
 
@@ -9,5 +11,8 @@ class AddAuthorsForm(forms.Form):
     categories = forms.ModelMultipleChoiceField(queryset=Categories.objects.all(), label="Categories")
 
 
+class AddBookmarkFolder(forms.Form):
+
+    name = forms.CharField(widget=forms.TextInput(attrs={'name': 'name'}))
 
 

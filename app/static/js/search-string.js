@@ -1,8 +1,9 @@
-var scopelistopened = false
+
+let scopelistopened = false
 
 let CurrentScope = document.querySelector('.CurrentScope .text');
 let ScopeList = document.querySelector('.ScopeList');
-let CurrentScopeName = CurrentScope.value
+
 
 let RealSelector = document.querySelector('#scope');
 let RealScopeList = RealSelector.querySelectorAll('option');
@@ -12,6 +13,10 @@ let Arrow = document.querySelector('.CurrentScope .arrow');
 
 let ValueByName = {};
 
+let current_value = RealSelector.value;
+
+console.log('--->', current_value)
+
 for (let scope = 0; scope < RealScopeList.length; scope++) {
 
   let name = RealScopeList[scope].innerText
@@ -20,8 +25,8 @@ for (let scope = 0; scope < RealScopeList.length; scope++) {
 
   let copyScope = document.createElement('div')
   copyScope.classList.add('Scope')
-  
-  
+
+
   copyScope.addEventListener("click", SelectScope, false)
 
   copyScopeText = document.createElement('div')
@@ -42,12 +47,11 @@ for (let scope = 0; scope < RealScopeList.length; scope++) {
 }
 
 
+
 function ShowCloseScopeList () {
 
   if (scopelistopened) {
     Arrow.style.transform = 'rotate(0deg)';
-
-
     ScopeList.style.display = 'none'
     scopelistopened = false
   }
@@ -56,16 +60,14 @@ function ShowCloseScopeList () {
     ScopeList.style.display = 'grid'
     scopelistopened = true
   }
-  
-
 }
+
 
 function SelectScope () {
 
   name = this.innerText
   value = ValueByName[name]
 
-  
 
   if (CurrentScope.textContent != name){
     ScopeList.querySelector('.check').classList.remove('check')

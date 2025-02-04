@@ -1,0 +1,148 @@
+{% extends "Base.html" %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static "css/head.css" %}"/>
+    <link rel="stylesheet" href="{% static "css/reels_card.css" %}"/>
+    <link rel="stylesheet" href="{% static "css/reel_detailed.css" %}"/>
+    <link rel="stylesheet" href="{% static "css/bookmarks.css" %}"/>
+{% endblock %}
+
+{% block title %}Избранное{% endblock %}
+
+{% block content %}
+    {% include "HeadMenu.html" %}
+
+    <style>
+            .new-bookmark{
+                display: none;
+            }
+
+            .new-bookmarkBTN, h3.cancel-bookmarkBTN{
+                padding: 10px;
+                cursor: pointer;
+                border: gray 1px solid;
+            }
+
+            h3.cancel-bookmarkBTN{
+                margin-top: 10px;
+            }
+
+            .new-bookmarkBTN:hover{
+                background: gray;
+            }
+    </style>
+
+    <script>
+    function openNewBookmark(){
+        let form = document.querySelector('.new-bookmark');
+        form.style.display = 'block';
+        let btn = document.querySelector('.new-bookmarkBTN');
+        btn.style.display = 'none';
+
+    }
+
+    function closeNewBookmark(){
+        let form = document.querySelector('.new-bookmark');
+        form.style.display = 'none';
+        let btn = document.querySelector('.new-bookmarkBTN');
+        btn.style.display = 'block';
+    }
+
+    </script>
+
+    <div class="main-box">
+        <div class="folders">
+            <h3 class="new-bookmarkBTN" onclick="openNewBookmark()">Новая папка +</h3>
+
+                <form action="" method="POST" class="new-bookmark" name="test">
+                    {% csrf_token %}
+
+                    <label for="name"></label>{{ new_folder.name }}
+                    <button type="submit">добавить</button>
+                    <h3 class="cancel-bookmarkBTN" onclick="closeNewBookmark()">отмена</h3>
+                </form>
+
+            <a href="{% url 'Bookmarks' %}">Все</a>
+            {% for folder in all_folders %}
+                <a href="{{ folder.id }}">{{ folder.name }}</a>
+            {% endfor %}
+
+        </div>
+
+
+        <div class="reels_box">
+            {% for reel in reels %}
+                <div class="reel pointer">
+                  <div class="video">
+
+                    <div class="info">
+                      <p class="name">{{reel.author.nick}}</p>
+                      <p class="sub">Подписчиков: {{reel.author.nick.subscribers}}</p>
+                      <p class="date">{{ reel.published_stamp}}</p>
+                    </div>
+
+                    <div class="actions">
+                      <div class="box">
+
+                        <img src="{% static "images/saves.svg" %}" alt="">
+                      </div>
+
+                      <div class="box">
+                        <img src="{% static "images/more.svg" %}" alt="">
+                      </div>
+
+                    </div>
+
+                    <div class="metrics">
+
+                      <div class="box">
+                        <img src="{% static "images/play.svg" %}" alt="">
+                        <p>{{ reel.views }}</p>
+                      </div>
+
+                      <div class="box">
+                        <img src="{% static "images/like.svg" %}" alt="">
+                        <p>{{ reel.likes }}</p>
+                      </div>
+
+                      <div class="box">
+                        <img src="{% static "images/comments.svg" %}" alt="">
+                        <p>{{ reel.comments }}</p>
+                      </div>
+
+                      <div class="box">
+                        <img src="{% static "images/saves.svg" %}" alt="">
+                        <p>11.2 K</p>
+                      </div>
+                      <div class="box">
+                        <img src="{% static "images/share.svg" %}" alt="">
+                        <p>3 832</p>
+                      </div>
+                    </div>
+
+                    <div class="btn-box" onclick="startstop.apply(this);">
+                          <img src="{% static "images/play.svg" %}" alt="">
+                    </div>
+
+                    <video id="video" poster="/static/posters/{{ reel.id }}.jpg" loop="loop">
+                      <source src='/static/video/{{ reel.id }}.mp4' type='video/mp4'/>
+                    </video>
+
+
+                  </div>
+                  <div class="description" title="Подробнее" onclick="reelDetailed.apply(this);">
+                    <div class="text-box">
+                      <h3 class="user">{{ reel.author.nick }}</h3>
+                    </div>
+                    <div class="text-box">
+                      <h3 class="text">{{ reel.author.description }}</h3>
+                    </div>
+                  </div>
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
+
+{% endblock %}

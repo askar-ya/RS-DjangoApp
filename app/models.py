@@ -1,7 +1,7 @@
 from datetime import datetime
 
 from django.db import models
-
+from accounts.models import User
 
 class MainChapters(models.Model):
     """Разделы подкатегорий"""
@@ -64,3 +64,21 @@ class Reels(models.Model):
 
     class Meta:
         db_table = 'reels'
+
+
+class BookmarksFolders(models.Model):
+    class Meta:
+        db_table = "bookmarks_folders"
+
+    user = models.ForeignKey(User, verbose_name="Пользователь", on_delete=models.CASCADE)
+    name = models.CharField('название', max_length=100, default="новая подборка")
+
+
+
+class Bookmarks(models.Model):
+    class Meta:
+        db_table = "bookmarks"
+
+    folders = models.ForeignKey(BookmarksFolders, verbose_name="Папка", on_delete=models.CASCADE)
+    reel = models.ForeignKey(Reels, verbose_name="Reel", on_delete=models.CASCADE)
+

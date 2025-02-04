@@ -22,7 +22,7 @@ function apply_filters() {
 
 
     let counts_filters = [
-        'q', 'q_where',
+        'q', 'scope',
         'subs_start', 'subs_end',
         'views_start', 'views_end',
         'like_start', 'like_end',

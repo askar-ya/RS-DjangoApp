@@ -2,16 +2,15 @@ from django.shortcuts import render, HttpResponse
 from app.logic import add_new_authors
 from app.form import AddAuthorsForm
 
-from app.service import MainPage, Compilations
+from app.service import MainPage, Compilations, BookmarksView
 
 def main_page(request):
 
     return MainPage(request).render()
 
 
-def add_authors(request):
 
-    #add_new_authors(['askar'], 4)
+def add_authors(request):
 
     return render(request, 'add_authors.html', {'form': AddAuthorsForm})
 
@@ -31,3 +30,7 @@ def compilations(request, category=False):
     print(category)
 
     return Compilations(request).render()
+
+def bookmarks(request, folder_id=None):
+    return BookmarksView(request).render(folder_id)
+

@@ -31,12 +31,13 @@
                     </div>
 
 
-                    <select name="scope" id="scope">
+                    <select id="scope" name="scope" >
                         <option value="reels_description">По описанию reels</option>
                         <option value="author_name">По названию профиля</option>
                         <option value="author_description">По описанию профиля</option>
                         <option value="reels_tags">По хештегам reels</option>
                     </select>
+
                 </div>
 
                 <div class="CurrentScope noselect" onclick="ShowCloseScopeList();" value='1'>
@@ -59,7 +60,7 @@
             </div>
 
 
-            <script src="{% static 'js/search-string.js' %}"></script>
+
         </form>
 
 
@@ -240,13 +241,13 @@
 
         </div>
         <div class="apply" onclick="apply_filters.apply(this)">
-          <p>Применить</p>
+          <p> Применить </p>
 
         </div>
       </div>
     </div>
 </div>
-
+<script src="{% static 'js/search-string.js' %}"></script>
 <script>
 
     function open_filters() {

@@ -8,7 +8,8 @@ def main_page(request):
 
     return MainPage(request).render()
 
-
+def about(request):
+    return render(request, template_name='About.html')
 
 def add_authors(request):
 

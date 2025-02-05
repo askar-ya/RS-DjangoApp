@@ -1,0 +1,73 @@
+.popUp{
+    display: none;
+    position: fixed;
+    z-index: 99999;
+    width: 100vw;
+    height: 100vh;
+}
+
+.doc-box{
+    display: flex;
+    background: rgba(0, 0, 0, .5);
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.content{
+    border-radius: 10px;
+    word-wrap: normal;
+    height: 90%;
+    width: 60%;
+    overflow: scroll;
+    display: block;
+    background: #121212;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    padding: 1vw;
+    line-height: 1.5;
+}
+
+.rec-content{
+    height: fit-content !important;
+    width: fit-content !important;
+}
+
+.content::-webkit-scrollbar {
+    display: none;
+}
+
+.content ol{
+    color: #ff6500 !important;
+}
+
+.content a{
+    color: #fafafa !important;
+}
+
+.content p{
+    color: #fafafa !important;
+}
+
+.content span{
+    color: #fafafa !important;
+}
+
+@media screen and (max-width: 600px) {
+    .content{
+        width: 96%;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .content{
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .content{
+        width: 80%;
+    }
+}

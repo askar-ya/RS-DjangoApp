@@ -1,31 +1,16 @@
-import smtplib
-import os
-from dotenv import load_dotenv
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
+import re
 
 
-load_dotenv()
+def replace_static(raw: str, output: str):
+    pattern = r'"(assets/[^"]*")'
 
-smtpObj = smtplib.SMTP('smtp.yandex.ru', 587)
+    def replace(match):
+        new = '"{% static "About/lol %}"'
+        return new.replace('lol', match.group(1))
 
-smtpObj.starttls()
-smtpObj.login(os.getenv('EMAIL_HOST_USER'), os.getenv('EMAIL_HOST_PASSWORD'))
+    with open(raw, 'r', encoding='utf-8') as f:
+        raw_html = f.read()
 
-# Создание объекта сообщения
-msg = MIMEMultipart()
-
-# Настройка параметров сообщения
-msg["From"] = os.getenv('EMAIL_HOST_USER')
-msg["To"] = "askaryaparov@yandex.ru"
-msg["Subject"] = "Тестовое письмо 📧"
-
-# Добавление текста в сообщение
-text = "FFFFFFFFFFFFFFF"
-msg.attach(MIMEText(text, "plain"))
-
-# Отправка письма
-smtpObj.sendmail(os.getenv('EMAIL_HOST_USER'), "askaryaparov@yandex.ru", msg.as_string())
-
-# Закрытие соединения
-smtpObj.quit()
+    pretty_html = re.sub(pattern, replace, raw_html)
+    with open(output, 'w', encoding='utf-8') as f:
+        f.write(pretty_html)

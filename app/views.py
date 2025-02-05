@@ -4,6 +4,9 @@ from app.form import AddAuthorsForm
 
 from app.service import MainPage, Compilations, BookmarksView
 
+from django.http import FileResponse
+import os
+
 def main_page(request):
 
     return MainPage(request).render()
@@ -11,8 +14,18 @@ def main_page(request):
 def about(request):
     return render(request, template_name='About.html')
 
-def add_authors(request):
+def successful(request):
+    return render(request, template_name='Thanks.html')
 
+
+def privacy_policy(request):
+    return FileResponse(open('app/static/docs/privacy_policy.pdf', 'rb'), content_type='application/pdf')
+
+
+def offer(request):
+    return FileResponse(open('app/static/docs/offer.pdf', 'rb'), content_type='application/pdf')
+
+def add_authors(request):
     return render(request, 'add_authors.html', {'form': AddAuthorsForm})
 
 

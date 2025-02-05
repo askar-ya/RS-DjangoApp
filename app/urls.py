@@ -4,7 +4,10 @@ from . import views
 
 urlpatterns = [
     path('', views.main_page, name='Reels Scaner'),
+    path('privacy-policy/', views.privacy_policy, name='Privacy Policy'),
+    path('offer/', views.offer, name='Offer'),
     path('about/', views.about, name='About'),
+    path('successful/', views.successful, name='Successful'),
     path('compilations/', views.compilations, name='Compilations'),
     path('compilations/<int:category>', views.compilations),
     path('bookmarks/', views.bookmarks, name='Bookmarks'),

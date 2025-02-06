@@ -52,6 +52,7 @@ class UserSingUp(UserCreationForm):
         fields = ('username', 'email')
 
 
+
 class MyAuthenticationForm(AuthenticationForm):
 
     def clean(self):

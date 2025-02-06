@@ -27,7 +27,8 @@ INSTALLED_APPS = [
     'accounts',
     'subscription',
     'api',
-    'rest_framework'
+    'rest_framework',
+    'widget_tweaks',
 ]
 
 AUTH_USER_MODEL = 'accounts.User'

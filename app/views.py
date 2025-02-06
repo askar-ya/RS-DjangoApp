@@ -1,29 +1,51 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, redirect
 from app.logic import add_new_authors
 from app.form import AddAuthorsForm
-
+from accounts.forms import UserSingUp
+from django.views import View
+from django.contrib.auth import login, authenticate, get_user_model
+from django.template import RequestContext
+import json
 from app.service import MainPage, Compilations, BookmarksView
 
-from django.http import FileResponse
-import os
+from accounts.services import send_email_for_verify
 
 def main_page(request):
 
     return MainPage(request).render()
 
-def about(request):
-    return render(request, template_name='About.html')
+
+class About(View):
+    template_name = 'About.html'
+
+    def get(self, request):
+        if request.user.is_authenticated:
+            return redirect('Reels Scaner')
+        context = {
+            'SingUpForm': UserSingUp(),
+        }
+        return render(request, self.template_name, context)
+
+    def post(self, request):
+        form = UserSingUp(request.POST)
+
+        if form.is_valid():
+            form.save()
+            email = form.cleaned_data.get('email')
+            raw_password = form.cleaned_data.get('password1')
+
+            user = authenticate(email=email, password=raw_password)
+
+            send_email_for_verify(request, user)
+
+            return redirect('Successful')
+
+        context = {'SingUpForm': form, 'errors': True}
+        return render(request, self.template_name, context)
+
 
 def successful(request):
     return render(request, template_name='Thanks.html')
-
-
-def privacy_policy(request):
-    return FileResponse(open('app/static/docs/privacy_policy.pdf', 'rb'), content_type='application/pdf')
-
-
-def offer(request):
-    return FileResponse(open('app/static/docs/offer.pdf', 'rb'), content_type='application/pdf')
 
 def add_authors(request):
     return render(request, 'add_authors.html', {'form': AddAuthorsForm})

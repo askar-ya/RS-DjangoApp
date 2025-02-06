@@ -18,10 +18,11 @@
 .content{
     border-radius: 10px;
     word-wrap: normal;
+    position: relative;
     height: 90%;
     width: 60%;
     overflow: scroll;
-    display: block;
+    display: inline-block;
     background: #121212;
     -ms-overflow-style: none;
     scrollbar-width: none;

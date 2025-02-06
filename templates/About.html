@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
+{% load widget_tweaks %}
 <html lang="en">
 <head>
 
@@ -25,9 +26,19 @@
     <title>Главная страница</title>
     <link rel="stylesheet" href="{% static "About/assets/css/style.min.css" %}">
     <link rel="stylesheet" href="{% static "About/assets/css/PopUp.css" %}">
+    <link rel="stylesheet" href="{% static "css/registration.min.css" %}">
 </head>
 
 <body>
+
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="0" height="0"
+     style="position:absolute">
+    <symbol id="icon-eye" viewBox="0 0 14 14">
+            <path d="M5.416 7.004a1.531 1.531 0 1 0 3.062 0 1.531 1.531 0 0 0-3.062 0zm7.467-.353c-1.296-2.73-3.255-4.104-5.881-4.104-2.628 0-4.586 1.374-5.882 4.106a.824.824 0 0 0 0 .704c1.296 2.73 3.255 4.104 5.882 4.104s4.585-1.374 5.881-4.106a.824.824 0 0 0 0-.704zm-5.936 2.76a2.406 2.406 0 1 1 0-4.813 2.406 2.406 0 0 1 0 4.812z"
+                  fill-opacity=".25"></path>
+    </symbol>
+</svg>
+
 
 <div class="popUp policy" onclick="PopupClose.apply(this)">
     <div class="doc-box">
@@ -509,10 +520,11 @@
     <div class="doc-box">
         <div class="content">
             <p lang="ru-RU" align="center"><span style="font-family: 'Times New Roman', serif;"><span><span><span
-                    ><span><span  style="color: #ff6500 !important;">Публичная оферта</span></span></span></span></span></span></p>
+            ><span><span style="color: #ff6500 !important;">Публичная оферта</span></span></span></span></span></span>
+            </p>
             <p lang="ru-RU" align="center"><span style="font-family: 'Times New Roman', serif;"><span><strong><span
-                    ><span style="font-family: Calibri, serif;color: #ff6500 !important;">для сайта </span></span><span
-                    ><span style="text-decoration: underline;"><a
+            ><span style="font-family: Calibri, serif;color: #ff6500 !important;">для сайта </span></span><span
+            ><span style="text-decoration: underline;"><a
                     href="https://reelsscanner.com/">https://reelsscanner.com</a></span></span></strong></span></span>
             </p>
             <p lang="ru-RU" align="center">&nbsp;</p>
@@ -1155,19 +1167,78 @@
     </div>
 </div>
 
-
 <div class="popUp rec" onclick="PopupClose.apply(this)">
     <div class="doc-box">
         <div class="content rec-content">
             <p lang="ru-RU" align="justify"><span style="font-family: Calibri, serif;"><strong>Индивидуальный предприниматель Семёнов Иван Геннадьевич</strong></span>
             </p>
             <p lang="ru-RU" align="justify"><span style="font-family: Calibri, serif;">ИНН 253814202111</span></p>
-            <p lang="ru-RU" align="justify"><span style="font-family: Calibri, serif;">ОГРН/ОГРНИП 325253600000984</span></p>
+            <p lang="ru-RU" align="justify"><span
+                    style="font-family: Calibri, serif;">ОГРН/ОГРНИП 325253600000984</span></p>
         </div>
     </div>
 </div>
 
 
+<div class="default-modal modal-register-to-app">
+    <div class="default-modal__content center">
+        <div class="default-modal__close" data-modal-close="">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M24.9247 23.9992L29.6122 18.4117C29.6908 18.3188 29.6247 18.1777 29.5033 18.1777H28.0783C27.9944 18.1777 27.914 18.2152 27.8587 18.2795L23.9926 22.8884L20.1265 18.2795C20.0729 18.2152 19.9926 18.1777 19.9069 18.1777H18.4819C18.3604 18.1777 18.2944 18.3188 18.3729 18.4117L23.0604 23.9992L18.3729 29.5867C18.3553 29.6074 18.344 29.6327 18.3404 29.6596C18.3368 29.6865 18.3409 29.7139 18.3524 29.7386C18.3639 29.7632 18.3822 29.784 18.4051 29.7985C18.4281 29.8131 18.4547 29.8207 18.4819 29.8206H19.9069C19.9908 29.8206 20.0712 29.7831 20.1265 29.7188L23.9926 25.1099L27.8587 29.7188C27.9122 29.7831 27.9926 29.8206 28.0783 29.8206H29.5033C29.6247 29.8206 29.6908 29.6795 29.6122 29.5867L24.9247 23.9992Z"
+                      fill="black" fill-opacity="0.45"></path>
+            </svg>
+        </div>
+        <div class="default-modal__inner">
+            <div class="default-modal__title2">Регистрация</div>
+        </div>
+        <form class="modal-form-grid"  id="register-to-app" method="post">
+        {% csrf_token %}
+
+            <div class="inputs-grid">
+                <div class="input-group">
+                    {{ SingUpForm.username|attr:"placeholder:Имя" }}
+                </div>
+                {{ SingUpForm.username.errors }}
+                <div class="input-group">
+                    {{ SingUpForm.email|attr:"placeholder:E-mail" }}
+
+                </div>
+                {{ SingUpForm.email.errors }}
+                <div class="inputs-grid__item">
+                    <div class="input-group">
+                        {{ SingUpForm.password1|attr:"placeholder:Пароль" }}
+                        <div class="input-group__icon">
+                            <svg width="14" viewBox="0 0 14 14">
+                                <use xlink:href="#icon-eye"></use>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                {{ SingUpForm.password1.errors }}
+                <div class="inputs-grid__item">
+                    <div class="input-group">
+                        {{ SingUpForm.password2|attr:"placeholder:Повторите пароль" }}
+                        <div class="input-group__icon">
+                            <svg width="14" viewBox="0 0 14 14">
+                                <use xlink:href="#icon-eye"></use>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                {{ SingUpForm.password2.errors }}
+            </div>
+            <div class="inputs-grid">
+                <button class="btn btn--blue" type="submit" id="clear-button"><span class="btn__inner">Зарегистрироваться</span>
+                </button>
+
+                <div class="agree-block">
+                    <p>Нажимая на кнопку "Зарегистрироваться" вы соглашаетесь с <a style="cursor: pointer" target="_blank" onclick="PopUp('policy')">Политикой
+                        обработки персональных данных </a></p>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
 
 <div class="page">
     <header class="header">
@@ -1286,10 +1357,11 @@
                     подписки и
                     продажи
                 </p>
-                <a href="#" class="main-btn" aria-label="Попробовать бесплатно">
+                <a href="#" id="register-btn" class="main-btn" data-modal="modal-register-to-app" aria-label="Попробовать бесплатно">
                     Попробовать бесплатно
                     <span class="main-btn-subtext">
 				Зарегистрируйтесь <br> за минуту
+
 			</span>
                 </a>
             </div>
@@ -2277,7 +2349,23 @@
 
 <script src="{% static "About/assets/js/PopUp.js" %}"></script>
 <script src="{% static "About/assets/js/app.min.js" %}"></script>
+<script src="{% static "js/scripts.min.js" %}"></script>
 
+{% if errors %}
+
+    <script>
+        document.onload = function () {
+            let reg_btn = document.querySelector('#register-btn')
+            console.log('123')
+            reg_btn.click()
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            let reg_btn = document.querySelector('#register-btn')
+            console.log(reg_btn)
+            reg_btn.click()
+        });
+    </script>
+{% endif %}
 </body>
 
 </html>

@@ -1,0 +1,151 @@
+<div class="default-modal modal-filters-app">
+    <div class="default-modal__content">
+        <div class="default-modal__close" data-modal-close="">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M24.9247 23.9992L29.6122 18.4117C29.6908 18.3188 29.6247 18.1777 29.5033 18.1777H28.0783C27.9944 18.1777 27.914 18.2152 27.8587 18.2795L23.9926 22.8884L20.1265 18.2795C20.0729 18.2152 19.9926 18.1777 19.9069 18.1777H18.4819C18.3604 18.1777 18.2944 18.3188 18.3729 18.4117L23.0604 23.9992L18.3729 29.5867C18.3553 29.6074 18.344 29.6327 18.3404 29.6596C18.3368 29.6865 18.3409 29.7139 18.3524 29.7386C18.3639 29.7632 18.3822 29.784 18.4051 29.7985C18.4281 29.8131 18.4547 29.8207 18.4819 29.8206H19.9069C19.9908 29.8206 20.0712 29.7831 20.1265 29.7188L23.9926 25.1099L27.8587 29.7188C27.9122 29.7831 27.9926 29.8206 28.0783 29.8206H29.5033C29.6247 29.8206 29.6908 29.6795 29.6122 29.5867L24.9247 23.9992Z"
+                      fill="black" fill-opacity="0.45"></path>
+            </svg>
+        </div>
+        <div class="default-modal__inner">
+            <div class="default-modal__title">Фильтры</div>
+        </div>
+        <form action="/filters" id="filters-form">
+            <div class="modal-filters-inputs-group">
+                <div class="input-group-wrp">
+                    <p class="input-group-wrp__label">Поисковый запрос </p>
+                    <div class="input-group">
+                        <input type="number" name="number-accounts-from">
+                    </div>
+                </div>
+                <div class="input-group-wrp">
+                    <p class="input-group-wrp__label">Где искать </p>
+                    <div class="simple-select">
+                        <input hidden="" type="text" name="wharesearch" value="one" data-default-value="one">
+                        <div class="simple-select__main" tabindex="0" role="combobox" aria-expanded="false">
+                            <p class="simple-select__selected" data-placeholder="">В описании reels</p>
+                            <svg width="11" height="8" viewBox="0 0 11 8" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M10.8931 0.571533H9.88867C9.82036 0.571533 9.75608 0.605015 9.7159 0.659926L5.91099 5.90457L2.10608 0.659926C2.0659 0.605015 2.00161 0.571533 1.93331 0.571533H0.928846C0.841792 0.571533 0.790899 0.670641 0.841792 0.741623L5.56411 7.25189C5.73554 7.48761 6.08644 7.48761 6.25652 7.25189L10.9788 0.741623C11.0311 0.670641 10.9802 0.571533 10.8931 0.571533Z"
+                                      fill="black" fill-opacity="0.25"></path>
+                            </svg>
+                        </div>
+                        <div class="simple-select__drop">
+                            <div class="simple-select__drop-inner">
+                                <ul class="simple-select__list" role="listbox">
+                                    <li class="simple-select__item" data-value="one" role="option">В описании reels
+                                    </li>
+                                    <li class="simple-select__item" data-value="two" role="option">Еще где то
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-group-wrp">
+                    <p class="input-group-wrp__label">Исключить аккаунт (@user1, @user2) </p>
+                    <div class="input-group">
+                        <input type="number" name="exclude">
+                    </div>
+                </div>
+                <div class="modal-filters-inputs">
+                    <div class="input-group-wrp">
+                        <p class="input-group-wrp__label">Подписчиков </p>
+                        <div class="input-group label">
+                            <p class="input-group__label">От</p>
+                            <input type="number" name="number-accounts-from">
+                        </div>
+                    </div>
+                    <div class="input-group-wrp">
+                        <div class="input-group label">
+                            <p class="input-group__label">До</p>
+                            <input type="number" name="number-accounts-to">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-filters-inputs">
+                    <div class="input-group-wrp">
+                        <p class="input-group-wrp__label">Просмотров reels </p>
+                        <div class="input-group label">
+                            <p class="input-group__label">От</p>
+                            <input type="number" name="number-reels-from">
+                        </div>
+                    </div>
+                    <div class="input-group-wrp">
+                        <div class="input-group label">
+                            <p class="input-group__label">До</p>
+                            <input type="number" name="number-reels-to">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-filters-inputs">
+                    <div class="input-group-wrp">
+                        <p class="input-group-wrp__label">Лайков</p>
+                        <div class="input-group label">
+                            <p class="input-group__label">От</p>
+                            <input type="number" name="number-reels-from">
+                        </div>
+                    </div>
+                    <div class="input-group-wrp">
+                        <div class="input-group label">
+                            <p class="input-group__label">До</p>
+                            <input type="number" name="number-reels-to">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-filters-inputs">
+                    <div class="input-group-wrp">
+                        <p class="input-group-wrp__label">Комментариев</p>
+                        <div class="input-group label">
+                            <p class="input-group__label">От</p>
+                            <input type="number" name="number-reels-from">
+                        </div>
+                    </div>
+                    <div class="input-group-wrp">
+                        <div class="input-group label">
+                            <p class="input-group__label">До</p>
+                            <input type="number" name="number-reels-to">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-filters-inputs">
+                    <div class="input-group-wrp">
+                        <p class="input-group-wrp__label">Репостов</p>
+                        <div class="input-group label">
+                            <p class="input-group__label">От</p>
+                            <input type="number" name="number-reels-from">
+                        </div>
+                    </div>
+                    <div class="input-group-wrp">
+                        <div class="input-group label">
+                            <p class="input-group__label">До</p>
+                            <input type="number" name="number-reels-to">
+                        </div>
+                    </div>
+                </div>
+                <div class="input-group-wrp">
+                    <p class="input-group-wrp__label">Дата публикации</p>
+                    <div class="input-group"></div>
+                </div>
+                <div class="range-dates-inputs">
+                    <div class="range-dates-inputs__item">
+                        <input type="date" name="date-from" placeholder="От">
+                        <svg width="14" viewBox="0 0 14 14">
+                            <use xlink:href="#icon-swaright"></use>
+                        </svg>
+                    </div>
+                    <div class="range-dates-inputs__item">
+                        <input type="date" name="date-from" placeholder="От">
+                        <svg width="14" viewBox="0 0 14 14">
+                            <use xlink:href="#icon-date"></use>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-buttons-group">
+                <button class="btn" type="button" id="clear-button"><span class="btn__inner">Сбросить все</span>
+                </button>
+                <button class="btn btn--blue" type="submit"><span class="btn__inner">Применить</span></button>
+            </div>
+        </form>
+    </div>
+</div>

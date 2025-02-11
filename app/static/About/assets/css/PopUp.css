@@ -32,7 +32,6 @@
 
 .rec-content{
     height: fit-content !important;
-    width: fit-content !important;
 }
 
 .content::-webkit-scrollbar {
@@ -57,7 +56,7 @@
 
 @media screen and (max-width: 600px) {
     .content{
-        width: 96%;
+        width: 60%;
     }
 }
 

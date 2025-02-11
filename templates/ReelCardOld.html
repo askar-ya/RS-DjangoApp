@@ -1,0 +1,68 @@
+{% load static %}
+
+<div class="reel pointer">
+  <div class="video">
+    <div class="info">
+      <p class="name">@${data[i]['author']['nick']}</p>
+      <p class="sub">Подписчиков: ${data[i]['author']['subscribers']}</p>
+      <p class="date">13.12.24 в 14:00</p>
+    </div>
+
+    <div class="actions">
+      <div class="box">
+
+        <img src="{% static "images/saves.svg" %}" alt="">
+      </div>
+
+      <div class="box">
+        <img src="{% static "images/more.svg" %}" alt="">
+      </div>
+
+    </div>
+
+    <div class="metrics">
+
+      <div class="box">
+        <img src="{% static "images/play.svg" %}" alt="">
+        <p>3.6 M</p>
+      </div>
+
+      <div class="box">
+        <img src="{% static "images/like.svg" %}" alt="">
+        <p>142 K</p>
+      </div>
+
+      <div class="box">
+        <img src="{% static "images/comments.svg" %}" alt="">
+        <p>1.4 K</p>
+      </div>
+
+      <div class="box">
+        <img src="{% static "images/saves.svg" %}" alt="">
+        <p>11.2 K</p>
+      </div>
+      <div class="box">
+        <img src="{% static "images/share.svg" %}" alt="">
+        <p>3 832</p>
+      </div>
+    </div>
+
+    <div class="btn-box" onclick="startstop.apply(this);">
+          <img src="{% static "images/play.svg" %}" alt="">
+    </div>
+
+    <video id="video" poster=${poster_src} loop="loop">
+      <source src=${video_src} type='video/mp4'/>
+    </video>
+
+
+  </div>
+  <div class="description" title="Подробнее" onclick="reelDetailed.apply(this);">
+    <div class="text-box">
+      <h3 class="user">${data[i]['author']['nick']}</h3>
+    </div>
+    <div class="text-box">
+      <h3 class="text">${data[i]['description']}</h3>
+    </div>
+  </div>
+</div>

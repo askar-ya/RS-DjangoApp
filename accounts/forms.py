@@ -1,5 +1,6 @@
-from django.contrib.auth import get_user_model, authenticate, password_validation
+from django.contrib.auth import get_user_model, authenticate, password_validation, login
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.forms import PasswordResetForm as PasswordResetFormBase
 from django import forms
 from django.core.exceptions import ValidationError
 from django.contrib.auth.forms import PasswordChangeForm
@@ -41,6 +42,7 @@ class MySetPasswordForm(PasswordChangeForm):
 
 
 class UserSingUp(UserCreationForm):
+
     email = forms.EmailField(
         label="email",
         max_length=254,
@@ -52,6 +54,46 @@ class UserSingUp(UserCreationForm):
         fields = ('username', 'email')
 
 
+class LoginForm(AuthenticationForm):
+    confirm_email = False
+
+    def clean(self):
+        username = self.cleaned_data.get("username")
+        password = self.cleaned_data.get("password")
+
+        if username is not None and password:
+
+            self.user_cache = authenticate(
+                self.request, email=username, password=password
+            )
+
+            if self.user_cache is None:
+                raise self.get_invalid_login_error()
+            else:
+                self.confirm_login_allowed(self.user_cache)
+
+            if not self.user_cache.email_verified:
+
+                send_email_for_verify(self.request, self.user_cache)
+
+                self.confirm_email = True
+
+                raise ValidationError(
+                    'Адрес электронной почты не подтвержден. Пожалуйста, проверьте свой адрес электронной почты.',
+                    code="invalid_login",
+                    params={'username': self.username_field.verbose_name},
+                )
+        return self.cleaned_data
+
+
+class PasswordResetForm(PasswordResetFormBase):
+    def clean(self):
+        print('-------123---->')
+        email = self.cleaned_data.get("email")
+        if not User.objects.filter(email__iexact=email, email_verified=True).exists():
+            raise ValidationError("Нет аккаунта с такой почтой или она не подтверждена!")
+
+        return self.cleaned_data
 
 class MyAuthenticationForm(AuthenticationForm):
 

@@ -1,0 +1,348 @@
+@charset "UTF-8";
+.reelsCard {
+  width: 100%;
+  max-width: 275px;
+  border-radius: 8px;
+  font-family: "Roboto", sans-serif;
+  position: relative; }
+  .reelsCard__main {
+    width: 100%;
+    min-height: 490px;
+    background: #fff;
+    border-radius: 9px 9px 0 0;
+    line-height: 0;
+    position: relative;
+    padding: 8px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between; }
+    @media (max-width: 575px) {
+      .reelsCard__main {
+        min-height: 163vw; } }
+  .reelsCard__videoPlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    z-index: 2;
+    -webkit-transition: 0.15s;
+    transition: 0.15s;
+    cursor: pointer;
+    pointer-events: none; }
+    .reelsCard__videoPlay svg {
+      fill: #fff; }
+  .reelsCard__mainTop {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    position: relative;
+    z-index: 3;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start; }
+  .reelsCard__mainBottom {
+    position: relative;
+    z-index: 2;
+    background: #00000059;
+    -webkit-backdrop-filter: blur(16px);
+            backdrop-filter: blur(16px);
+    padding: 8px;
+    border-radius: 8px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none; }
+  .reelsCard__bottomEl {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    font-family: "Roboto", sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 12px;
+    gap: 6px;
+    padding: 0 3px;
+    color: #fff; }
+    .reelsCard__bottomEl svg {
+      fill: #fff; }
+  .reelsCard__info {
+    background: #00000059;
+    -webkit-backdrop-filter: blur(16px);
+            backdrop-filter: blur(16px);
+    padding: 8px;
+    border-radius: 8px; }
+  .reelsCard__link {
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15px;
+    color: #fff;
+    margin-bottom: 2px; }
+  .reelsCard__subscrs {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 15px;
+    color: #fff;
+    opacity: 0.5; }
+  .reelsCard__icons {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    gap: 4px; }
+  .reelsCard__button {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #00000059;
+    -webkit-backdrop-filter: blur(16px);
+            backdrop-filter: blur(16px);
+    border: none;
+    -webkit-transition: 0.15s;
+    transition: 0.15s; }
+    .reelsCard__button svg {
+      fill: #fff; }
+    @media (hover: hover) {
+      .reelsCard__button:hover {
+        opacity: 0.7; } }
+  .reelsCard__iconWp {
+    position: relative; }
+  .reelsCard__popup {
+    position: absolute;
+    top: 40px;
+    left: 0;
+    z-index: 5;
+    visibility: hidden;
+    opacity: 0;
+    -webkit-transition: 0.15s;
+    transition: 0.15s;
+    background: #fff; }
+    .reelsCard__popup.isOpen {
+      visibility: visible;
+      opacity: 1; }
+    .reelsCard__popup.toLeft {
+      left: auto;
+      right: 0; }
+  .reelsCard__popupList {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    gap: 4px;
+    max-height: 378px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overflow: auto;
+    scrollbar-color: #999 #ccc;
+    scrollbar-width: thin; }
+    .reelsCard__popupList::-webkit-scrollbar {
+      width: 2px;
+      height: 2px;
+      background-color: #ccc; }
+    .reelsCard__popupList::-webkit-scrollbar-track {
+      background-color: #ccc; }
+    .reelsCard__popupList::-webkit-scrollbar-thumb:vertical {
+      background-color: #999; }
+    .reelsCard__popupList::-webkit-scrollbar-thumb:horizontal {
+      background-color: #999; }
+  .reelsCard .default-checkbox {
+    font-size: 14px;
+    line-height: 22px; }
+    .reelsCard .default-checkbox__text {
+      margin-left: 12px;
+      -webkit-user-select: none;
+         -moz-user-select: none;
+          -ms-user-select: none;
+              user-select: none; }
+    .reelsCard .default-checkbox__label {
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center; }
+  .reelsCard__popupListAppend {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    gap: 14px;
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    height: 22px;
+    background: transparent;
+    border: none;
+    padding: 0;
+    color: #00000073;
+    -webkit-transition: 0.15s;
+    transition: 0.15s; }
+    .reelsCard__popupListAppend svg {
+      fill: #00000073; }
+    @media (hover: hover) {
+      .reelsCard__popupListAppend:hover {
+        opacity: 0.7; } }
+  .reelsCard__popupBtns {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    gap: 8px; }
+  .reelsCard__popupFavor {
+    padding: 16px 12px;
+    border-radius: 8px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    gap: 12px;
+    min-width: 258px; }
+  .reelsCard__popupMore {
+    padding: 4px 0;
+    border-radius: 8px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    min-width: 295px; }
+  .reelsCard__popupMoreBtn {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    height: 32px;
+    padding: 0 0 0 12px;
+    gap: 8px;
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+    background: transparent;
+    border: none;
+    -webkit-transition: 0.15s;
+    transition: 0.15s; }
+    @media (hover: hover) {
+      .reelsCard__popupMoreBtn:hover {
+        background: #f0efef; } }
+    .reelsCard__popupMoreBtn svg {
+      fill: #000; }
+  .reelsCard__popupTitle {
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18px; }
+  .reelsCard__img {
+    max-width: 100%;
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+    -o-object-position: center;
+       object-position: center;
+    border-radius: 8px 8px 0 0;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    cursor: pointer;
+    background: #000; }
+    @media (hover: hover) {
+      .reelsCard__img:hover + .reelsCard__videoPlay {
+        -webkit-transform: translate(-50%, -50%) scale(1.1);
+            -ms-transform: translate(-50%, -50%) scale(1.1);
+                transform: translate(-50%, -50%) scale(1.1); } }
+  .reelsCard__footer {
+    width: 100%;
+    min-height: 73px;
+    padding: 16px;
+    background: #fff;
+    border-radius: 0 0 8px 8px;
+    display: block; }
+  .reelsCard__name {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18.9px;
+    margin-bottom: 4px; }
+  .reelsCard__descr {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17.5px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    /* Ограничение на 2 строки */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    position: relative; }
+    .reelsCard__descr-more {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      background: white;
+      font-size: 400;
+      line-height: 18px;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      gap: 5px;
+      padding-left: 5px; }
+      .reelsCard__descr-more-txt {
+        color: #a9a9a9; }
+  .reelsCard .video-played + .reelsCard__videoPlay {
+    display: none; }
+
+/*# sourceMappingURL=styles.min.css.map */

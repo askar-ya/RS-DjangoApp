@@ -3,8 +3,10 @@ from . import views
 
 
 urlpatterns = [
-    path('', views.main_page, name='Reels Scaner'),
+    path('', views.MainPage.as_view(), name='Reels Scaner'),
     path('about/', views.About.as_view(), name='About'),
+    path('privacy_policy/', views.privacy_policy, name='Privacy policy'),
+    path('offer/', views.the_offer, name='The offer'),
     path('successful/', views.successful, name='Successful'),
     path('compilations/', views.compilations, name='Compilations'),
     path('compilations/<int:category>', views.compilations),

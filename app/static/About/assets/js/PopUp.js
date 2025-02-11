@@ -1,6 +1,7 @@
 function PopUp(window) {
-    console.log('.pop-up .' + window);
-    let popUp = document.querySelector('.popUp.' + window)
+    console.log('.popUp .' + window);
+    let popUp = document.querySelector('.popUp.' + window);
+    console.log(popUp)
     popUp.style.display = 'block'
 }
 

@@ -31,7 +31,6 @@ class MainPage:
                 if start_day > expired:
                     self.subscriptions = True
 
-
     def render(self):
         return render(self.request, 'MainPage.html',
                       context={'user': self.user

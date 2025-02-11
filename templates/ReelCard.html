@@ -1,68 +1,295 @@
 {% load static %}
-
-<div class="reel pointer">
-  <div class="video">
-    <div class="info">
-      <p class="name">@${data[i]['author']['nick']}</p>
-      <p class="sub">Подписчиков: ${data[i]['author']['subscribers']}</p>
-      <p class="date">13.12.24 в 14:00</p>
+<div class="reelsCard">
+    <div class="reelsCard__main">
+        <div class="reelsCard__mainTop">
+            <div class="reelsCard__info">
+                <div class="reelsCard__link">@zalia_007_ 1</div>
+                <div class="reelsCard__subscrs" data-sbscr="1257941" data-publics="1" data-followers="11">Подписчиков:
+                    125 7941 <br>13.12.23 в 14:00
+                </div>
+            </div>
+            <div class="reelsCard__icons"><span class="reelsCard__iconWp reelsCard__iconWpFavor">
+<button class="reelsCard__button reelsCard__buttonFavor">
+<svg width="16" viewBox="0 0 16 16">
+<use xlink:href="#icon-favourites"></use>
+</svg>
+</button>
+<div class="reelsCard__popup reelsCard__popupFavor">
+<div class="reelsCard__popupTitle">Сохранено в избранном, добавить в коллекцию?</div>
+<div class="reelsCard__popupList">
+<div class="default-checkbox">
+<label class="default-checkbox__label">
+<input type="checkbox" name="agree" checked="" hidden=""><span class="default-checkbox__custom" tabindex="0"><svg
+        width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M5.10545 7.60407L5.08783 7.62169L0.687988 3.22185L2.12067 1.78917L5.10551 4.77402L9.87953 0L11.3122 1.43268L5.12313 7.62175L5.10545 7.60407Z"
+      fill="white"></path>
+</svg></span><span class="default-checkbox__text">Вдохновение</span>
+</label>
+</div>
+<div class="default-checkbox">
+<label class="default-checkbox__label">
+<input type="checkbox" name="agree" checked="" hidden=""><span class="default-checkbox__custom" tabindex="0"><svg
+        width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M5.10545 7.60407L5.08783 7.62169L0.687988 3.22185L2.12067 1.78917L5.10551 4.77402L9.87953 0L11.3122 1.43268L5.12313 7.62175L5.10545 7.60407Z"
+      fill="white"></path>
+</svg></span><span class="default-checkbox__text">Тренды в нише «Астрология»</span>
+</label>
+</div>
+<div class="default-checkbox">
+<label class="default-checkbox__label">
+<input type="checkbox" name="agree" hidden=""><span class="default-checkbox__custom" tabindex="0"><svg width="12"
+                                                                                                       height="8"
+                                                                                                       viewBox="0 0 12 8"
+                                                                                                       fill="none"
+                                                                                                       xmlns="http://www.w3.org/2000/svg">
+<path d="M5.10545 7.60407L5.08783 7.62169L0.687988 3.22185L2.12067 1.78917L5.10551 4.77402L9.87953 0L11.3122 1.43268L5.12313 7.62175L5.10545 7.60407Z"
+      fill="white"></path>
+</svg></span><span class="default-checkbox__text">Новая подборка 1</span>
+</label>
+</div>
+<div class="default-checkbox">
+<label class="default-checkbox__label">
+<input type="checkbox" name="agree" hidden=""><span class="default-checkbox__custom" tabindex="0"><svg width="12"
+                                                                                                       height="8"
+                                                                                                       viewBox="0 0 12 8"
+                                                                                                       fill="none"
+                                                                                                       xmlns="http://www.w3.org/2000/svg">
+<path d="M5.10545 7.60407L5.08783 7.62169L0.687988 3.22185L2.12067 1.78917L5.10551 4.77402L9.87953 0L11.3122 1.43268L5.12313 7.62175L5.10545 7.60407Z"
+      fill="white"></path>
+</svg></span><span class="default-checkbox__text">Новая подборка 1</span>
+</label>
+</div>
+<div class="default-checkbox">
+<label class="default-checkbox__label">
+<input type="checkbox" name="agree" hidden=""><span class="default-checkbox__custom" tabindex="0"><svg width="12"
+                                                                                                       height="8"
+                                                                                                       viewBox="0 0 12 8"
+                                                                                                       fill="none"
+                                                                                                       xmlns="http://www.w3.org/2000/svg">
+<path d="M5.10545 7.60407L5.08783 7.62169L0.687988 3.22185L2.12067 1.78917L5.10551 4.77402L9.87953 0L11.3122 1.43268L5.12313 7.62175L5.10545 7.60407Z"
+      fill="white"></path>
+</svg></span><span class="default-checkbox__text">Новая подборка 1</span>
+</label>
+</div>
+<div class="default-checkbox">
+<label class="default-checkbox__label">
+<input type="checkbox" name="agree" hidden=""><span class="default-checkbox__custom" tabindex="0"><svg width="12"
+                                                                                                       height="8"
+                                                                                                       viewBox="0 0 12 8"
+                                                                                                       fill="none"
+                                                                                                       xmlns="http://www.w3.org/2000/svg">
+<path d="M5.10545 7.60407L5.08783 7.62169L0.687988 3.22185L2.12067 1.78917L5.10551 4.77402L9.87953 0L11.3122 1.43268L5.12313 7.62175L5.10545 7.60407Z"
+      fill="white"></path>
+</svg></span><span class="default-checkbox__text">Новая подборка 1</span>
+</label>
+</div>
+<div class="default-checkbox">
+<label class="default-checkbox__label">
+<input type="checkbox" name="agree" hidden=""><span class="default-checkbox__custom" tabindex="0"><svg width="12"
+                                                                                                       height="8"
+                                                                                                       viewBox="0 0 12 8"
+                                                                                                       fill="none"
+                                                                                                       xmlns="http://www.w3.org/2000/svg">
+<path d="M5.10545 7.60407L5.08783 7.62169L0.687988 3.22185L2.12067 1.78917L5.10551 4.77402L9.87953 0L11.3122 1.43268L5.12313 7.62175L5.10545 7.60407Z"
+      fill="white"></path>
+</svg></span><span class="default-checkbox__text">Новая подборка 1</span>
+</label>
+</div>
+<div class="default-checkbox">
+<label class="default-checkbox__label">
+<input type="checkbox" name="agree" hidden=""><span class="default-checkbox__custom" tabindex="0"><svg width="12"
+                                                                                                       height="8"
+                                                                                                       viewBox="0 0 12 8"
+                                                                                                       fill="none"
+                                                                                                       xmlns="http://www.w3.org/2000/svg">
+<path d="M5.10545 7.60407L5.08783 7.62169L0.687988 3.22185L2.12067 1.78917L5.10551 4.77402L9.87953 0L11.3122 1.43268L5.12313 7.62175L5.10545 7.60407Z"
+      fill="white"></path>
+</svg></span><span class="default-checkbox__text">Новая подборка 1</span>
+</label>
+</div>
+<div class="default-checkbox">
+<label class="default-checkbox__label">
+<input type="checkbox" name="agree" hidden=""><span class="default-checkbox__custom" tabindex="0"><svg width="12"
+                                                                                                       height="8"
+                                                                                                       viewBox="0 0 12 8"
+                                                                                                       fill="none"
+                                                                                                       xmlns="http://www.w3.org/2000/svg">
+<path d="M5.10545 7.60407L5.08783 7.62169L0.687988 3.22185L2.12067 1.78917L5.10551 4.77402L9.87953 0L11.3122 1.43268L5.12313 7.62175L5.10545 7.60407Z"
+      fill="white"></path>
+</svg></span><span class="default-checkbox__text">Новая подборка 1</span>
+</label>
+</div>
+<div class="default-checkbox">
+<label class="default-checkbox__label">
+<input type="checkbox" name="agree" hidden=""><span class="default-checkbox__custom" tabindex="0"><svg width="12"
+                                                                                                       height="8"
+                                                                                                       viewBox="0 0 12 8"
+                                                                                                       fill="none"
+                                                                                                       xmlns="http://www.w3.org/2000/svg">
+<path d="M5.10545 7.60407L5.08783 7.62169L0.687988 3.22185L2.12067 1.78917L5.10551 4.77402L9.87953 0L11.3122 1.43268L5.12313 7.62175L5.10545 7.60407Z"
+      fill="white"></path>
+</svg></span><span class="default-checkbox__text">Новая подборка 1</span>
+</label>
+</div>
+<div class="default-checkbox">
+<label class="default-checkbox__label">
+<input type="checkbox" name="agree" hidden=""><span class="default-checkbox__custom" tabindex="0"><svg width="12"
+                                                                                                       height="8"
+                                                                                                       viewBox="0 0 12 8"
+                                                                                                       fill="none"
+                                                                                                       xmlns="http://www.w3.org/2000/svg">
+<path d="M5.10545 7.60407L5.08783 7.62169L0.687988 3.22185L2.12067 1.78917L5.10551 4.77402L9.87953 0L11.3122 1.43268L5.12313 7.62175L5.10545 7.60407Z"
+      fill="white"></path>
+</svg></span><span class="default-checkbox__text">Новая подборка 1</span>
+</label>
+</div>
+<div class="default-checkbox">
+<label class="default-checkbox__label">
+<input type="checkbox" name="agree" hidden=""><span class="default-checkbox__custom" tabindex="0"><svg width="12"
+                                                                                                       height="8"
+                                                                                                       viewBox="0 0 12 8"
+                                                                                                       fill="none"
+                                                                                                       xmlns="http://www.w3.org/2000/svg">
+<path d="M5.10545 7.60407L5.08783 7.62169L0.687988 3.22185L2.12067 1.78917L5.10551 4.77402L9.87953 0L11.3122 1.43268L5.12313 7.62175L5.10545 7.60407Z"
+      fill="white"></path>
+</svg></span><span class="default-checkbox__text">Новая подборка 1</span>
+</label>
+</div>
+<div class="default-checkbox">
+<label class="default-checkbox__label">
+<input type="checkbox" name="agree" hidden=""><span class="default-checkbox__custom" tabindex="0"><svg width="12"
+                                                                                                       height="8"
+                                                                                                       viewBox="0 0 12 8"
+                                                                                                       fill="none"
+                                                                                                       xmlns="http://www.w3.org/2000/svg">
+<path d="M5.10545 7.60407L5.08783 7.62169L0.687988 3.22185L2.12067 1.78917L5.10551 4.77402L9.87953 0L11.3122 1.43268L5.12313 7.62175L5.10545 7.60407Z"
+      fill="white"></path>
+</svg></span><span class="default-checkbox__text">Новая подборка 1</span>
+</label>
+</div>
+<div class="default-checkbox">
+<label class="default-checkbox__label">
+<input type="checkbox" name="agree" hidden=""><span class="default-checkbox__custom" tabindex="0"><svg width="12"
+                                                                                                       height="8"
+                                                                                                       viewBox="0 0 12 8"
+                                                                                                       fill="none"
+                                                                                                       xmlns="http://www.w3.org/2000/svg">
+<path d="M5.10545 7.60407L5.08783 7.62169L0.687988 3.22185L2.12067 1.78917L5.10551 4.77402L9.87953 0L11.3122 1.43268L5.12313 7.62175L5.10545 7.60407Z"
+      fill="white"></path>
+</svg></span><span class="default-checkbox__text">Новая подборка 1</span>
+</label>
+</div>
+<div class="default-checkbox">
+<label class="default-checkbox__label">
+<input type="checkbox" name="agree" hidden=""><span class="default-checkbox__custom" tabindex="0"><svg width="12"
+                                                                                                       height="8"
+                                                                                                       viewBox="0 0 12 8"
+                                                                                                       fill="none"
+                                                                                                       xmlns="http://www.w3.org/2000/svg">
+<path d="M5.10545 7.60407L5.08783 7.62169L0.687988 3.22185L2.12067 1.78917L5.10551 4.77402L9.87953 0L11.3122 1.43268L5.12313 7.62175L5.10545 7.60407Z"
+      fill="white"></path>
+</svg></span><span class="default-checkbox__text">Новая подборка 1</span>
+</label>
+</div>
+<div class="default-checkbox">
+<label class="default-checkbox__label">
+<input type="checkbox" name="agree" hidden=""><span class="default-checkbox__custom" tabindex="0"><svg width="12"
+                                                                                                       height="8"
+                                                                                                       viewBox="0 0 12 8"
+                                                                                                       fill="none"
+                                                                                                       xmlns="http://www.w3.org/2000/svg">
+<path d="M5.10545 7.60407L5.08783 7.62169L0.687988 3.22185L2.12067 1.78917L5.10551 4.77402L9.87953 0L11.3122 1.43268L5.12313 7.62175L5.10545 7.60407Z"
+      fill="white"></path>
+</svg></span><span class="default-checkbox__text">Новая подборка 1</span>
+</label>
+</div>
+<div class="default-checkbox">
+<label class="default-checkbox__label">
+<input type="checkbox" name="agree" hidden=""><span class="default-checkbox__custom" tabindex="0"><svg width="12"
+                                                                                                       height="8"
+                                                                                                       viewBox="0 0 12 8"
+                                                                                                       fill="none"
+                                                                                                       xmlns="http://www.w3.org/2000/svg">
+<path d="M5.10545 7.60407L5.08783 7.62169L0.687988 3.22185L2.12067 1.78917L5.10551 4.77402L9.87953 0L11.3122 1.43268L5.12313 7.62175L5.10545 7.60407Z"
+      fill="white"></path>
+</svg></span><span class="default-checkbox__text">Новая подборка 1</span>
+</label>
+</div>
+</div>
+<button class="reelsCard__popupListAppend">
+<svg width="14" viewBox="0 0 14 14">
+<use xlink:href="#icon-plus"></use>
+</svg>Создать коллекцию
+</button>
+<div class="reelsCard__popupBtns">
+<button class="btn btn--blue" type="submit"><span class="btn__inner">Добавить</span></button>
+<button class="btn" type="button"><span class="btn__inner">Пропустить</span></button>
+</div>
+</div></span><span class="reelsCard__iconWp reelsCard__iconWpMore">
+<button class="reelsCard__button reelsCard__buttonMore">
+<svg width="16" viewBox="0 0 16 16">
+<use xlink:href="#icon-more"></use>
+</svg>
+</button>
+<div class="reelsCard__popup reelsCard__popupMore">
+<button class="reelsCard__popupMoreBtn" type="submit">
+<svg width="12" viewBox="0 0 12 12">
+<use xlink:href="#icon-download"></use>
+</svg>Скачать reels
+</button>
+<button class="reelsCard__popupMoreBtn" type="button">
+<svg width="12" viewBox="0 0 12 12">
+<use xlink:href="#icon-user"></use>
+</svg>Все публикации аккаунта
+</button>
+<button class="reelsCard__popupMoreBtn" type="button">
+<svg width="12" viewBox="0 0 12 12">
+<use xlink:href="#icon-ring"></use>
+</svg>Подписаться на обновления аккаунта
+</button>
+</div></span></div>
+        </div>
+        <div class="reelsCard__mainBottom">
+            <div class="reelsCard__bottomEl reelsCard__bottomElViews">
+                <svg width="14" viewBox="0 0 14 14">
+                    <use xlink:href="#icon-play"></use>
+                </svg>
+                <span data-count="1307001">130.71 K</span>
+            </div>
+            <div class="reelsCard__bottomEl reelsCard__bottomElLikes">
+                <svg width="14" viewBox="0 0 14 14">
+                    <use xlink:href="#icon-like"></use>
+                </svg>
+                <span data-count="580001">581 K</span>
+            </div>
+            <div class="reelsCard__bottomEl reelsCard__bottomElComments">
+                <svg width="14" viewBox="0 0 14 14">
+                    <use xlink:href="#icon-comment"></use>
+                </svg>
+                <span data-count="25001">23.51 K</span>
+            </div>
+            <div class="reelsCard__bottomEl reelsCard__bottomElShares">
+                <svg width="14" viewBox="0 0 14 14">
+                    <use xlink:href="#icon-share"></use>
+                </svg>
+                <span data-count="3 8321">3 8321</span>
+            </div>
+        </div>
+        <video class="reelsCard__img" src="#" data-src="{% static "video/1.mp4" %}" poster="{% static "posters/1.jpg" %}" loop=""></video>
+        <div class="reelsCard__videoPlay">
+            <svg width="32" viewBox="0 0 32 32">
+                <use xlink:href="#icon-play"></use>
+            </svg>
+        </div>
     </div>
-
-    <div class="actions">
-      <div class="box">
-
-        <img src="{% static "images/saves.svg" %}" alt="">
-      </div>
-
-      <div class="box">
-        <img src="{% static "images/more.svg" %}" alt="">
-      </div>
-
-    </div>
-
-    <div class="metrics">
-
-      <div class="box">
-        <img src="{% static "images/play.svg" %}" alt="">
-        <p>3.6 M</p>
-      </div>
-
-      <div class="box">
-        <img src="{% static "images/like.svg" %}" alt="">
-        <p>142 K</p>
-      </div>
-
-      <div class="box">
-        <img src="{% static "images/comments.svg" %}" alt="">
-        <p>1.4 K</p>
-      </div>
-
-      <div class="box">
-        <img src="{% static "images/saves.svg" %}" alt="">
-        <p>11.2 K</p>
-      </div>
-      <div class="box">
-        <img src="{% static "images/share.svg" %}" alt="">
-        <p>3 832</p>
-      </div>
-    </div>
-
-    <div class="btn-box" onclick="startstop.apply(this);">
-          <img src="{% static "images/play.svg" %}" alt="">
-    </div>
-
-    <video id="video" poster=${poster_src} loop="loop">
-      <source src=${video_src} type='video/mp4'/>
-    </video>
-
-
-  </div>
-  <div class="description" title="Подробнее" onclick="reelDetailed.apply(this);">
-    <div class="text-box">
-      <h3 class="user">${data[i]['author']['nick']}</h3>
-    </div>
-    <div class="text-box">
-      <h3 class="text">${data[i]['description']}</h3>
-    </div>
-  </div>
+    <a class="reelsCard__footer" href="#" data-modal="modal-reels">
+        <div class="reelsCard__descr"
+             data-subtext="(1)Чувство природы врождённо нам всем, от грубого дикаря до самого образованного человека. (2)Противоестественное воспитание, насильственные понятия, ложное направление, ложная жизнь - всё это вместе стремится заглушить мощный голос природы и часто заглушает это чувство или даёт ему искажённое развитие."
+             data-text="1 Dr.Aizada Врач-косметологсо стажем 12 лет 🏆🫦 Контурная пластика💉 Инъекционная косметология📍Жанаузень ТД Шанырак, 2-этаж📍Актау 19.36/1">
+            1 Dr.Aizada Врач-косметологсо стажем 12 лет 🏆🫦 Контурная пластика💉 Инъекционная косметология📍Жанаузень ТД
+            Шанырак, 2-этаж📍Актау 19.36/1
+            <div class="reelsCard__descr-more"><span>...</span><span class="reelsCard__descr-more-txt">Подробнее</span>
+            </div>
+        </div>
+    </a>
 </div>

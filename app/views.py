@@ -1,51 +1,98 @@
 from django.shortcuts import render, HttpResponse, redirect
 from app.logic import add_new_authors
 from app.form import AddAuthorsForm
-from accounts.forms import UserSingUp
+from accounts.forms import UserSingUp, LoginForm
 from django.views import View
-from django.contrib.auth import login, authenticate, get_user_model
-from django.template import RequestContext
-import json
-from app.service import MainPage, Compilations, BookmarksView
-
+from django.contrib.auth import login, authenticate
+from app.service import Compilations, BookmarksView
 from accounts.services import send_email_for_verify
+from accounts.forms import PasswordResetForm
 
-def main_page(request):
-
-    return MainPage(request).render()
-
-
-class About(View):
-    template_name = 'About.html'
+class PageWithForms(View):
+    template_name = ''
+    complete_reg = ''
 
     def get(self, request):
-        if request.user.is_authenticated:
-            return redirect('Reels Scaner')
         context = {
             'SingUpForm': UserSingUp(),
+            'LoginForm': LoginForm(),
+            'PasswordResetForm': PasswordResetForm(),
         }
         return render(request, self.template_name, context)
 
     def post(self, request):
-        form = UserSingUp(request.POST)
+        print(request.POST)
+        context = {}
+        if 'LoginForm' in request.POST:
+            form = LoginForm(request, data=request.POST)
+            if form.is_valid():
+                email = form.cleaned_data['username']
+                password = form.cleaned_data['password']
+                user = authenticate(email=email, password=password)  # Проверяем учетные данные
+                if user is not None:
+                    login(request, user)  # Выполняем вход
+                    return redirect('Reels Scaner')  # Перенаправляем на главную страницу
+            context = {'LoginForm': form, 'FormsErrors': 'LoginForm', 'SingUpForm': UserSingUp(), 'PasswordResetForm': PasswordResetForm()}
+            if form.confirm_email:
+                context['FormsErrors'] = 'EmailConfirmed'
+                context['UserEmail'] = form.cleaned_data['username']
 
-        if form.is_valid():
-            form.save()
-            email = form.cleaned_data.get('email')
-            raw_password = form.cleaned_data.get('password1')
+        elif 'SingUpForm' in request.POST:
+            form = UserSingUp(request.POST)
+            if form.is_valid():
+                form.save()
+                email = form.cleaned_data.get('email')
+                raw_password = form.cleaned_data.get('password1')
+                user = authenticate(email=email, password=raw_password)
+                send_email_for_verify(request, user)
+                context = {
+                    'SingUpForm': UserSingUp(),
+                    'LoginForm': LoginForm(),
+                    'PasswordResetForm': PasswordResetForm(),
+                    'FormsErrors': 'EmailConfirmed',
+                    'UserEmail': email
+                }
+                if self.complete_reg == 'Successful':
+                    return redirect(self.complete_reg)
+                return redirect(self.complete_reg, context)
+            context = {'SingUpForm': form, 'FormsErrors': 'SingUpForm', 'LoginForm': LoginForm(), 'PasswordResetForm': PasswordResetForm()}
 
-            user = authenticate(email=email, password=raw_password)
+        elif 'PasswordResetForm' in request.POST:
+            form = PasswordResetForm(request.POST)
+            if form.is_valid():
+                form.save(request=self.request)
+                context = {
+                    'SingUpForm': UserSingUp(),
+                    'LoginForm': LoginForm(),
+                    'PasswordResetForm': form,
+                    'FormsErrors': 'EmailConfirmed',
+                    'UserEmail': form.cleaned_data.get('email')
+                }
+                return render(request, self.template_name, context)
+            context = {'SingUpForm': UserSingUp(), 'FormsErrors': 'PasswordResetForm', 'LoginForm': LoginForm(),
+                       'PasswordResetForm': form}
 
-            send_email_for_verify(request, user)
-
-            return redirect('Successful')
-
-        context = {'SingUpForm': form, 'errors': True}
         return render(request, self.template_name, context)
 
+class MainPage(PageWithForms):
+    template_name = 'MainPage.html'
+    complete_reg = 'Reels Scaner'
+
+class About(PageWithForms):
+    template_name = 'About.html'
+    complete_reg = 'Successful'
+
+
+
+def privacy_policy(request):
+    return render(request, 'PrivacyPolicy.html')
+
+def the_offer(request):
+    return render(request, 'TheOffer.html')
 
 def successful(request):
     return render(request, template_name='Thanks.html')
+
 
 def add_authors(request):
     return render(request, 'add_authors.html', {'form': AddAuthorsForm})

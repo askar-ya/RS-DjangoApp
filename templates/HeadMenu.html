@@ -4,19 +4,19 @@
     <div class="container">
         <div class="header-inner">
             <h5 class="header-inner__side header-inner__name"><img src="{% static 'icon/reels-logo.svg' %}" alt="" width="150"></h5>
-            <div class="header-nav"><a class="header-nav__item is-active" href="/">
+            <div class="header-nav"><a class="header-nav__item" id="main-href" href="/">
                 <svg width="14" viewBox="0 0 14 14">
                     <use xlink:href="#icon-compas"></use>
                 </svg>
-                <p>Поиск</p></a><a class="header-nav__item" href="{% url 'Compilations' %}">
+                <p>Поиск</p></a><a class="header-nav__item" id="compilations-href" href="{% url 'Compilations' %}">
                 <svg width="14" viewBox="0 0 14 14">
                     <use xlink:href="#icon-selections"></use>
                 </svg>
-                <p>Подборки</p></a><a class="header-nav__item" href="{% url 'Bookmarks' %}">
+                <p>Подборки</p></a><a class="header-nav__item" id="bookmarks-href" href="{% url 'Bookmarks' %}">
                 <svg width="14" viewBox="0 0 14 14">
                     <use xlink:href="#icon-favourites"></use>
                 </svg>
-                <p>Избранное</p></a><a class="header-nav__item" href="{% url 'Bookmarks' %}">
+                <p>Избранное</p></a><a class="header-nav__item" id="sub-href" href="{% url 'Bookmarks' %}">
                 <svg width="14" viewBox="0 0 14 14">
                     <use xlink:href="#icon-ring"></use>
                 </svg>
@@ -28,10 +28,9 @@
 
 
                 {% if user.is_authenticated %}
-                    <div class="user-info">
-                        <a href="{% url 'profile' %}" class="name">{{ user }}</a>
-                        <h3 class="sub-time">Осталось 12 дн подписки</h3>
-
+                    <div class="header-inner__side user-info">
+                        <a class="user-info__mail" href="{% url 'profile' %}">{{ user }}</a>
+                        <p class="user-info__days">Осталось 12 дн подписки</p>
                     </div>
                 {% else %}
                     <div class="header-inner__side user-info" id="LoginForm" data-modal="modal-enter-to-app">

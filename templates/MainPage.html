@@ -19,6 +19,9 @@
 {% block content %}
 
     {% include "HeadMenu.html" %}
+    <script>
+        document.querySelector('.header-inner #main-href').classList.add("is-active");
+    </script>
     {% include "registration/Login.html" %}
     {% include "registration/Register.html" %}
     {% include "registration/CheckEmail.html" %}
@@ -51,9 +54,9 @@
     {% if user.is_authenticated %}
         {% include "ReelPopUp.html" %}
         <script>
-
             const stored = []
             let par = window.location.search
+            console.log(par)
 
             let requestURL = 'https://reelsscanner.com/api/reels/' + par
             const xhr = new XMLHttpRequest()
@@ -62,9 +65,34 @@
             urlParams = new URLSearchParams(par)
 
 
+
+            function RemoveFilter() {
+                let filter_name = this.attributes["data-filer-name"].value
+                let parm = window.location.search.substring(1).split('&')
+                let to_remove = []
+                for (let i = 0; i < parm.length; i++) {
+                    let parm_name = parm[i].split('=')[0]
+                    if (parm_name === filter_name) {
+                        console.log('-->', parm_name)
+                        to_remove.push(i)
+                    }
+                }
+
+                for (let i = 0; i < to_remove.length; i++) {
+                    parm.splice(to_remove[i], 1)
+                }
+                let replaceUrl = window.location.origin + '?' + parm.join('&')
+                window.location.replace(replaceUrl)
+            }
+
+            function RemoveAllFilters() {
+                console.log(window.location.href.split('?')[0])
+                window.location.replace(window.location.href.split('?')[0])
+            }
+
+            current_filter_box = document.querySelector('.filter-results')
+
             let q = urlParams.get('q')
-
-
             let q_boxs = document.querySelectorAll('.input-group #q')
 
             for (let i = 0; i < q_boxs.length; ++i) {
@@ -76,8 +104,8 @@
             document.querySelector('#ignore').value = ignore
 
 
-            let counts_filters = [
-                'q', 'scope',
+            let filters_list = [
+                'scope',
                 'subs_start', 'subs_end',
                 'views_start', 'views_end',
                 'like_start', 'like_end',
@@ -85,12 +113,47 @@
                 'shares_start', 'shares_end'
             ]
 
-            for (let i = 0; i < counts_filters.length; ++i) {
-                let par = urlParams.get(counts_filters[i])
-                if (par !== null) {
-                    document.querySelector('#' + counts_filters[i]).value = par
+            filters_text = {
+                'subs_start': 'Подписчиков от: ',
+                'subs_end': 'Подписчиков до: ',
+                'views_start': 'Просмотров от: ',
+                'views_end': 'Просмотров до: ',
+                'like_start': 'Лайков от: ',
+                'like_end': 'Лайков до: ',
+                'comment_start': 'Комментариев от: ',
+                'comment_end': 'Комментариев до: ',
+                'shares_start': 'Репостов от: ',
+                'shares_end': 'Репостов до: ',
+
+            }
+
+            let filters_displayed_under_search = 0
+            for (let i = 0; i < filters_list.length; ++i) {
+                let par = urlParams.get(filters_list[i])
+
+                if (par !== null && par !== '') {
+                    document.querySelector('#' + filters_list[i]).value = par
+                    if (filters_list[i] !== 'scope') {
+                        filters_displayed_under_search += 1
+                        let filter_text = filters_text[filters_list[i]] + par
+                        let filter_name = filters_list[i]
+                        current_filter_box.innerHTML += `{% include 'delete_filter_btn.html' %}`
+                    }
                 }
             }
+
+            if (filters_displayed_under_search > 1) {
+                current_filter_box.innerHTML += `{% include 'clear_filters_btn.html' %}`
+            }
+
+            function getFiltersCount() {
+                let filters = document.querySelectorAll('[data-filer-name]')
+                if (filters.length>0) {
+                    document.querySelector('.filters-counts').textContent = `(${filters.length})`
+                }
+            }
+
+            getFiltersCount()
 
             let scope = urlParams.get('scope')
             if (scope) {
@@ -133,10 +196,13 @@
                       return x < 10 ? "0" + x : x
                     }).join(":")
 
-                    let int_fields = ['views']
+                    let int_fields = ['views', 'likes', 'comments', 'shares']
                     for (let j = 0; j < int_fields.length; ++j) {
-                        data[i][int_fields[j]] = new Intl.NumberFormat('en', { notation: 'compact', maximumFractionDigits: 1 }).format(data[i][int_fields[j]]);
+                        data[i][int_fields[j]] = new Intl.NumberFormat('en',
+                            { notation: 'compact', maximumFractionDigits: 1 }).format(data[i][int_fields[j]]);
                     }
+                    data[i]['author']['subscribers'] = new Intl.NumberFormat('en',
+                        { notation: 'compact', maximumFractionDigits: 1 }).format(data[i]['author']['subscribers']);
 
 
                     data[i]['published_stamp'] = `${date.getDate()}.${date.getMonth()+1}.${date.getFullYear()} в ${time}`

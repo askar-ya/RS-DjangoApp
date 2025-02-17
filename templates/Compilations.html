@@ -4,145 +4,249 @@
 {% block title %}Rels Scanner{% endblock %}
 
 {% block css %}
-    <link rel="stylesheet" href="{% static "css/head.css" %}"/>
-    <link rel="stylesheet" href="{% static "css/reels_card.css" %}"/>
-    <link rel="stylesheet" href="{% static "css/reel_detailed.css" %}"/>
-    <link rel="stylesheet" href="{% static "css/search.css" %}"/>
-    <link rel="stylesheet" href="{% static "css/SearchString.css" %}"/>
-    <link rel="stylesheet" href="{% static "css/Categories.css" %}"/>
-
+    <link rel="stylesheet" href="{% static "css/HeadMenu.css" %}"/>
+    <link rel="stylesheet" href="{% static "css/SearchLine.css" %}"/>
+    <link rel="stylesheet" href="{% static "css/Filters.css" %}"/>
+    <link rel="stylesheet" href="{% static "css/ReelCard.css" %}"/>
+    <link rel="stylesheet" href="{% static "css/CompilationsSideBar.css" %}"/>
 {% endblock %}
 
 {% block js %}
-    <script src="{% static 'js/Player.js' %}"></script>
-    <script src="{% static 'js/ReelPopUp.js' %}"></script>
-    <script src="{% static 'js/apply_filter.js' %}"></script>
+    <script src="{% static "js/Filters.js" %}"></script>
+    <script src="{% static "js/ReelCard.min.js" %}"></script>
+    <script src="{% static "js/CompilationsSideBar.min.js" %}"></script>
+
 {% endblock %}
 
 {% block content %}
 
-    {% include "HeadMenuold.html" %}
+    {% include "HeadMenu.html" %}
+    <script>
+        document.querySelector('.header-inner #compilations-href').classList.add("is-active");
+    </script>
+    {% include "registration/Login.html" %}
+    {% include "registration/Register.html" %}
+    {% include "registration/CheckEmail.html" %}
+    {% include "registration/PasswordResetForm.html" %}
 
-    <div class="main-box">
+    <div id="EmailConfirmed" data-modal="modal-mail-send" style="visibility: hidden;">
 
-        <div class="categories-box">
-            {% for key, value in categories.items %}
-                <h1>{{ key }}</h1>
-                {% for category in value %}
-                    <li>
-                        <a href="{{ category.id }}">{{ category.name }}</a>
-                    </li>
-                {% endfor %}
-            {% endfor %}
-         </div>
+    </div>
 
-        <div class="content-box">
-            {% include "Search.html" %}
-
-            <div class="reels-main-box" id="reels-main-box"></div>
+    <div class="service-name-mob">
+        <div class="container">
+            <p>Reels Scanner</p>
         </div>
+    </div>
 
+    <div class="wrapper">
+        <div class="admin-inner admin-inner--padding-top">
+            {% include 'CompilationsSideBar.html' %}
+
+            <div class="main main--no-bg tablet-hidden">
+                {% include "SearchLine.html" %}
+                {% include "Filters.html" %}
+
+                <div class="reelsSection">
+                    <div class="container">
+                        <div class="reelsSection__wp">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
 
     </div>
 
 
     {% if user.is_authenticated %}
-    <script>
-        const stored = []
-        let par = window.location.search
+        {% include "ReelPopUp.html" %}
+        <script>
+            const stored = []
+            let par = window.location.search
+            console.log(par)
 
-        let compilations_id = window.location.href.split('/').slice(-1)[0]
+            let compilations_id = window.location.href.split('/').slice(-1)[0]
 
-
-        let requestURL = 'https://reelsscanner.com/api/compilations/' + compilations_id + par
-        const xhr = new XMLHttpRequest()
-
-        urlParams = new URLSearchParams(par)
-
-
-        let q = urlParams.get('q')
-
-        let q_boxs = document.querySelectorAll('.input-box #q')
-        for (let i = 0; i < q_boxs.length; ++i) {
-            q_boxs[i].value = q;
-        }
-
-        let ignore = urlParams.getAll("ignore");
-        ignore = ignore.join(", ")
-        document.querySelector('#ignore').value = ignore
+            let requestURL = 'https://reelsscanner.com/api/compilations/' + compilations_id + par
+            const xhr = new XMLHttpRequest()
 
 
-        let counts_filters = [
-            'q_where',
-            'subs_start', 'subs_end',
-            'views_start', 'views_end',
-            'like_start', 'like_end',
-            'comment_start', 'comment_end'
-        ]
-
-        for (let i = 0; i < counts_filters.length; ++i) {
-            let par = urlParams.get(counts_filters[i])
-            if (par !== null){
-                document.querySelector('#' + counts_filters[i]).value = par
-            }
-        }
+            urlParams = new URLSearchParams(par)
 
 
 
-        function sendRequests() {
-            xhr.open('GET', requestURL, true)
+            function RemoveFilter() {
+                let filter_name = this.attributes["data-filer-name"].value
+                let parm = window.location.search.substring(1).split('&')
+                let to_remove = []
+                for (let i = 0; i < parm.length; i++) {
+                    let parm_name = parm[i].split('=')[0]
+                    if (parm_name === filter_name) {
+                        console.log('-->', parm_name)
+                        to_remove.push(i)
+                    }
+                }
 
-            xhr.responseType = 'json'
-
-            xhr.onload = () => {
-                console.log(xhr.response)
-                requestURL = xhr.response.next
-                let reels = xhr.response.results
-
-                render(reels);
+                for (let i = 0; i < to_remove.length; i++) {
+                    parm.splice(to_remove[i], 1)
+                }
+                let replaceUrl = window.location.origin + '?' + parm.join('&')
+                window.location.replace(replaceUrl)
             }
 
-            xhr.send()
-        }
-
-        sendRequests();
-
-        function render(data) {
-            for (let i = 0; i < data.length; i++){
-
-                let video_src = '/static/video/' + data[i]['id'] + '.mp4'
-                let poster_src = '/static/posters/' + data[i]['id'] + '.jpg'
-                stored.push(data[i])
-                document.getElementById("reels-main-box").innerHTML += `<div id="${stored.length-1}">{% include "ReelCard.html" %}</div>`
+            function RemoveAllFilters() {
+                console.log(window.location.href.split('?')[0])
+                window.location.replace(window.location.href.split('?')[0])
             }
-        }
 
-        function next_page() {
-            console.log('->', requestURL);
-            if (requestURL) {
-                xhr.open('GET', requestURL, true)
-                xhr.send()
+            current_filter_box = document.querySelector('.filter-results')
+
+            let q = urlParams.get('q')
+            let q_boxs = document.querySelectorAll('.input-group #q')
+
+            for (let i = 0; i < q_boxs.length; ++i) {
+                q_boxs[i].value = q;
             }
-        }
 
-        const reels_box = document.querySelector('#reels-main-box')
+            let ignore = urlParams.getAll("ignore");
+            ignore = ignore.join(", ")
+            document.querySelector('#ignore').value = ignore
 
 
-        function onScrollEnd() {
-            if (window.innerHeight + window.scrollY >= reels_box.scrollHeight) {
-                console.log('Достигнут конец страницы!');
+            let filters_list = [
+                'scope',
+                'subs_start', 'subs_end',
+                'views_start', 'views_end',
+                'like_start', 'like_end',
+                'comment_start', 'comment_end',
+                'shares_start', 'shares_end'
+            ]
 
-                next_page();
+            filters_text = {
+                'subs_start': 'Подписчиков от: ',
+                'subs_end': 'Подписчиков до: ',
+                'views_start': 'Просмотров от: ',
+                'views_end': 'Просмотров до: ',
+                'like_start': 'Лайков от: ',
+                'like_end': 'Лайков до: ',
+                'comment_start': 'Комментариев от: ',
+                'comment_end': 'Комментариев до: ',
+                'shares_start': 'Репостов от: ',
+                'shares_end': 'Репостов до: ',
 
-                if (requestURL === null){
-                    window.removeEventListener('scroll', onScrollEnd);
+            }
+
+            let filters_displayed_under_search = 0
+            for (let i = 0; i < filters_list.length; ++i) {
+                let par = urlParams.get(filters_list[i])
+
+                if (par !== null && par !== '') {
+                    document.querySelector('#' + filters_list[i]).value = par
+                    if (filters_list[i] !== 'scope') {
+                        filters_displayed_under_search += 1
+                        let filter_text = filters_text[filters_list[i]] + par
+                        let filter_name = filters_list[i]
+                        current_filter_box.innerHTML += `{% include 'delete_filter_btn.html' %}`
+                    }
                 }
             }
-        }
 
-        // Подписка на событие прокрутки с применением debounce
-        window.addEventListener('scroll', onScrollEnd);
-    </script>
+            if (filters_displayed_under_search > 1) {
+                current_filter_box.innerHTML += `{% include 'clear_filters_btn.html' %}`
+            }
+
+            function getFiltersCount() {
+                let filters = document.querySelectorAll('[data-filer-name]')
+                if (filters.length>0) {
+                    document.querySelector('.filters-counts').textContent = `(${filters.length})`
+                }
+            }
+
+            getFiltersCount()
+
+            let scope = urlParams.get('scope')
+            if (scope) {
+                let scope_input = document.querySelectorAll('#scope')
+                let scope_text = document.querySelector('[data-value="'+ scope +'"]').textContent
+                for (let i = 0; i < scope_input.length; ++i) {
+                    scope_input[i].setAttribute('data-default-value', scope)
+                    scope_input[i].parentElement.querySelector('.simple-select__selected').textContent = scope_text
+                }
+            }
+
+
+            function sendRequests() {
+                xhr.open('GET', requestURL, true)
+
+                xhr.responseType = 'json'
+
+                xhr.onload = () => {
+                    console.log(xhr.response)
+                    requestURL = xhr.response.next
+                    let reels = xhr.response.results
+                    console.log(reels)
+                    render(reels);
+                }
+
+                xhr.send()
+            }
+
+            sendRequests();
+
+            function render(data) {
+                for (let i = 0; i < data.length; i++) {
+
+                    let video_src = '/static/video/' + data[i]['id'] + '.mp4'
+                    let poster_src = '/static/posters/' + data[i]['id'] + '.jpg'
+                    stored.push(data[i])
+                    let date = new Date(data[i]['published_stamp'])
+
+                    let time = [date.getHours(), date.getMinutes()].map(function (x) {
+                      return x < 10 ? "0" + x : x
+                    }).join(":")
+
+                    let int_fields = ['views', 'likes', 'comments', 'shares']
+                    for (let j = 0; j < int_fields.length; ++j) {
+                        data[i][int_fields[j]] = new Intl.NumberFormat('en',
+                            { notation: 'compact', maximumFractionDigits: 1 }).format(data[i][int_fields[j]]);
+                    }
+                    data[i]['author']['subscribers'] = new Intl.NumberFormat('en',
+                        { notation: 'compact', maximumFractionDigits: 1 }).format(data[i]['author']['subscribers']);
+
+
+                    data[i]['published_stamp'] = `${date.getDate()}.${date.getMonth()+1}.${date.getFullYear()} в ${time}`
+                    document.querySelector(".reelsSection__wp").innerHTML += `{% include "ReelCard.html" %}`
+                }
+            }
+
+            function next_page() {
+                console.log('->', requestURL);
+                if (requestURL) {
+                    xhr.open('GET', requestURL, true)
+                    xhr.send()
+                }
+            }
+
+            const reels_box = document.querySelector('#reels-main-box')
+
+
+            function onScrollEnd() {
+                if (window.innerHeight + window.scrollY >= reels_box.scrollHeight) {
+                    console.log('Достигнут конец страницы!');
+
+                    next_page();
+
+                    if (requestURL === null) {
+                        window.removeEventListener('scroll', onScrollEnd);
+                    }
+                }
+            }
+
+            // Подписка на событие прокрутки с применением debounce
+            window.addEventListener('scroll', onScrollEnd);
+        </script>
     {% endif %}
 
 

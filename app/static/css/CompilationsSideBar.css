@@ -1,0 +1,166 @@
+.mobile-accord {
+  width: 100%;
+  position: relative;
+  height: calc(100vh - 48px);
+  overflow-x: hidden; }
+  .mobile-accord__title {
+    font-family: "Roboto", sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 32px;
+    text-align: left;
+    padding: 24px 16px; }
+  .mobile-accord__side {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: calc(100vh - 48px);
+    background: #ffffff;
+    z-index: 11;
+    -webkit-transition: 0.15s;
+    transition: 0.15s;
+    -webkit-transform: translateX(-100%);
+        -ms-transform: translateX(-100%);
+            transform: translateX(-100%);
+    opacity: 0;
+    visibility: hidden; }
+    .mobile-accord__side-back {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      line-height: 22px;
+      color: #a9a9a9;
+      margin-bottom: 16px; }
+    .mobile-accord__side-title {
+      font-size: 24px;
+      line-height: 32px;
+      font-weight: 500; }
+  .mobile-accord__side-title-wrp {
+    padding: 24px 16px;
+    background: #F0F0F0; }
+  .mobile-accord.is-active .mobile-accord__side {
+    opacity: 1;
+    visibility: visible;
+    -webkit-transform: none;
+        -ms-transform: none;
+            transform: none; }
+
+.mobile-accord-item {
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
+  padding: 9px 16px;
+  border-bottom: 1px solid #F0F0F0;
+  background: #ffffff;
+  width: 100%; }
+  .mobile-accord-item__count {
+    color: #a9a9a9;
+    margin-left: auto; }
+  .mobile-accord-item__arrow {
+    width: 10px;
+    height: 9px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-transform: rotate(-90deg);
+        -ms-transform: rotate(-90deg);
+            transform: rotate(-90deg); }
+
+@media (max-width: 767px) {
+  .mobile-accord {
+    height: calc(100vh - 60px); }
+    .mobile-accord__side {
+      height: calc(100vh - 60px); } }
+
+.accord-item {
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px; }
+  .accord-item a {
+    -webkit-transition: 0.15s;
+    transition: 0.15s; }
+    .accord-item a:hover {
+      color: #1890FF; }
+  .accord-item__header {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    gap: 10px;
+    padding: 9px 16px;
+    border-bottom: 1px solid #F0F0F0;
+    cursor: pointer; }
+    .accord-item__header:hover {
+      color: #1890FF; }
+    .accord-item__header p {
+      -webkit-transition: 0.15s;
+      transition: 0.15s; }
+    .accord-item__header svg {
+      -webkit-transition: 0.15s;
+      transition: 0.15s; }
+  .accord-item__drop {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    -webkit-transition: max-height 0.2s ease-out, opacity 0.2s ease-out;
+    transition: max-height 0.2s ease-out, opacity 0.2s ease-out; }
+  .accord-item__count {
+    color: #a9a9a9;
+    margin-left: auto; }
+  .accord-item__arrow {
+    width: 10px;
+    height: 9px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center; }
+  .accord-item.is-active .accord-item__header {
+    color: #1890FF; }
+    .accord-item.is-active .accord-item__header .accord-item__count {
+      color: #1890FF; }
+    .accord-item.is-active .accord-item__header svg {
+      fill: #1890FF;
+      -webkit-transform: rotateX(-180deg);
+              transform: rotateX(-180deg); }
+
+.accord-item-el {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
+  padding: 9px 16px;
+  border-bottom: 1px solid #F0F0F0;
+  padding-left: 24px; }
+
+/*# sourceMappingURL=styles.min.css.map */

@@ -17,10 +17,6 @@
     {% block js %}
     {% endblock %}
 
-    <!-- Yandex.Metrika counter -->
-    <script src="{% static "js/yandex_metrika.js" %}"></script>
-    <noscript><div><img src="https://mc.yandex.ru/watch/99806284" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-    <!-- /Yandex.Metrika counter -->
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,7 +26,8 @@
 <body>
     {% block content %}
     {% endblock %}
+
     <script src="{% static "js/Base.min.js" %}"></script>
-    <script src="{% static "js/scripts.min.js" %}"></script>
+
 </body>
 </html>

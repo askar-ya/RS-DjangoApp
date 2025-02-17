@@ -190,7 +190,7 @@
           height: 16px;
           border-radius: 2px;
           border: 1px solid #1890FF;
-          background: url(../img/icons/check.svg) no-repeat center, #1890FF;
+          background: url('static/icon/check.svg'), no-repeat center, #1890FF;
           background-size: contain;
           background-position: center;
           opacity: 0;

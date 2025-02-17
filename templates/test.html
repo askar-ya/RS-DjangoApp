@@ -1,0 +1,30 @@
+{% extends "Base.html" %}
+{% load static %}
+
+{% block title %}Rels Scanner{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static "css/HeadMenu.css" %}"/>
+    <link rel="stylesheet" href="{% static "css/SearchLine.css" %}"/>
+{% endblock %}
+
+
+{% block content %}
+    {% include "HeadMenu.html" %}
+
+    <div class="wrapper wrapper--padding-top">
+
+        {% include "SearchLine.html" %}
+
+        <div class="reelsSection">
+            <div class="container">
+                <div class="reelsSection__wp">
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <script src="{% static "js/SearchLine.min.js" %}"></script>
+{% endblock %}

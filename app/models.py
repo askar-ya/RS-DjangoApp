@@ -56,7 +56,10 @@ class Reels(models.Model):
     likes = models.IntegerField('Кол-во лайков')
     comments = models.IntegerField('Кол-во комментариев')
     views = models.IntegerField('Кол-во просмотров')
+    shares = models.IntegerField('Кол-во репостов', default=None)
+
     description = models.TextField('Описание рилса')
+    tags = models.TextField('Тэги рилса', default=' ')
 
     published_stamp = models.DateTimeField('Дата публикации', default=datetime.now)
     updated_stamp = models.DateTimeField('Время обновления', default=datetime.now)

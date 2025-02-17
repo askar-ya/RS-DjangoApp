@@ -90,13 +90,17 @@ class ReelsList(generics.ListAPIView):
             comment_range = (int(comment_start), comment_end)
             query['comment_range='] = comment_range
 
+        shares_start = self.request.GET.get('shares_start') or 0
+        shares_end = self.request.GET.get('shares_end') or 10000000000
+        if (shares_start != 0) and (shares_end != 10000000000):
+            shares_range = (int(shares_start), shares_end)
+            query['shares_range='] = shares_range
+
 
         self.queryset = Reels.objects.filter(**query)
         ignore = self.request.GET.getlist('ignore[]')
         if ignore:
             self.queryset = self.queryset.exclude(author__nick__in=ignore)
-
-
 
         return self.queryset
 

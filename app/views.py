@@ -82,6 +82,8 @@ class About(PageWithForms):
     template_name = 'About.html'
     complete_reg = 'Successful'
 
+def test(request):
+    return render(request, 'test.html')
 
 
 def privacy_policy(request):

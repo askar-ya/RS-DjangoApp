@@ -9,18 +9,18 @@
         <div class="default-modal__inner">
             <div class="default-modal__title">Фильтры</div>
         </div>
-        <form action="/filters" id="filters-form">
+        <form id="filters-form">
             <div class="modal-filters-inputs-group">
                 <div class="input-group-wrp">
                     <p class="input-group-wrp__label">Поисковый запрос </p>
                     <div class="input-group">
-                        <input type="number" name="number-accounts-from">
+                        <input type="text" name="q" id="q">
                     </div>
                 </div>
                 <div class="input-group-wrp">
                     <p class="input-group-wrp__label">Где искать </p>
                     <div class="simple-select">
-                        <input hidden="" type="text" name="wharesearch" value="one" data-default-value="one">
+                        <input hidden="" id="scope" type="text" name="scope"  data-default-value="reels_description">
                         <div class="simple-select__main" tabindex="0" role="combobox" aria-expanded="false">
                             <p class="simple-select__selected" data-placeholder="">В описании reels</p>
                             <svg width="11" height="8" viewBox="0 0 11 8" fill="none"
@@ -32,93 +32,104 @@
                         <div class="simple-select__drop">
                             <div class="simple-select__drop-inner">
                                 <ul class="simple-select__list" role="listbox">
-                                    <li class="simple-select__item" data-value="one" role="option">В описании reels
+                                    <li class="simple-select__item" data-value="reels_description" role="option">В описании
+                                    reels
                                     </li>
-                                    <li class="simple-select__item" data-value="two" role="option">Еще где то
+                                    <li class="simple-select__item" data-value="author_description" role="option">В био автора
+                                    </li>
+                                    <li class="simple-select__item" data-value="author_name" role="option">В никнейме
+                                    </li>
+                                    <li class="simple-select__item" data-value="reels_tags" role="option">В тегах
                                     </li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
+
                 <div class="input-group-wrp">
                     <p class="input-group-wrp__label">Исключить аккаунт (@user1, @user2) </p>
                     <div class="input-group">
-                        <input type="number" name="exclude">
+                        <input type="text" name="ignore" id="ignore">
                     </div>
                 </div>
+
                 <div class="modal-filters-inputs">
                     <div class="input-group-wrp">
                         <p class="input-group-wrp__label">Подписчиков </p>
                         <div class="input-group label">
                             <p class="input-group__label">От</p>
-                            <input type="number" name="number-accounts-from">
+                            <input type="number" name="subs_start" id="subs_start">
                         </div>
                     </div>
                     <div class="input-group-wrp">
                         <div class="input-group label">
                             <p class="input-group__label">До</p>
-                            <input type="number" name="number-accounts-to">
+                            <input type="number" name="subs_end" id="subs_end">
                         </div>
                     </div>
                 </div>
+
                 <div class="modal-filters-inputs">
                     <div class="input-group-wrp">
                         <p class="input-group-wrp__label">Просмотров reels </p>
                         <div class="input-group label">
                             <p class="input-group__label">От</p>
-                            <input type="number" name="number-reels-from">
+                            <input type="number" name="views_start" id="views_start">
                         </div>
                     </div>
                     <div class="input-group-wrp">
                         <div class="input-group label">
                             <p class="input-group__label">До</p>
-                            <input type="number" name="number-reels-to">
+                            <input type="number" name="views_end" id="views_end">
                         </div>
                     </div>
                 </div>
+
                 <div class="modal-filters-inputs">
                     <div class="input-group-wrp">
                         <p class="input-group-wrp__label">Лайков</p>
                         <div class="input-group label">
                             <p class="input-group__label">От</p>
-                            <input type="number" name="number-reels-from">
+                            <input type="number" name="like_start" id="like_start">
                         </div>
                     </div>
                     <div class="input-group-wrp">
                         <div class="input-group label">
                             <p class="input-group__label">До</p>
-                            <input type="number" name="number-reels-to">
+                            <input type="number" name="like_end" id="like_end">
                         </div>
                     </div>
                 </div>
+
                 <div class="modal-filters-inputs">
                     <div class="input-group-wrp">
                         <p class="input-group-wrp__label">Комментариев</p>
                         <div class="input-group label">
                             <p class="input-group__label">От</p>
-                            <input type="number" name="number-reels-from">
+                            <input type="number" name="comment_start" id="comment_start">
                         </div>
                     </div>
                     <div class="input-group-wrp">
                         <div class="input-group label">
                             <p class="input-group__label">До</p>
-                            <input type="number" name="number-reels-to">
+                            <input type="number" name="comment_end" id="comment_end">
                         </div>
                     </div>
                 </div>
+
                 <div class="modal-filters-inputs">
                     <div class="input-group-wrp">
                         <p class="input-group-wrp__label">Репостов</p>
                         <div class="input-group label">
                             <p class="input-group__label">От</p>
-                            <input type="number" name="number-reels-from">
+                            <input type="number" name="shares_start" id="shares_start">
                         </div>
                     </div>
                     <div class="input-group-wrp">
                         <div class="input-group label">
                             <p class="input-group__label">До</p>
-                            <input type="number" name="number-reels-to">
+                            <input type="number" name="shares_end" id="shares_end">
                         </div>
                     </div>
                 </div>

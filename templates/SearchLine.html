@@ -1,15 +1,28 @@
+{% load static %}
+<style>
+    .filters-section-inner__search-select .simple-select__item::after {
+        background: url({% static 'icon/check.svg' %}) no-repeat center, #1890FF;
+    }
+    @media (max-width: 767px) {
+        .search-form .simple-select::after {
+            background: url({% static 'icon/settings.svg' %});
+        }
+    }
+</style>
+
 <div class="found-results">
     <div class="container">
         <p class="found-results__found">Найдено <span class="found-results__results">797 </span><span
                 class="found-results__results">reels</span></p>
     </div>
 </div>
+
 <section class="filters-section">
     <div class="container">
         <form class="filters-section-inner">
             <div class="search-form filters-section-inner__search">
                 <div class="input-group">
-                    <input type="text" name="search" placeholder="Поиск">
+                    <input type="text" name="q" id='q' placeholder="Поиск">
                 </div>
                 <button class="search-form__btn" type="submit">
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -18,8 +31,8 @@
                     </svg>
                 </button>
                 <div class="simple-select filters-section-inner__search-select">
-                    <input hidden="" type="text" name="indescr" value="indescrvrelease"
-                           data-default-value="indescrvrelease">
+                    <input hidden="" type="text" name="scope" id="scope"
+                           data-default-value="reels_description">
                     <div class="simple-select__main" tabindex="0" role="combobox" aria-expanded="false">
                         <p class="simple-select__selected" data-placeholder="">В описании reels</p>
                         <svg width="11" height="8" viewBox="0 0 11 8" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -30,11 +43,14 @@
                     <div class="simple-select__drop">
                         <div class="simple-select__drop-inner">
                             <ul class="simple-select__list" role="listbox">
-                                <li class="simple-select__item" data-value="indescrvrelease" role="option">В описании
+                                <li class="simple-select__item" data-value="reels_description" role="option">В описании
                                     reels
                                 </li>
-                                <li class="simple-select__item" data-value="indescrsomething" role="option">В описании
-                                    reels чего то еще
+                                <li class="simple-select__item" data-value="author_description" role="option">В био автора
+                                </li>
+                                <li class="simple-select__item" data-value="author_name" role="option">В никнейме
+                                </li>
+                                <li class="simple-select__item" data-value="reels_tags" role="option">В тегах
                                 </li>
                             </ul>
                         </div>

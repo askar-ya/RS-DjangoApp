@@ -42,35 +42,31 @@
         <div class="reelsSection">
             <div class="container">
                 <div class="reelsSection__wp">
-                    {% include "ReelCard.html" %}
-                    {% include "ReelCard.html" %}
-                    {% include "ReelCard.html" %}
-                    {% include "ReelCard.html" %}
-                    {% include "ReelCard.html" %}
-                    {% include "ReelCard.html" %}
-                    {% include "ReelCard.html" %}
-                    {% include "ReelCard.html" %}
-
                 </div>
             </div>
-
         </div>
+
     </div>
 
     {% if user.is_authenticated %}
+        {% include "ReelPopUp.html" %}
         <script>
+
             const stored = []
             let par = window.location.search
 
             let requestURL = 'https://reelsscanner.com/api/reels/' + par
             const xhr = new XMLHttpRequest()
 
+
             urlParams = new URLSearchParams(par)
 
 
             let q = urlParams.get('q')
 
-            let q_boxs = document.querySelectorAll('.input-box #q')
+
+            let q_boxs = document.querySelectorAll('.input-group #q')
+
             for (let i = 0; i < q_boxs.length; ++i) {
                 q_boxs[i].value = q;
             }
@@ -85,13 +81,24 @@
                 'subs_start', 'subs_end',
                 'views_start', 'views_end',
                 'like_start', 'like_end',
-                'comment_start', 'comment_end'
+                'comment_start', 'comment_end',
+                'shares_start', 'shares_end'
             ]
 
             for (let i = 0; i < counts_filters.length; ++i) {
                 let par = urlParams.get(counts_filters[i])
                 if (par !== null) {
                     document.querySelector('#' + counts_filters[i]).value = par
+                }
+            }
+
+            let scope = urlParams.get('scope')
+            if (scope) {
+                let scope_input = document.querySelectorAll('#scope')
+                let scope_text = document.querySelector('[data-value="'+ scope +'"]').textContent
+                for (let i = 0; i < scope_input.length; ++i) {
+                    scope_input[i].setAttribute('data-default-value', scope)
+                    scope_input[i].parentElement.querySelector('.simple-select__selected').textContent = scope_text
                 }
             }
 
@@ -105,7 +112,7 @@
                     console.log(xhr.response)
                     requestURL = xhr.response.next
                     let reels = xhr.response.results
-
+                    console.log(reels)
                     render(reels);
                 }
 
@@ -120,7 +127,20 @@
                     let video_src = '/static/video/' + data[i]['id'] + '.mp4'
                     let poster_src = '/static/posters/' + data[i]['id'] + '.jpg'
                     stored.push(data[i])
-                    document.getElementById("reels-main-box").innerHTML += `<div id="${stored.length - 1}">{% include "ReelCard.html" %}</div>`
+                    let date = new Date(data[i]['published_stamp'])
+
+                    let time = [date.getHours(), date.getMinutes()].map(function (x) {
+                      return x < 10 ? "0" + x : x
+                    }).join(":")
+
+                    let int_fields = ['views']
+                    for (let j = 0; j < int_fields.length; ++j) {
+                        data[i][int_fields[j]] = new Intl.NumberFormat('en', { notation: 'compact', maximumFractionDigits: 1 }).format(data[i][int_fields[j]]);
+                    }
+
+
+                    data[i]['published_stamp'] = `${date.getDate()}.${date.getMonth()+1}.${date.getFullYear()} в ${time}`
+                    document.querySelector(".reelsSection__wp").innerHTML += `{% include "ReelCard.html" %}`
                 }
             }
 
@@ -161,4 +181,6 @@
         })
         </script>
     {% endif %}
+
+    <script src="{% static "js/SearchLine.min.js" %}"></script>
 {% endblock %}

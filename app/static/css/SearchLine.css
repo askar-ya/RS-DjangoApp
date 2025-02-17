@@ -1,3 +1,4 @@
+{% load static %}
 .found-results {
   padding: 16px 0;
   font-family: "Roboto", sans-serif;
@@ -190,7 +191,7 @@
           height: 16px;
           border-radius: 2px;
           border: 1px solid #1890FF;
-          background: url(../img/icons/check.svg) no-repeat center, #1890FF;
+
           background-size: contain;
           background-position: center;
           opacity: 0;
@@ -243,7 +244,7 @@
       -webkit-transform: translateY(-50%);
           -ms-transform: translateY(-50%);
               transform: translateY(-50%);
-      background: url(../img/icons/settings.svg);
+
       background-size: contain;
       background-position: center;
       pointer-events: none; }

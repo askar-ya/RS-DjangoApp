@@ -21,7 +21,7 @@ class ReelsSerializer(serializers.ModelSerializer):
 
 
 class CursorSetPagination(CursorPagination):
-    page_size = 2
+    page_size = 12
     page_size_query_param = 'page_size'
     ordering = 'id'
 

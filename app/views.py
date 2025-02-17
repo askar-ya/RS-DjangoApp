@@ -13,6 +13,9 @@ class PageWithForms(View):
     complete_reg = ''
 
     def get(self, request):
+        user = request.user
+        if user.is_authenticated:
+            print(user.has_quota())
         context = {
             'SingUpForm': UserSingUp(),
             'LoginForm': LoginForm(),
@@ -75,6 +78,7 @@ class PageWithForms(View):
         return render(request, self.template_name, context)
 
 class MainPage(PageWithForms):
+
     template_name = 'MainPage.html'
     complete_reg = 'Reels Scaner'
 

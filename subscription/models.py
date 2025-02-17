@@ -13,3 +13,18 @@ class Subscription(models.Model):
 
     def __str__(self):
         return self.user.username
+
+
+class UserQuota(models.Model):
+    """
+    Промежуточная таблица, где храним, сколько запросов
+    осталось конкретному пользователю по конкретной квоте.
+    """
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    requests_left = models.PositiveIntegerField(default=5)
+
+    class Meta:
+        db_table = 'user_quota'
+
+    def __str__(self):
+        return f'{self.user.email} - Quote: {self.requests_left}'

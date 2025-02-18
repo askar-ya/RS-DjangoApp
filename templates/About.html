@@ -45,11 +45,6 @@
     </symbol>
 </svg>
 
-    {% include "registration/Login.html" %}
-    {% include "registration/Register.html" %}
-    {% include "registration/CheckEmail.html" %}
-    {% include "registration/PasswordResetForm.html" %}
-
     <div id="EmailConfirmed" data-modal="modal-mail-send" style="visibility: hidden;">
 
     </div>
@@ -1172,6 +1167,11 @@
             </div>
         </footer>
     </div>
+
+    {% include "registration/Login.html" %}
+    {% include "registration/Register.html" %}
+    {% include "registration/CheckEmail.html" %}
+    {% include "registration/PasswordResetForm.html" %}
 
     {% if FormsErrors %}
         <script>

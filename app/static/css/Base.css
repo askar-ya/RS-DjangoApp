@@ -344,7 +344,23 @@ h4 {
 .sidebar {
   width: 100%;
   max-width: 270px;
-  background: #ffffff; }
+  background: #ffffff;
+  -webkit-overflow-scrolling: touch;
+  overflow: auto;
+  scrollbar-color: #999 #ccc;
+  scrollbar-width: thin;
+  overflow-y: auto;
+  max-height: 100vh; }
+  .sidebar::-webkit-scrollbar {
+    width: 2px;
+    height: 2px;
+    background-color: #ccc; }
+  .sidebar::-webkit-scrollbar-track {
+    background-color: #ccc; }
+  .sidebar::-webkit-scrollbar-thumb:vertical {
+    background-color: #999; }
+  .sidebar::-webkit-scrollbar-thumb:horizontal {
+    background-color: #999; }
 
 .reelsSection {
   width: 100%;
@@ -352,26 +368,26 @@ h4 {
   background: #F0F0F0; }
   .reelsSection__wp {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(6, calc(16.6% - 6px));
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
             justify-content: space-between;
     gap: 16px 8px;
     padding-bottom: 100px;
-    max-width: 1888px;
-    margin: 0 auto; }
+    margin: 0 auto;
+    overflow: hidden; }
     @media (max-width: 1800px) {
       .reelsSection__wp {
-        grid-template-columns: repeat(5, 1fr); } }
+        grid-template-columns: repeat(5, calc(20% - 6px)); } }
     @media (max-width: 1400px) {
       .reelsSection__wp {
-        grid-template-columns: repeat(4, 1fr); } }
+        grid-template-columns: repeat(4, calc(25% - 6px)); } }
     @media (max-width: 1000px) {
       .reelsSection__wp {
-        grid-template-columns: repeat(3, 1fr); } }
+        grid-template-columns: repeat(3, calc(33.3% - 6px)); } }
     @media (max-width: 767px) {
       .reelsSection__wp {
-        grid-template-columns: repeat(2, 1fr); } }
+        grid-template-columns: repeat(2, calc(50% - 6px)); } }
     @media (max-width: 575px) {
       .reelsSection__wp {
         grid-template-columns: repeat(1, 1fr); } }

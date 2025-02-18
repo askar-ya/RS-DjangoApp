@@ -24,7 +24,7 @@ class MyLoginView(LoginView):
 
 
 class Profile(LoginRequiredMixin, TemplateView):
-    template_name = 'registration/profile.html'
+    template_name = 'registration/Profile.html'
 
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_authenticated:

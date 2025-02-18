@@ -1,7 +1,7 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-
+from datetime import datetime, timedelta, timezone
 
 class User(AbstractUser):
     email = models.EmailField(
@@ -17,6 +17,23 @@ class User(AbstractUser):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
 
+    subscription_length = 30
+
+    def has_subscription(self):
+        from subscription.models import Subscription
+
+        # Есть ли у пользователя подписка
+        user_subscriptions = Subscription.objects.filter(user=self,
+                                       start_date__gte=datetime.now(tz=timezone.utc)-timedelta(days=self.subscription_length))
+        if user_subscriptions.exists():
+            balance = (
+                    user_subscriptions.first().start_date +
+                    timedelta(days=self.subscription_length) - datetime.now(tz=timezone.utc)
+            ).days
+            return f'{balance} дн'
+
+        return False
+
     def has_quota(self) -> bool:
         """
         Проверка квоты для пользователя:
@@ -26,7 +43,7 @@ class User(AbstractUser):
         from subscription.models import Subscription, UserQuota
 
         # Есть ли у пользователя подписка
-        if Subscription.objects.filter(user=self).exists():
+        if Subscription.objects.filter(user=self, start_date__gte=datetime.now(tz=timezone.utc)-timedelta(days=self.subscription_length)).exists():
             return True
 
         # Если подписки нет, смотрим на запись в UserQuota

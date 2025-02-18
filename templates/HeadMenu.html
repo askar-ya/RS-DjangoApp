@@ -26,11 +26,13 @@
                 </svg>
                 <p>Мы в Telegram</p></a></div>
 
-
                 {% if user.is_authenticated %}
                     <div class="header-inner__side user-info">
                         <a class="user-info__mail" href="{% url 'profile' %}">{{ user }}</a>
-                        <p class="user-info__days">Осталось 12 дн подписки</p>
+                        {% if user.has_subscription %}
+                            <p class="user-info__days">Осталось {{ user.has_subscription }} подписки</p>
+                        {% endif %}
+
                     </div>
                 {% else %}
                     <div class="header-inner__side user-info" id="LoginForm" data-modal="modal-enter-to-app">
@@ -39,8 +41,6 @@
                         </button>
                     </div>
                 {% endif %}
-
-
         </div>
     </div>
 </header>

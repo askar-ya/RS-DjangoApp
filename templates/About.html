@@ -26,7 +26,7 @@
     <title>Главная страница</title>
     <link rel="stylesheet" href="{% static "About/assets/css/style.min.css" %}">
     <link rel="stylesheet" href="{% static "About/assets/css/PopUp.css" %}">
-    <link rel="stylesheet" href="{% static "css/registration.min.css" %}">
+    <link rel="stylesheet" href="{% static "About/assets/css/forms.min.css" %}">
 
 
     <!-- Yandex.Metrika counter -->
@@ -151,7 +151,7 @@
                             </li>
                         </ul>
                     </nav>
-                    <a href="#" class="header__connect-link" aria-label="Связаться с нами">
+                    <a href="mailto:support@reelsscanner.com" class="header__connect-link" aria-label="Связаться с нами">
                         Связаться с нами
                     </a>
                     <button class="header__btn-open button-open-menu" type="button" aria-label="Открыть меню">
@@ -1173,12 +1173,6 @@
         </footer>
     </div>
 
-    <script src="{% static "About/assets/js/PopUp.js" %}"></script>
-    <script src="{% static "About/assets/js/app.min.js" %}"></script>
-    <script src="{% static "js/scripts.min.js" %}"></script>
-    <script src="{% static "js/Base.min.js" %}"></script>
-
-
     {% if FormsErrors %}
         <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -1188,5 +1182,10 @@
         })
         </script>
     {% endif %}
+
+    <script src="{% static "About/assets/js/PopUp.js" %}"></script>
+    <script src="{% static "About/assets/js/app.min.js" %}"></script>
+    <script src="{% static "js/scripts.min.js" %}"></script>
+    <script src="{% static "js/Base.min.js" %}"></script>
 </body>
 </html>

@@ -7,7 +7,6 @@
   position: relative; }
   .reelsCard__main {
     width: 100%;
-    min-height: 490px;
     background: #fff;
     border-radius: 9px 9px 0 0;
     line-height: 0;
@@ -22,10 +21,8 @@
             flex-direction: column;
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
-            justify-content: space-between; }
-    @media (max-width: 575px) {
-      .reelsCard__main {
-        min-height: 163vw; } }
+            justify-content: space-between;
+    padding-top: 160%; }
   .reelsCard__videoPlay {
     position: absolute;
     top: 50%;
@@ -330,10 +327,11 @@
     position: relative; }
     .reelsCard__descr-more {
       position: absolute;
-      bottom: 0;
+      bottom: -1px;
       right: 0;
-      background: white;
-      font-size: 400;
+      background: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0)), color-stop(28%, white), to(white));
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, white 28%, white 100%);
+      font-weight: 500;
       line-height: 18px;
       display: -webkit-box;
       display: -ms-flexbox;
@@ -344,5 +342,8 @@
         color: #a9a9a9; }
   .reelsCard .video-played + .reelsCard__videoPlay {
     display: none; }
+
+.white-gradient {
+  padding-left: 30px; }
 
 /*# sourceMappingURL=styles.min.css.map */

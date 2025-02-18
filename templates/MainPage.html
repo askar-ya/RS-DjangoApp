@@ -62,10 +62,7 @@
             let requestURL = 'https://reelsscanner.com/api/reels/' + par
             const xhr = new XMLHttpRequest()
 
-
             urlParams = new URLSearchParams(par)
-
-
 
             function RemoveFilter() {
                 let filter_name = this.attributes["data-filer-name"].value
@@ -144,7 +141,7 @@
             }
 
             if (filters_displayed_under_search > 1) {
-                current_filter_box.innerHTML += `{% include 'clear_filters_btn.html' %}`
+                current_filter_box.innerHTML += `{% include 'modal/ClearFilters.html' %}{% include 'clear_filters_btn.html' %}`
             }
 
             function getFiltersCount() {

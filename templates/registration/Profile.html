@@ -1,0 +1,114 @@
+{% extends "Base.html" %}
+
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static "css/HeadMenu.css" %}"/>
+    <link rel="stylesheet" href="{% static "css/Profile.css" %}"/>
+{% endblock %}
+
+{% block title %}Личный Кабинет{% endblock %}
+
+
+{% block content %}
+    {% include "HeadMenu.html" %}
+    {% include "modal/BuySubscriptionInfo.html" %}
+
+    <div class="wrapper wrapper--padding-top">
+        <div class="profile">
+            <div class="container">
+                <form action="{% url 'logout' %}" method="post">
+                    <h1 class="profile__title">Профиль <button type="submit">Выйти </button></h1>
+                    {% csrf_token %}
+
+                </form>
+
+                <div class="profile-grid">
+                    <div class="profile-grid__item">
+                        <div class="profile-item">
+                            <form class="profile-item__inner-block">
+                                <div class="profile-item__title-wrp">
+                                    <h4 class="profile-item__title">Подключение подписки</h4>
+                                </div>
+                                <div class="profile-item-details">
+                                    <p class="profile-item-details__item">Стоимость<span class="profile-item-details__item-value">500 ₽ / мес</span></p>
+                                  </div>
+                                <button class="btn btn--blue" data-modal="modal-buy-subscription" type="button"><span class="btn__inner">Подключить</span>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="profile-grid__item">
+                        <div class="profile-item">
+                            <form class="profile-item__inner-block">
+                                <div class="profile-item__title-wrp">
+                                    <h4 class="profile-item__title">Уведомления</h4>
+                                </div>
+                                <div class="default-toggle">
+                                    <label class="default-toggle__label">
+                                        <input type="checkbox" name="south-east" checked="" hidden=""><span
+                                            class="default-toggle__main"></span><span
+                                            class="default-toggle__custom"></span>
+                                    </label><span
+                                        class="default-toggle__text">Получать обновления подписок на почту</span>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="profile-item">
+                            <form class="profile-item__inner-block">
+                                <div class="profile-item__title-wrp">
+                                    <h4 class="profile-item__title">Изменение пароля</h4>
+                                </div>
+                                <div class="inputs-grid">
+                                    <div class="input-group">
+                                        <input type="password" name="curr-pass" placeholder="Текущий пароль">
+                                        <div class="input-group__icon">
+                                            <svg width="14" viewBox="0 0 14 14">
+                                                <use xlink:href="#icon-eye"></use>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div class="input-group">
+                                        <input type="password" name="new-pass" placeholder="Новый пароль">
+                                        <div class="input-group__icon">
+                                            <svg width="14" viewBox="0 0 14 14">
+                                                <use xlink:href="#icon-eye"></use>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div class="input-group">
+                                        <input type="password" name="repeat-pass" placeholder="Повторите пароль">
+                                        <div class="input-group__icon">
+                                            <svg width="14" viewBox="0 0 14 14">
+                                                <use xlink:href="#icon-eye"></use>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="btn" type="submit" disabled=""><span class="btn__inner">Сохранить</span>
+                                </button>
+                            </form>
+                        </div>
+                        <div class="profile-item">
+                            <form class="profile-item__inner-block">
+                                <div class="profile-item__title-wrp">
+                                    <h4 class="profile-item__title">Изменение почты</h4>
+                                    <p class="profile-item__txt">Пришлем ссылку для подтверждения на текущую почту</p>
+                                </div>
+                                <div class="profile-item__inputs">
+                                    <div class="input-group">
+                                        <input type="email" name="email" placeholder="Новая почта">
+                                    </div>
+                                </div>
+                                <button class="btn" type="submit" disabled=""><span class="btn__inner">Сохранить</span>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

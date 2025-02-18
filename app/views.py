@@ -24,7 +24,6 @@ class PageWithForms(View):
         return render(request, self.template_name, context)
 
     def post(self, request):
-        print(request.POST)
         context = {}
         if 'LoginForm' in request.POST:
             form = LoginForm(request, data=request.POST)

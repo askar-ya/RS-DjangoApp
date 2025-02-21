@@ -4,27 +4,62 @@
     <div class="container">
         <div class="header-inner">
             <h5 class="header-inner__side header-inner__name"><img src="{% static 'icon/reels-logo.svg' %}" alt="" width="150"></h5>
-            <div class="header-nav"><a class="header-nav__item" id="main-href" href="/">
-                <svg width="14" viewBox="0 0 14 14">
-                    <use xlink:href="#icon-compas"></use>
-                </svg>
-                <p>Поиск</p></a><a class="header-nav__item" id="compilations-href" href="{% url 'Compilations' %}">
-                <svg width="14" viewBox="0 0 14 14">
-                    <use xlink:href="#icon-selections"></use>
-                </svg>
-                <p>Подборки</p></a><a class="header-nav__item" id="bookmarks-href" href="{% url 'Bookmarks' %}">
-                <svg width="14" viewBox="0 0 14 14">
-                    <use xlink:href="#icon-favourites"></use>
-                </svg>
-                <p>Избранное</p></a><a class="header-nav__item" id="sub-href" href="{% url 'Bookmarks' %}">
-                <svg width="14" viewBox="0 0 14 14">
-                    <use xlink:href="#icon-ring"></use>
-                </svg>
-                <p>Подписки</p></a><a class="header-nav__item tg" href="https://t.me/+LrBwzjGMO_E3M2M6">
-                <svg width="14" viewBox="0 0 14 14">
-                    <use xlink:href="#icon-telegram"></use>
-                </svg>
-                <p>Мы в Telegram</p></a></div>
+
+            <div class="header-nav">
+                <a class="header-nav__item" id="main-href" href="/">
+                    <svg width="14" viewBox="0 0 14 14">
+                        <use xlink:href="#icon-compas"></use>
+                    </svg>
+                    <p>Поиск</p>
+                </a>
+
+                <a class="header-nav__item" id="compilations-href" href="{% url 'Compilations' %}">
+                    <svg width="14" viewBox="0 0 14 14">
+                        <use xlink:href="#icon-selections"></use>
+                    </svg>
+                    <p>Подборки</p>
+                </a>
+
+                <a class="header-nav__item" id="bookmarks-href" href="{% url 'Bookmarks' %}">
+                    <svg width="14" viewBox="0 0 14 14">
+                        <use xlink:href="#icon-favourites"></use>
+                    </svg>
+                    <p>Избранное</p>
+                </a>
+
+                <a class="header-nav__item" id="sub-href" href="{% url 'Bookmarks' %}">
+                    <svg width="14" viewBox="0 0 14 14">
+                        <use xlink:href="#icon-ring"></use>
+                    </svg>
+                    <p>Подписки</p>
+                </a>
+
+
+                <a class="header-nav__item tg" href="https://t.me/+LrBwzjGMO_E3M2M6">
+                    <svg width="14" viewBox="0 0 14 14">
+                        <use xlink:href="#icon-telegram"></use>
+                    </svg>
+                    <p>Мы в Telegram</p>
+                </a>
+
+                {% if user.is_authenticated %}
+                    <a class="header-nav__item profile-menu" href="{% url 'profile' %}">
+                    <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M13.8012 7.85842C14.1822 7.49044 14.4861 7.05027 14.6951 6.56358C14.9042 6.07689 15.0142 5.55344 15.0189 5.02377C15.0235 4.4941 14.9225 3.96881 14.7219 3.47857C14.5214 2.98832 14.2252 2.54293 13.8506 2.16838C13.4761 1.79383 13.0307 1.49763 12.5404 1.29705C12.0502 1.09648 11.5249 0.995548 10.9952 1.00015C10.4656 1.00475 9.94211 1.1148 9.45542 1.32386C8.96874 1.53293 8.52856 1.83683 8.16058 2.21783C7.43393 2.97018 7.03185 3.97784 7.04094 5.02377C7.05003 6.0697 7.46956 7.07022 8.20917 7.80983C8.94878 8.54944 9.9493 8.96897 10.9952 8.97806C12.0412 8.98715 13.0488 8.58507 13.8012 7.85842Z" stroke="black" stroke-linecap="round" stroke-linejoin="round"></path>
+                        <path d="M6.04436 14.0635C7.02066 13.0871 8.26459 12.4221 9.61882 12.1527C10.9731 11.8833 12.3768 12.0216 13.6524 12.55C14.9281 13.0784 16.0184 13.9732 16.7855 15.1213C17.5525 16.2694 17.9619 17.6192 17.9618 19H3.99994C3.99987 18.0832 4.18038 17.1754 4.53117 16.3284C4.88195 15.4814 5.39613 14.7118 6.04436 14.0635Z" stroke="black" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                    <p>Профиль</p></a>
+                {% else %}
+                    <a class="header-nav__item profile-menu" href="{% url 'profile' %}" id="LoginForm" data-modal="modal-enter-to-app">
+                    <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M13.8012 7.85842C14.1822 7.49044 14.4861 7.05027 14.6951 6.56358C14.9042 6.07689 15.0142 5.55344 15.0189 5.02377C15.0235 4.4941 14.9225 3.96881 14.7219 3.47857C14.5214 2.98832 14.2252 2.54293 13.8506 2.16838C13.4761 1.79383 13.0307 1.49763 12.5404 1.29705C12.0502 1.09648 11.5249 0.995548 10.9952 1.00015C10.4656 1.00475 9.94211 1.1148 9.45542 1.32386C8.96874 1.53293 8.52856 1.83683 8.16058 2.21783C7.43393 2.97018 7.03185 3.97784 7.04094 5.02377C7.05003 6.0697 7.46956 7.07022 8.20917 7.80983C8.94878 8.54944 9.9493 8.96897 10.9952 8.97806C12.0412 8.98715 13.0488 8.58507 13.8012 7.85842Z" stroke="black" stroke-linecap="round" stroke-linejoin="round"></path>
+                        <path d="M6.04436 14.0635C7.02066 13.0871 8.26459 12.4221 9.61882 12.1527C10.9731 11.8833 12.3768 12.0216 13.6524 12.55C14.9281 13.0784 16.0184 13.9732 16.7855 15.1213C17.5525 16.2694 17.9619 17.6192 17.9618 19H3.99994C3.99987 18.0832 4.18038 17.1754 4.53117 16.3284C4.88195 15.4814 5.39613 14.7118 6.04436 14.0635Z" stroke="black" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                    <p>Профиль</p></a>
+                {% endif %}
+
+
+            </div>
 
                 {% if user.is_authenticated %}
                     <div class="header-inner__side user-info">

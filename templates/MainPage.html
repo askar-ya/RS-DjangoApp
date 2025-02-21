@@ -33,9 +33,7 @@
     </div>
 
     <div class="service-name-mob">
-        <div class="container">
-            <p>Reels Scanner</p>
-        </div>
+        <div class="container"><img src="{% static 'icon/reels-logo.svg' %}" alt="" width="150"></div>
     </div>
 
     <div class="wrapper wrapper--padding-top">
@@ -159,6 +157,12 @@
                 let scope_text = document.querySelector('[data-value="'+ scope +'"]').textContent
                 for (let i = 0; i < scope_input.length; ++i) {
                     scope_input[i].setAttribute('data-default-value', scope)
+                    console.log(scope_input[i].parentElement)
+                    let current_scope = scope_input[i].parentElement.querySelector(
+                        'li[data-value="'+ scope +'"]')
+                    console.log(scope_input[i].parentElement.querySelector(
+                        'li[data-value="'+ scope +'"]'))
+                    current_scope.classList.add("is-active")
                     scope_input[i].parentElement.querySelector('.simple-select__selected').textContent = scope_text
                 }
             }

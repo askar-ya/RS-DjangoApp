@@ -1,94 +1,189 @@
-.head{
-    background: #fff;
-    height: calc(var(--hight-input-field) * 1.5);
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
-    grid-template-rows: 100%;
-    padding: 0 calc(var(--hight-input-field) * 1);
-}
+.header {
+  background: #ffffff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 50;
+  border-bottom: 1px solid #F0F0F0;
+  height: 48px; }
 
-
-.logo{
-    display: flex;
-    justify-content: start;
-    align-items: center;
-
-    font-weight: 500;
-    color: var(--color-Contrast);
-    font-size: calc(var(--hight-input-field) * 0.8);
-
-}
-
-
-.user-info{
-    display: grid;
-    text-align: right;
-    align-items: center;
-    padding: calc(var(--hight-input-field) * 0.1) 0;
-}
-
-.user-info .name{
-    font-weight: 400;
-    font-size: calc(var(--hight-input-field) * 0.6);
-}
-
-.user-info .sub-time{
-    font-weight: 400;
-    font-size: calc(var(--hight-input-field) * 0.5);
-    color: var(--color-Minor);
-}
-
-.menu{
-    justify-content: center;
-    display: flex;
-    gap: calc(var(--hight-input-field) / 2);
-}
-
-
-.partition-wrapper{
-    display: flex;
-    align-items: center;
-    gap: var(--border-width);
-
-    border-bottom: solid rgba(0, 0, 0, 0.0);
-
-    cursor: pointer;
-}
-
-.partition-logo svg{
+.header-inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between; }
+  .header-inner__side {
     width: 100%;
-    height: 100%;
-}
+    max-width: 200px; }
+  .header-inner__name {
+    font-family: "Inters", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    text-align: left;
+    text-underline-position: from-font;
+    -webkit-text-decoration-skip-ink: none;
+            text-decoration-skip-ink: none; }
 
+.header-nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-family: "Inters", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+  text-align: left;
+  text-underline-position: from-font;
+  -webkit-text-decoration-skip-ink: none;
+          text-decoration-skip-ink: none; }
+  .header-nav__item {
+    text-align: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    gap: 8px;
+    padding: 13px 20px;
+    -webkit-transition: 0.15s;
+    transition: 0.15s;
+    position: relative;
+    -ms-flex-negative: 0;
+        flex-shrink: 0; }
+    .header-nav__item svg {
+      -webkit-transition: 0.15s;
+      transition: 0.15s; }
+    .header-nav__item:after {
+      position: absolute;
+      content: '';
+      bottom: 0;
+      left: 50%;
+      -webkit-transform: translateX(-50%);
+          -ms-transform: translateX(-50%);
+              transform: translateX(-50%);
+      border-bottom: 3px solid transparent;
+      width: 0;
+      height: 100%;
+      -webkit-transition: 0.15s;
+      transition: 0.15s; }
+    .header-nav__item:hover {
+      color: #1890FF; }
+      .header-nav__item:hover:after {
+        border-color: #1890FF;
+        width: 100%; }
+      .header-nav__item:hover svg {
+        fill: #1890FF; }
+      .header-nav__item:hover.profile-menu svg path {
+        fill: transparent;
+        stroke: #1890FF; }
+    .header-nav__item.is-active {
+      color: #1890FF; }
+      .header-nav__item.is-active:after {
+        border-color: #1890FF;
+        width: 100%; }
+      .header-nav__item.is-active svg {
+        fill: #1890FF; }
+      .header-nav__item.is-active.profile-menu svg path {
+        fill: transparent;
+        stroke: #1890FF; }
+  .header-nav .profile-menu {
+    display: none; }
 
-.partition-wrapper h2{
+.user-info {
+  text-align: right; }
+  .user-info__mail {
     font-family: "Roboto", sans-serif;
+    font-size: 14px;
     font-weight: 400;
-    font-size: calc(var(--hight-input-field) * 0.5);
-    color: var(--color-Contrast);
-}
+    line-height: 17.5px; }
+  .user-info__days {
+    font-family: "Roboto", sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    opacity: 0.4; }
 
-.partition-logo{
-    width: calc(var(--hight-input-field) / 1.5);
-    height: calc(var(--hight-input-field) / 1.5);
-}
+@media (max-width: 1199px) {
+  .header-inner__side {
+    max-width: 170px; }
+  .header-nav__item {
+    gap: 4px;
+    padding: 13px 15px; } }
 
-.partition-wrapper:hover{
-    fill: #1890FF;
-    color: var(--color-Accent);
-    border-bottom: solid var(--color-Accent);
-}
+@media (max-width: 991px) {
+  .header-inner {
+    gap: 10px; }
+    .header-inner__name {
+      font-size: 14px; }
+    .header-inner__side {
+      max-width: 120px; }
+  .user-info__mail {
+    font-size: 12px; }
+  .user-info__days {
+    font-size: 10px; }
+  .header-nav {
+    font-size: 12px;
+    width: 100%;
+    gap: 20px;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center; }
+    .header-nav__item {
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column;
+      padding: 6px 0 0 0; }
+      .header-nav__item:after {
+        display: none; } }
 
-.partition-wrapper:hover  path{
-    fill: var(--color-Accent);
-}
+@media (max-width: 767px) {
+  .header {
+    top: unset;
+    bottom: 0;
+    height: 60px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center; }
+  .header-inner {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center; }
+    .header-inner__side {
+      display: none; }
+  .header-nav {
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    gap: 10px; }
+    .header-nav .tg {
+      display: none; }
+    .header-nav .profile-menu {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex; } }
 
-.partition-wrapper:hover  h2{
-    color: var(--color-Accent);
-}
+@media (max-width: 575px) {
+  .header-nav {
+    padding: 0 10px; }
+    .header-nav svg {
+      width: 20px; } }
 
-
-
-
-
-
+/*# sourceMappingURL=styles.min.css.map */

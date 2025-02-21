@@ -44,11 +44,14 @@
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
             justify-content: space-between;
-    position: relative;
+    position: absolute;
     z-index: 3;
     -webkit-box-align: start;
         -ms-flex-align: start;
-            align-items: flex-start; }
+            align-items: flex-start;
+    top: 8px;
+    left: 8px;
+    right: 8px; }
   .reelsCard__mainBottom {
     position: relative;
     z-index: 2;
@@ -327,11 +330,10 @@
     position: relative; }
     .reelsCard__descr-more {
       position: absolute;
-      bottom: -1px;
+      bottom: 0;
       right: 0;
-      background: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0)), color-stop(28%, white), to(white));
-      background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, white 28%, white 100%);
-      font-weight: 500;
+      background: white;
+      font-size: 400;
       line-height: 18px;
       display: -webkit-box;
       display: -ms-flexbox;
@@ -342,8 +344,5 @@
         color: #a9a9a9; }
   .reelsCard .video-played + .reelsCard__videoPlay {
     display: none; }
-
-.white-gradient {
-  padding-left: 30px; }
 
 /*# sourceMappingURL=styles.min.css.map */
